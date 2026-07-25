@@ -81,3 +81,21 @@
  GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1727ms
  GET /api/auth/session 200 in 124ms
  GET /api/auth/session 200 in 45ms
+ GET /register 200 in 518ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 97ms
+ GET /api/auth/session 200 in 108ms
+ GET /api/auth/session 200 in 100ms
+ GET /api/auth/session 200 in 73ms
+ GET /api/auth/csrf 200 in 43ms
+ POST /api/auth/signout 200 in 35ms
+ GET /login 200 in 119ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 68ms
+ GET /api/auth/session 200 in 98ms
+ GET /api/auth/session 200 in 68ms
+ GET /api/auth/session 200 in 81ms
+ GET /api/auth/csrf 200 in 103ms
+ POST /api/auth/signout 200 in 44ms
+ GET /login 200 in 100ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 63ms
+ GET /api/auth/session 200 in 50ms
+ GET /api/auth/session 200 in 40ms
