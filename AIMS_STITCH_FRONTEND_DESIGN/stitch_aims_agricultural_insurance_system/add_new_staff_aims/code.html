@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Staff - AIMS Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=Geist:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#101412",
+                        "secondary": "#c9c6c5",
+                        "on-secondary-fixed-variant": "#474646",
+                        "tertiary-container": "#5c5e5e",
+                        "on-secondary": "#313030",
+                        "on-primary": "#00382b",
+                        "inverse-on-surface": "#2d312f",
+                        "on-primary-container": "#94e8cb",
+                        "outline-variant": "#3e4944",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary-fixed-variant": "#00513f",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#262b29",
+                        "on-primary-fixed": "#002118",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-variant": "#313633",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "primary-container": "#006b54",
+                        "on-background": "#e0e3e0",
+                        "surface-container": "#1c211e",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e0e3e0",
+                        "surface-bright": "#363a38",
+                        "error": "#ffb4ab",
+                        "background": "#101412",
+                        "surface-tint": "#82d7ba",
+                        "secondary-container": "#4a4949",
+                        "surface-container-lowest": "#0b0f0d",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#313633",
+                        "on-secondary-container": "#bab8b7",
+                        "on-tertiary-container": "#d7d7d8",
+                        "inverse-primary": "#016b54",
+                        "tertiary": "#c6c6c7",
+                        "primary": "#82d7ba",
+                        "on-surface-variant": "#bec9c3",
+                        "on-tertiary": "#2f3131",
+                        "on-surface": "#e0e3e0",
+                        "secondary-fixed-dim": "#c9c6c5",
+                        "secondary-fixed": "#e5e2e1",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "primary-fixed-dim": "#82d7ba",
+                        "surface-container-low": "#181d1b",
+                        "surface": "#101412",
+                        "primary-fixed": "#9ef3d6",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#88938e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-padding": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "code-sm": ["Geist"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "code-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            color: #e0e3e0;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #1F1F1F;
+        }
+        .emerald-glow-focus:focus-within {
+            box-shadow: 0 0 20px rgba(0, 107, 84, 0.15);
+            border-color: #006B54;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #101412;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #313633;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-lg text-body-lg">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface-dim border-b border-surface-container-highest shadow-sm">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">AIMS Dashboard</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="hidden md:flex bg-surface-container-low rounded-full px-4 py-2 items-center gap-2 border border-outline-variant emerald-glow-focus">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-64 text-on-surface" placeholder="Search system..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-[280px] bg-surface-container-low border-r border-surface-container-highest flex flex-col py-stack-md hidden md:flex">
+<div class="px-6 py-4">
+<h2 class="font-title-md text-title-md text-on-surface">Tenant Admin</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Agriculture Insurance MS</p>
+</div>
+<nav class="flex-1 px-2 space-y-1 mt-4">
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="bg-primary-container text-on-primary-container rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-3 active:scale-98" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">Staff</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-label-caps">Policies</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-caps text-label-caps">Billing</span>
+</a>
+</nav>
+<div class="px-4 py-4 border-t border-surface-container-highest">
+<button class="w-full text-on-surface-variant hover:bg-error-container hover:text-on-error-container rounded-full px-4 py-3 flex items-center gap-3 transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="md:ml-[280px] pt-16 min-h-screen">
+<div class="max-w-6xl mx-auto p-gutter animate-in fade-in duration-700">
+<!-- Breadcrumbs / Header -->
+<div class="mb-stack-lg flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 text-on-surface-variant mb-2">
+<span class="font-label-caps text-label-caps">Staff Management</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="font-label-caps text-label-caps text-primary">Add New Member</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Create Staff Profile</h1>
+<p class="text-on-surface-variant mt-1">Configure professional identity and system access for new team members.</p>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="px-6 py-2.5 rounded-full border border-outline-variant text-on-surface font-medium hover:bg-surface-container-high transition-all active:scale-95">
+                        Reset Form
+                    </button>
+<button class="px-8 py-2.5 rounded-full bg-primary-container text-on-primary-container font-bold shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+                        Create Staff
+                    </button>
+</div>
+</div>
+<!-- Main Form Card (Bento-style layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Profile Photo & Key Stats -->
+<div class="lg:col-span-4 space-y-gutter">
+<div class="glass-card rounded-lg p-stack-lg flex flex-col items-center text-center">
+<div class="relative group cursor-pointer">
+<div class="w-40 h-40 rounded-full border-4 border-surface-container-highest overflow-hidden relative emerald-glow-focus transition-all">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" data-alt="A professional close-up studio portrait of a corporate employee for a profile avatar. The lighting is sophisticated and moody, consistent with a dark-themed UI. The subject has a neutral, authoritative expression against a deep obsidian background with subtle emerald green rim lighting. High-end, executive aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMtPTAsSeYOp8wEKudW55FUGJNG_aMucKsgQjG6HNjfBsaO2-8Tzl2MwuE0_tblRmwEaNqGQ185zNAdJCUVqoHeRe30ol2VNsp0xMcv58x6m-aN8MiqehFpHQY8FIHYde3ULsgj1US_3UH6yaRJPpk3JvJDyUifV1OZjZV2yNHEWHoZXhBbjgs7mBifxImcvutZijkek8ZIh8CS8kqTieYJxXL7J8rdwl5XJDsjhnwisBD94OSAbPxmW8WLf5ZVcOT7NQRVLOSsYQ"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-3xl mb-1">add_a_photo</span>
+<span class="text-[10px] font-label-caps text-white">UPLOAD PHOTO</span>
+</div>
+</div>
+<div class="absolute bottom-2 right-2 bg-primary p-2 rounded-full text-on-primary shadow-lg border-4 border-surface-dim">
+<span class="material-symbols-outlined text-sm">edit</span>
+</div>
+</div>
+<div class="mt-stack-md">
+<h3 class="font-title-md text-title-md text-on-surface">New Profile</h3>
+<p class="text-on-surface-variant text-body-sm">Drag and drop or click to upload</p>
+</div>
+<div class="w-full mt-stack-lg pt-stack-lg border-t border-surface-container-highest grid grid-cols-2 gap-4">
+<div class="text-center">
+<span class="block font-label-caps text-label-caps text-on-surface-variant">ID STATUS</span>
+<span class="text-primary font-bold">PENDING</span>
+</div>
+<div class="text-center">
+<span class="block font-label-caps text-label-caps text-on-surface-variant">LEVEL</span>
+<span class="text-on-surface font-bold">STANDARD</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-lg p-stack-lg">
+<h4 class="font-label-caps text-label-caps text-primary mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">security</span>
+                            PERMISSIONS SUMMARY
+                        </h4>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant">Dashboard Access</span>
+<span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant">Policy Creation</span>
+<span class="material-symbols-outlined text-outline text-lg">cancel</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant">Claim Processing</span>
+<span class="material-symbols-outlined text-outline text-lg">cancel</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant">System Settings</span>
+<span class="material-symbols-outlined text-outline text-lg">cancel</span>
+</div>
+<div class="pt-2">
+<p class="text-[11px] text-on-surface-variant italic leading-relaxed">
+                                    Permissions are automatically mapped based on the selected Role and Department in the primary information panel.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Personal Info & Account Details -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Personal Info Card -->
+<div class="glass-card rounded-lg p-stack-lg">
+<h3 class="font-title-md text-title-md text-on-surface mb-stack-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person</span>
+                            Personal Information
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-2">FULL NAME</label>
+<div class="bg-surface-container-low rounded-full px-5 py-3 border border-surface-container-highest emerald-glow-focus">
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full p-0" placeholder="e.g. Jonathan Sterling" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-2">EMAIL ADDRESS</label>
+<div class="bg-surface-container-low rounded-full px-5 py-3 border border-surface-container-highest emerald-glow-focus">
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full p-0" placeholder="j.sterling@aims-agri.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-2">PHONE NUMBER</label>
+<div class="bg-surface-container-low rounded-full px-5 py-3 border border-surface-container-highest emerald-glow-focus">
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full p-0" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-2">DEPARTMENT</label>
+<div class="bg-surface-container-low rounded-full px-5 py-3 border border-surface-container-highest emerald-glow-focus">
+<select class="bg-transparent border-none focus:ring-0 text-on-surface w-full p-0 appearance-none">
+<option>Select Department</option>
+<option>Underwriting</option>
+<option>Claims Management</option>
+<option>Risk Assessment</option>
+<option>Executive Staff</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Account Details Card -->
+<div class="glass-card rounded-lg p-stack-lg">
+<h3 class="font-title-md text-title-md text-on-surface mb-stack-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">badge</span>
+                            Account Configuration
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-2">SYSTEM ROLE</label>
+<div class="bg-surface-container-low rounded-full px-5 py-3 border border-surface-container-highest emerald-glow-focus">
+<select class="bg-transparent border-none focus:ring-0 text-on-surface w-full p-0 appearance-none">
+<option>Select Role</option>
+<option>Administrator</option>
+<option>Staff Member</option>
+<option>External Auditor</option>
+<option>Field Officer</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-2">LOCATION / BRANCH</label>
+<div class="bg-surface-container-low rounded-full px-5 py-3 border border-surface-container-highest emerald-glow-focus">
+<select class="bg-transparent border-none focus:ring-0 text-on-surface w-full p-0 appearance-none">
+<option>Central Headquarters</option>
+<option>Northern Regional</option>
+<option>Coastal Hub</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Access & Security Card -->
+<div class="glass-card rounded-lg p-stack-lg border-primary/20">
+<div class="flex items-center justify-between mb-stack-lg">
+<h3 class="font-title-md text-title-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">key</span>
+                                Access & Security
+                            </h3>
+<div class="flex items-center gap-3">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SEND WELCOME EMAIL</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant ml-2">TEMPORARY PASSWORD</label>
+<div class="bg-surface-container-low rounded-full px-5 py-3 border border-surface-container-highest flex items-center gap-4 emerald-glow-focus">
+<input class="bg-transparent border-none focus:ring-0 text-primary font-mono w-full p-0 tracking-widest uppercase" readonly="" type="text" value="AIMS-X92-JST-2024"/>
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors" onclick="navigator.clipboard.writeText('AIMS-X92-JST-2024')">
+<span class="font-label-caps text-label-caps">COPY</span>
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<p class="text-[11px] text-on-surface-variant ml-4 mt-2">
+                                This password will expire in 24 hours. The user will be prompted to set a new password upon first login.
+                            </p>
+</div>
+</div>
+<!-- Form Actions Mobile -->
+<div class="flex md:hidden flex-col gap-4 pt-stack-md">
+<button class="w-full py-4 rounded-full bg-primary-container text-on-primary-container font-bold shadow-lg">
+                            Create Staff Profile
+                        </button>
+<button class="w-full py-4 rounded-full border border-outline-variant text-on-surface font-medium">
+                            Reset Form
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Micro-interaction JS -->
+<script>
+        // Simple ripple effect for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '2px';
+                ripple.style.height = '2px';
+                ripple.style.background = 'rgba(255,255,255,0.2)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.transition = 'transform 0.5s, opacity 0.5s';
+                ripple.style.pointerEvents = 'none';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                requestAnimationFrame(() => {
+                    ripple.style.transform = 'scale(200)';
+                    ripple.style.opacity = '0';
+                });
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Copy button visual feedback
+        const copyBtn = document.querySelector('button[onclick*="clipboard"]');
+        if(copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                const originalText = copyBtn.querySelector('span:first-child').innerText;
+                copyBtn.querySelector('span:first-child').innerText = 'COPIED!';
+                copyBtn.classList.add('text-primary');
+                setTimeout(() => {
+                    copyBtn.querySelector('span:first-child').innerText = originalText;
+                    copyBtn.classList.remove('text-primary');
+                }, 2000);
+            });
+        }
+    </script>
+</body></html>

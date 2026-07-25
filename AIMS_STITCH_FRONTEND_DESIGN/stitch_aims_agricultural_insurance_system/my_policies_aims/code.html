@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Policies | AIMS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .font-headline { font-family: 'Geist', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#002118",
+                      "tertiary-fixed-dim": "#ffb3b6",
+                      "surface-variant": "#e1e3e4",
+                      "surface": "#f8f9fa",
+                      "on-tertiary-fixed-variant": "#920028",
+                      "on-primary-fixed-variant": "#00513f",
+                      "inverse-surface": "#2e3132",
+                      "secondary-fixed-dim": "#ffb95f",
+                      "outline": "#6f7a74",
+                      "on-primary": "#ffffff",
+                      "on-background": "#191c1d",
+                      "on-tertiary-container": "#ffcccd",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#82d7ba",
+                      "surface-bright": "#f8f9fa",
+                      "inverse-on-surface": "#f0f1f2",
+                      "background": "#f8f9fa",
+                      "surface-tint": "#016b54",
+                      "surface-container-highest": "#e1e3e4",
+                      "tertiary-fixed": "#ffdada",
+                      "on-primary-container": "#94e8cb",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#fea619",
+                      "on-error-container": "#93000a",
+                      "surface-dim": "#d9dadb",
+                      "secondary-fixed": "#ffddb8",
+                      "primary": "#00513f",
+                      "on-secondary-fixed-variant": "#653e00",
+                      "surface-container-high": "#e7e8e9",
+                      "on-surface-variant": "#3e4944",
+                      "secondary": "#855300",
+                      "primary-fixed": "#9ef3d6",
+                      "tertiary-container": "#be0037",
+                      "on-secondary-container": "#684000",
+                      "on-tertiary": "#ffffff",
+                      "on-surface": "#191c1d",
+                      "on-secondary": "#ffffff",
+                      "surface-container-low": "#f3f4f5",
+                      "on-tertiary-fixed": "#40000c",
+                      "outline-variant": "#bec9c3",
+                      "surface-container": "#edeeef",
+                      "error": "#ba1a1a",
+                      "primary-fixed-dim": "#82d7ba",
+                      "on-secondary-fixed": "#2a1700",
+                      "primary-container": "#006b54",
+                      "tertiary": "#920028",
+                      "surface-container-lowest": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "header-height": "64px",
+                      "container-padding": "2rem",
+                      "stack-md": "1rem",
+                      "stack-sm": "0.5rem",
+                      "sidebar-width": "240px",
+                      "gutter": "1.5rem"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Geist"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Geist"],
+                      "headline-xl": ["Geist"],
+                      "body-sm": ["Inter"],
+                      "label-md": ["Geist"],
+                      "headline-lg": ["Geist"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "600"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Wrapper -->
+<div class="flex min-h-screen">
+<!-- SideNavBar (JSON Derived) -->
+<aside class="fixed left-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col py-stack-md shadow-sm z-50">
+<div class="px-6 mb-8">
+<span class="text-headline-lg font-headline-lg font-bold text-primary">AIMS</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="person">person</span>
+<span class="text-label-md font-label-md">My Profile</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="map">map</span>
+<span class="text-label-md font-label-md">Land Parcels</span>
+</a>
+<!-- Active Tab: My Policies -->
+<a class="flex items-center px-4 py-3 mx-2 bg-secondary-container text-on-secondary-container rounded-full transition-all duration-300 ease-in-out shadow-sm" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="policy">policy</span>
+<span class="text-label-md font-label-md font-bold">My Policies</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="description">description</span>
+<span class="text-label-md font-label-md">Claims</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="notifications">notifications</span>
+<span class="text-label-md font-label-md">Notifications</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-4 py-4 mt-auto border-t border-outline-variant">
+<div class="flex items-center space-x-3 mb-4">
+<img class="w-10 h-10 rounded-full border border-outline-variant" data-alt="A professional studio portrait of a middle-aged farmer with a warm smile, wearing a clean denim shirt against a soft neutral background. The lighting is bright and high-key, reflecting a corporate modern and approachable aesthetic consistent with a high-end agricultural management system dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs7eoGf_j4t-4OJM5saLDRZ_MwTiFJtNYUsrFFROAfnehS_pCMnMoDsq7jsHOnp_10uQbAgI-nFsYahevxoY75HW55mg2HhuBEggNWSwYtJ7u9sPDYlEo-dz7DN1d-xcjLRVI9zJw1btq9Ra7hIgN187Ma0GyF94jVbYYvTrf7XvSXtd0ijCKmMKY9Pj4opNo-hwKScfF1aFW07ffwGTHp3yVztuL2QMfig-sGrrt1OxTNXpuVjMBs5Qbbwi2upc8JST4q3DjmZE4"/>
+<div class="flex flex-col">
+<span class="text-label-md font-bold text-on-surface">John Doe</span>
+<span class="text-xs text-on-surface-variant">Farmer</span>
+</div>
+</div>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-[240px] flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar (JSON Derived) -->
+<header class="h-[64px] bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center w-full px-container-padding sticky top-0 z-40 shadow-sm">
+<div class="flex items-center flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-2 bg-surface-container-low border-none rounded-full text-label-md focus:ring-2 focus:ring-primary transition-all" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<button class="flex items-center space-x-2 text-primary font-bold">
+<span class="text-label-md">AIMS</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-8 space-y-8 max-w-[1400px] mx-auto w-full">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<h1 class="text-headline-xl font-headline-xl text-on-surface">My Policies</h1>
+<p class="text-body-md text-on-surface-variant">Manage your agricultural insurance coverages and active plans.</p>
+</div>
+<button class="flex items-center justify-center px-8 py-3 bg-primary-container text-on-primary-container hover:opacity-90 transition-all rounded-full font-bold shadow-md">
+<span class="material-symbols-outlined mr-2" data-icon="add">add</span>
+                        Buy New Policy
+                    </button>
+</div>
+<!-- Stats Bar (Bento Pattern) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="text-label-sm text-outline-variant uppercase tracking-wider">Total Active</p>
+<h3 class="text-headline-lg font-bold text-on-surface">8</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm flex items-center space-x-4">
+<div class="w-12 h-12 bg-secondary-container/10 rounded-full flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="text-label-sm text-outline-variant uppercase tracking-wider">Total Premium Paid</p>
+<h3 class="text-headline-lg font-bold text-on-surface">$4,500</h3>
+</div>
+</div>
+<div class="md:col-span-2 relative overflow-hidden bg-primary p-6 rounded-lg border border-primary flex items-center justify-between text-white shadow-md">
+<div class="relative z-10">
+<p class="text-label-sm opacity-80 uppercase tracking-wider">Next Renewal Date</p>
+<h3 class="text-headline-lg font-bold">Oct 14, 2024</h3>
+<p class="text-body-sm opacity-90 mt-1">Policy: POL-2024-012</p>
+</div>
+<div class="relative z-10">
+<button class="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-full text-label-md font-bold transition-all">
+                                View Upcoming
+                            </button>
+</div>
+<!-- Abstract Background Decoration -->
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+<div class="absolute -left-8 -bottom-8 w-32 h-32 bg-primary-container/20 rounded-full blur-2xl"></div>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface-container-lowest p-4 rounded-lg border border-outline-variant shadow-sm flex flex-col md:flex-row gap-4 items-center justify-between">
+<div class="flex items-center p-1 bg-surface-container-low rounded-full">
+<button class="px-6 py-2 rounded-full text-label-md font-bold bg-white text-primary shadow-sm transition-all">All</button>
+<button class="px-6 py-2 rounded-full text-label-md font-medium text-on-surface-variant hover:text-on-surface transition-all">Active</button>
+<button class="px-6 py-2 rounded-full text-label-md font-medium text-on-surface-variant hover:text-on-surface transition-all">Expired</button>
+<button class="px-6 py-2 rounded-full text-label-md font-medium text-on-surface-variant hover:text-on-surface transition-all">Cancelled</button>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[18px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-full text-label-md focus:ring-2 focus:ring-primary transition-all" placeholder="Search by Policy #" type="text"/>
+</div>
+<div class="relative">
+<select class="appearance-none pl-4 pr-10 py-2 bg-white border border-outline-variant rounded-full text-label-md focus:ring-2 focus:ring-primary focus:outline-none transition-all cursor-pointer">
+<option>Sort by: Newest</option>
+<option>Sort by: Premium</option>
+<option>Sort by: Expiry</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline-variant" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+</div>
+<!-- Policy Table -->
+<div class="bg-white rounded-lg border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-6 py-4 text-label-sm font-bold text-outline-variant uppercase tracking-wider">Policy #</th>
+<th class="px-6 py-4 text-label-sm font-bold text-outline-variant uppercase tracking-wider">Plan</th>
+<th class="px-6 py-4 text-label-sm font-bold text-outline-variant uppercase tracking-wider">Crop</th>
+<th class="px-6 py-4 text-label-sm font-bold text-outline-variant uppercase tracking-wider">Coverage</th>
+<th class="px-6 py-4 text-label-sm font-bold text-outline-variant uppercase tracking-wider">Premium</th>
+<th class="px-6 py-4 text-label-sm font-bold text-outline-variant uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-label-sm font-bold text-outline-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<span class="text-body-md font-bold text-on-surface">POL-2024-001</span>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface-variant">Yield Protection</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="agriculture">agriculture</span>
+<span class="text-body-md">Corn</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$120,000</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$1,250.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></span>
+                                            Active
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-surface-container-low inline-flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<span class="text-body-md font-bold text-on-surface">POL-2024-002</span>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface-variant">Revenue Security</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="spa">spa</span>
+<span class="text-body-md">Soybeans</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$85,000</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$980.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></span>
+                                            Active
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-surface-container-low inline-flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<span class="text-body-md font-bold text-on-surface">POL-2024-003</span>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface-variant">Weather Index</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="grain">grain</span>
+<span class="text-body-md">Wheat</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$45,000</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$520.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 bg-surface-container-high text-on-surface-variant text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-outline-variant rounded-full mr-2"></span>
+                                            Expired
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-surface-container-low inline-flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<span class="text-body-md font-bold text-on-surface">POL-2024-008</span>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface-variant">Livestock Gross</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="pets">pets</span>
+<span class="text-body-md">Dairy Cattle</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$210,000</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$1,750.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 bg-error-container text-on-error-container text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-error rounded-full mr-2"></span>
+                                            Cancelled
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-surface-container-low inline-flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors cursor-pointer group">
+<td class="px-6 py-4">
+<span class="text-body-md font-bold text-on-surface">POL-2024-015</span>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface-variant">Multi-Peril</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="eco">eco</span>
+<span class="text-body-md">Orchards</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$300,000</td>
+<td class="px-6 py-4 text-body-md text-on-surface">$2,400.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full mr-2"></span>
+                                            Pending
+                                        </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="w-8 h-8 rounded-full hover:bg-surface-container-low inline-flex items-center justify-center text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-surface-container-low/30 border-t border-outline-variant flex items-center justify-between">
+<span class="text-label-md text-on-surface-variant">Showing 1 to 5 of 12 policies</span>
+<div class="flex items-center space-x-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low border border-outline-variant text-on-surface-variant disabled:opacity-50 transition-all" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white font-bold shadow-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low text-on-surface-variant">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low text-on-surface-variant">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low border border-outline-variant text-on-surface-variant transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Callout Card -->
+<div class="relative bg-surface-container p-8 rounded-lg border border-outline-variant flex flex-col md:flex-row items-center gap-8">
+<div class="flex-shrink-0 w-24 h-24 bg-primary-container rounded-2xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-4xl" data-icon="support_agent">support_agent</span>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h4 class="text-headline-lg font-bold text-on-surface">Need help choosing a plan?</h4>
+<p class="text-body-md text-on-surface-variant mt-1">Our agricultural experts are ready to help you navigate coverage options for the 2024 season.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3">
+<button class="px-8 py-3 bg-white border border-outline-variant text-primary font-bold rounded-full hover:bg-surface-container-low transition-all">Schedule a Call</button>
+<button class="px-8 py-3 bg-secondary text-white font-bold rounded-full hover:bg-secondary/90 transition-all">Contact Support</button>
+</div>
+</div>
+</div>
+<!-- Global Footer -->
+<footer class="mt-auto py-8 px-container-padding border-t border-outline-variant bg-surface-container-lowest text-center">
+<p class="text-label-sm text-outline-variant">© 2024 Agricultural Information Management System (AIMS). All rights reserved.</p>
+</footer>
+</main>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', () => {
+                // Mock selection effect
+                document.querySelectorAll('tr').forEach(r => r.classList.remove('bg-surface-container-low/50'));
+                row.classList.add('bg-surface-container-low/50');
+            });
+        });
+
+        // Hover animation for cards
+        const statsCards = document.querySelectorAll('.bg-surface-container-lowest');
+        statsCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.transition = 'all 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

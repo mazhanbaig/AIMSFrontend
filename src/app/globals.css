@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ⚠️ LIGHT THEME ONLY — No dark mode */
+  :root {
+    /* Primary: Dark Emerald Green (#006B54) */
+    --primary: 168 100% 21%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 166 100% 26%;
+    --primary-dark: 166 100% 15%;
+
+    /* Backgrounds */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    
+    /* Cards */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    
+    /* Popovers */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    
+    /* Secondary - Black */
+    --secondary: 0 0% 4%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Muted / Subtle */
+    --muted: 210 20% 97%;
+    --muted-foreground: 0 0% 40%;
+    
+    /* Accent - Emerald Glow */
+    --accent: 166 100% 33%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Success / Warning / Info */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    /* Borders / Inputs */
+    --border: 210 12% 92%;
+    --input: 210 12% 92%;
+    --ring: 168 100% 21%;
+    
+    /* Sidebar - Light Theme */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 168 100% 21%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 97%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 210 12% 92%;
+    --sidebar-ring: 168 100% 21%;
+
+    /* Border Radius (default is used for cards, inputs override to pill) */
+    --radius: 1rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #FFFFFF;
+    color: #1A1A1A;
+  }
+}
+
+@layer components {
+  /* Pill-style buttons */
+  .btn-pill {
+    border-radius: 9999px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  
+  /* Pill-style inputs */
+  .input-pill {
+    border-radius: 9999px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  /* Pill-style badges */
+  .badge-pill {
+    border-radius: 9999px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Card with 16px border-radius and subtle shadow */
+  .card-aims {
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #E8ECEF;
+  }
+}
+
+@layer utilities {
+  .bg-primary-light {
+    background-color: #00876A;
+  }
+  .bg-primary-dark {
+    background-color: #004D3C;
+  }
+  .text-emerald-primary {
+    color: #006B54;
+  }
+  .border-emerald-primary {
+    border-color: #006B54;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(102, 102, 102, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 102, 102, 0.5);
+}

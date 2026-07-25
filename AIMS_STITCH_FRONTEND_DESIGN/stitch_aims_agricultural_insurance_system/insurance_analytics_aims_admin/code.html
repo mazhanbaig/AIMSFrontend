@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Insurance Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Hanken+Grotesk:wght@500;600;700&family=Geist:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(0, 107, 84, 0.15);
+            border: 1px solid rgba(0, 107, 84, 0.2);
+        }
+        .glass-card {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(31, 31, 31, 1);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F1F1F;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #006B54;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-container-high": "#262b29",
+                        "primary-fixed": "#9ef3d6",
+                        "outline": "#88938e",
+                        "background": "#101412",
+                        "on-secondary-container": "#bab8b7",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "surface-tint": "#82d7ba",
+                        "on-surface": "#e0e3e0",
+                        "tertiary-fixed": "#e2e2e2",
+                        "tertiary-container": "#5c5e5e",
+                        "surface-dim": "#101412",
+                        "error-container": "#93000a",
+                        "tertiary": "#c6c6c7",
+                        "secondary-fixed-dim": "#c9c6c5",
+                        "surface-container-highest": "#313633",
+                        "secondary-container": "#4a4949",
+                        "primary-fixed-dim": "#82d7ba",
+                        "on-primary-fixed-variant": "#00513f",
+                        "primary-container": "#006b54",
+                        "surface-container-lowest": "#0b0f0d",
+                        "on-primary-fixed": "#002118",
+                        "on-primary-container": "#94e8cb",
+                        "inverse-primary": "#016b54",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-background": "#e0e3e0",
+                        "on-surface-variant": "#bec9c3",
+                        "on-secondary-fixed-variant": "#474646",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#2f3131",
+                        "secondary-fixed": "#e5e2e1",
+                        "inverse-surface": "#e0e3e0",
+                        "on-tertiary-container": "#d7d7d8",
+                        "surface-container-low": "#181d1b",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-primary": "#00382b",
+                        "inverse-on-surface": "#2d312f",
+                        "surface-variant": "#313633",
+                        "secondary": "#c9c6c5",
+                        "outline-variant": "#3e4944",
+                        "surface-container": "#1c211e",
+                        "surface-bright": "#363a38",
+                        "surface": "#101412",
+                        "primary": "#82d7ba",
+                        "on-secondary": "#313030",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "stack-lg": "32px",
+                        "container-padding": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "code-sm": ["Geist"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "code-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-lg overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-40 bg-background/80 backdrop-blur-md border-b border-outline-variant flex justify-between items-center h-16 px-gutter">
+<div class="flex items-center gap-stack-lg">
+<span class="font-headline-lg text-primary font-bold">AIMS Dashboard</span>
+<div class="hidden md:flex items-center bg-surface-container-low rounded-full px-4 py-2 border border-outline-variant w-96">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-full text-on-surface" placeholder="Search analytics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-2 px-4 py-2 hover:bg-surface-container-high rounded-full transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-caps">Support</span>
+</button>
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer p-2 hover:bg-surface-container-high rounded-full transition-colors">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary object-cover cursor-pointer" data-alt="Close-up professional portrait of a tech executive in a dark minimalist setting, soft emerald ambient lighting, high-end photography style, representing the administrator profile of the AIMS platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTLcPPRNBp_41l_2cld5tfcdFKoH6k4htSS5pEOlkesw9z8UtZnGPIl7fnxOyMo7ySqpydXWQijgHD86-RtMt-OQrLxOjfvbXNCOIi4TvG4QOIB15Xd-vyrOiAMLfZLiwnlrLNzDxL1PeODPZrpLmufKqUpVmBI07jJiUmxer_izYk7A7-mHSADktPXnccT4zQeOy3EflzDutS3hTBr9f6cyiAt416JgP4_TYlM7hD3aWAdZfrY77CJq5tg-fmgK-WucrJBsDsOdc"/>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] z-50 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg gap-unit hidden md:flex">
+<div class="px-8 mb-stack-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">shield</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-primary text-xl">AIMS Admin</h2>
+<p class="text-label-caps text-on-surface-variant opacity-70">Elite Precision</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard maps to analytics intent -->
+<a class="bg-primary-container text-on-primary-container rounded-full mx-4 px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps">Dashboard</span>
+</a>
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps">Staff</span>
+</a>
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps">Policies</span>
+</a>
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-caps">Claims</span>
+</a>
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps">Settings</span>
+</a>
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-caps">Billing</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary text-on-primary font-label-caps py-4 rounded-full flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">add</span>
+                New Policy
+            </button>
+<a class="mt-4 text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-error-container/20 hover:text-error rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-[280px] pt-24 px-container-padding pb-stack-lg min-h-screen">
+<!-- Header & Top Actions -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md mb-stack-lg">
+<div>
+<h1 class="font-headline-lg text-on-surface">Insurance Analytics</h1>
+<p class="text-on-surface-variant text-body-sm">Comprehensive performance metrics and officer efficiency reporting.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2.5 border border-outline-variant text-on-surface rounded-full flex items-center gap-2 hover:bg-surface-container-high transition-all active:scale-95 font-label-caps">
+<span class="material-symbols-outlined text-body-lg">ios_share</span>
+                    Export
+                </button>
+<div class="w-[1px] h-8 bg-outline-variant mx-2"></div>
+<div class="bg-surface-container-high rounded-full p-1 flex">
+<button class="px-4 py-1.5 bg-primary text-on-primary rounded-full font-label-caps text-[10px]">Real-time</button>
+<button class="px-4 py-1.5 text-on-surface-variant font-label-caps text-[10px]">Historical</button>
+</div>
+</div>
+</header>
+<!-- Filter Controls -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-stack-md mb-stack-lg">
+<div class="bg-surface-container-low border border-outline-variant rounded-full px-5 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+<select class="bg-transparent border-none focus:ring-0 text-body-sm text-on-surface w-full appearance-none">
+<option>Last 30 Days</option>
+<option>Quarter to Date</option>
+<option>Year to Date</option>
+<option>Custom Range</option>
+</select>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-full px-5 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">agriculture</span>
+<select class="bg-transparent border-none focus:ring-0 text-body-sm text-on-surface w-full appearance-none">
+<option>All Crop Types</option>
+<option>Wheat</option>
+<option>Corn</option>
+<option>Rice</option>
+<option>Soybeans</option>
+</select>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-full px-5 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">public</span>
+<select class="bg-transparent border-none focus:ring-0 text-body-sm text-on-surface w-full appearance-none">
+<option>All Regions</option>
+<option>North America</option>
+<option>Europe</option>
+<option>Asia Pacific</option>
+</select>
+</div>
+<button class="bg-surface-container-highest text-on-surface rounded-full flex items-center justify-center gap-2 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined">filter_list</span>
+<span class="font-label-caps">More Filters</span>
+</button>
+</section>
+<!-- Stats Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-stack-md mb-stack-lg">
+<!-- Total Policies -->
+<div class="glass-card emerald-glow p-stack-md rounded-lg flex flex-col">
+<div class="flex justify-between items-start mb-stack-sm">
+<span class="material-symbols-outlined p-2 bg-primary/10 text-primary rounded-full">description</span>
+<span class="text-primary font-code-sm">+12.5%</span>
+</div>
+<h3 class="text-on-surface-variant font-label-caps">Total Policies</h3>
+<span class="text-display-lg text-3xl mt-1">3,892</span>
+<div class="mt-4 h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%]"></div>
+</div>
+</div>
+<!-- Total Premiums -->
+<div class="glass-card p-stack-md rounded-lg flex flex-col">
+<div class="flex justify-between items-start mb-stack-sm">
+<span class="material-symbols-outlined p-2 bg-primary/10 text-primary rounded-full">payments</span>
+<span class="text-primary font-code-sm">+8.2%</span>
+</div>
+<h3 class="text-on-surface-variant font-label-caps">Total Premiums</h3>
+<span class="text-display-lg text-3xl mt-1">$245,000</span>
+<p class="text-body-sm text-on-surface-variant mt-2">Avg. $62.9/policy</p>
+</div>
+<!-- Total Payouts -->
+<div class="glass-card p-stack-md rounded-lg flex flex-col">
+<div class="flex justify-between items-start mb-stack-sm">
+<span class="material-symbols-outlined p-2 bg-error/10 text-error rounded-full">receipt_long</span>
+<span class="text-error font-code-sm">-2.4%</span>
+</div>
+<h3 class="text-on-surface-variant font-label-caps">Total Payouts</h3>
+<span class="text-display-lg text-3xl mt-1">$78,500</span>
+<p class="text-body-sm text-on-surface-variant mt-2">142 claims settled</p>
+</div>
+<!-- Loss Ratio -->
+<div class="glass-card p-stack-md rounded-lg flex flex-col">
+<div class="flex justify-between items-start mb-stack-sm">
+<span class="material-symbols-outlined p-2 bg-primary/10 text-primary rounded-full">analytics</span>
+<span class="text-primary font-code-sm">Healthy</span>
+</div>
+<h3 class="text-on-surface-variant font-label-caps">Loss Ratio</h3>
+<span class="text-display-lg text-3xl mt-1">32.1%</span>
+<div class="mt-4 flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-[10px] font-label-caps text-on-surface-variant">Under Threshold (40%)</span>
+</div>
+</div>
+</section>
+<!-- Charts Bento Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-stack-lg mb-stack-lg">
+<!-- Main Area Chart -->
+<div class="lg:col-span-2 glass-card p-stack-lg rounded-lg relative overflow-hidden">
+<div class="flex justify-between items-center mb-stack-lg">
+<h3 class="font-headline-lg text-xl">Premium vs Payouts</h3>
+<div class="flex items-center gap-4 text-label-caps text-[10px]">
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-primary"></span> Premiums</div>
+<div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-error"></span> Payouts</div>
+</div>
+</div>
+<div class="h-64 w-full flex items-end justify-between gap-2 px-2 relative">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between opacity-10 pointer-events-none pb-8">
+<div class="border-b border-on-surface"></div>
+<div class="border-b border-on-surface"></div>
+<div class="border-b border-on-surface"></div>
+<div class="border-b border-on-surface"></div>
+</div>
+<!-- Placeholder Visual for Chart -->
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary/40 h-[80%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 h-[30%] bg-error/30"></div>
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-highest px-2 py-1 rounded text-[10px] transition-all">Jan: $45k</div>
+</div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary/40 h-[65%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 h-[25%] bg-error/30"></div>
+</div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary/40 h-[90%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 h-[40%] bg-error/30"></div>
+</div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary/40 h-[75%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 h-[20%] bg-error/30"></div>
+</div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary/40 h-[85%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 h-[35%] bg-error/30"></div>
+</div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary/40 h-[95%] rounded-t-sm relative group">
+<div class="absolute inset-x-0 bottom-0 h-[15%] bg-error/30"></div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-label-caps text-on-surface-variant opacity-60">
+<span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span><span>MAY</span><span>JUN</span>
+</div>
+</div>
+<!-- Side Line Chart: Approval Rate Trend -->
+<div class="glass-card p-stack-lg rounded-lg">
+<h3 class="font-headline-lg text-xl mb-stack-lg">Approval Rate Trend</h3>
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-label-caps">Current Avg</span>
+<span class="text-2xl text-primary font-bold">94.2%</span>
+</div>
+<div class="h-40 w-full bg-surface-container-high/30 rounded-lg flex items-center justify-center relative overflow-hidden">
+<!-- Abstract Line Path -->
+<svg class="w-full h-full stroke-primary fill-none stroke-[3] drop-shadow-[0_0_8px_rgba(130,215,186,0.5)]" viewbox="0 0 200 100">
+<path d="M0,80 Q25,70 50,75 T100,40 T150,20 T200,10"></path>
+</svg>
+<div class="absolute bottom-4 right-4 text-[10px] font-label-caps text-primary bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">+4.1% MoM</div>
+</div>
+<p class="text-body-sm text-on-surface-variant">Consistent growth in approval velocity observed across all sectors.</p>
+</div>
+</div>
+<!-- Bottom Row: Claims by Crop Type -->
+<div class="glass-card p-stack-lg rounded-lg">
+<h3 class="font-headline-lg text-xl mb-stack-lg">Claims by Crop Type</h3>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm mb-1">
+<span>Wheat</span>
+<span class="text-on-surface-variant">1,240</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm mb-1">
+<span>Corn</span>
+<span class="text-on-surface-variant">982</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full opacity-80" style="width: 65%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm mb-1">
+<span>Rice</span>
+<span class="text-on-surface-variant">420</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full opacity-60" style="width: 30%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-body-sm mb-1">
+<span>Others</span>
+<span class="text-on-surface-variant">154</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full">
+<div class="h-full bg-primary rounded-full opacity-40" style="width: 15%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Row: Processing Time -->
+<div class="lg:col-span-2 glass-card p-stack-lg rounded-lg">
+<div class="flex justify-between items-center mb-stack-lg">
+<h3 class="font-headline-lg text-xl">Processing Time by Officer</h3>
+<button class="text-primary font-label-caps text-[10px] flex items-center gap-1">
+                        View Details <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-5 gap-4 h-48 items-end">
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary rounded-t-lg transition-all hover:brightness-110 cursor-pointer" style="height: 40%"></div>
+<span class="text-[10px] font-label-caps">M. Chen</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary rounded-t-lg transition-all hover:brightness-110 cursor-pointer" style="height: 65%"></div>
+<span class="text-[10px] font-label-caps">S. Gupta</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary rounded-t-lg transition-all hover:brightness-110 cursor-pointer" style="height: 90%"></div>
+<span class="text-[10px] font-label-caps">J. Doe</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary rounded-t-lg transition-all hover:brightness-110 cursor-pointer" style="height: 30%"></div>
+<span class="text-[10px] font-label-caps">R. Miller</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-full bg-primary rounded-t-lg transition-all hover:brightness-110 cursor-pointer" style="height: 55%"></div>
+<span class="text-[10px] font-label-caps">A. White</span>
+</div>
+</div>
+<div class="mt-4 border-t border-outline-variant pt-4 flex justify-between items-center">
+<span class="text-[10px] text-on-surface-variant font-label-caps">Y-AXIS: HOURS PER CLAIM</span>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-[10px] font-label-caps">Avg: 4.2h</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Officers Table Section -->
+<section class="glass-card rounded-lg overflow-hidden border border-outline-variant">
+<div class="p-stack-md bg-surface-container-low border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-lg text-xl">Top Claims Officers</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/50 text-label-caps text-on-surface-variant border-b border-outline-variant">
+<th class="px-6 py-4 font-semibold">Officer</th>
+<th class="px-6 py-4 font-semibold">Assigned</th>
+<th class="px-6 py-4 font-semibold">Completed</th>
+<th class="px-6 py-4 font-semibold">Avg. Time</th>
+<th class="px-6 py-4 font-semibold">Approval Rate</th>
+<th class="px-6 py-4 font-semibold">Performance</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container text-[10px] font-bold">JD</div>
+<div>
+<p class="text-body-sm font-medium">Jordan Doe</p>
+<p class="text-[10px] text-on-surface-variant">Senior Adjuster</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm">42</td>
+<td class="px-6 py-4 text-body-sm">38</td>
+<td class="px-6 py-4 text-body-sm">3.2h</td>
+<td class="px-6 py-4">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-[10px] font-label-caps">98%</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface text-[10px] font-bold">SG</div>
+<div>
+<p class="text-body-sm font-medium">Sarah Gupta</p>
+<p class="text-[10px] text-on-surface-variant">Claims Lead</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm">35</td>
+<td class="px-6 py-4 text-body-sm">31</td>
+<td class="px-6 py-4 text-body-sm">4.5h</td>
+<td class="px-6 py-4">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-[10px] font-label-caps">94%</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">star</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface text-[10px] font-bold">MC</div>
+<div>
+<p class="text-body-sm font-medium">Michael Chen</p>
+<p class="text-[10px] text-on-surface-variant">Adjuster II</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm">28</td>
+<td class="px-6 py-4 text-body-sm">28</td>
+<td class="px-6 py-4 text-body-sm">2.8h</td>
+<td class="px-6 py-4">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-[10px] font-label-caps">100%</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<span class="text-label-caps text-on-surface-variant text-[10px]">Showing 3 of 12 Officers</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-90">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:scale-90">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-40 bg-background/80 backdrop-blur-md border-t border-outline-variant flex justify-around items-center h-16">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-label-caps">Policies</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="text-[10px] font-label-caps">Claims</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-label-caps">More</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and data visualization triggers
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-4px)';
+                    card.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0px)';
+                });
+            });
+
+            // Simple active state toggle for filter selection
+            const selects = document.querySelectorAll('select');
+            selects.forEach(select => {
+                select.addEventListener('change', (e) => {
+                    const parent = e.target.closest('div');
+                    parent.classList.add('emerald-glow');
+                    setTimeout(() => {
+                        parent.classList.remove('emerald-glow');
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body></html>

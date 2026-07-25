@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Land Parcels</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#684000",
+                    "background": "#f8f9fa",
+                    "outline": "#6f7a74",
+                    "primary-fixed": "#9ef3d6",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-fixed": "#2a1700",
+                    "surface-dim": "#d9dadb",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#be0037",
+                    "tertiary-fixed": "#ffdada",
+                    "on-surface": "#191c1d",
+                    "surface-tint": "#016b54",
+                    "tertiary-fixed-dim": "#ffb3b6",
+                    "on-primary-fixed-variant": "#00513f",
+                    "primary-fixed-dim": "#82d7ba",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-container": "#fea619",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "tertiary": "#920028",
+                    "inverse-primary": "#82d7ba",
+                    "on-primary-fixed": "#002118",
+                    "on-primary-container": "#94e8cb",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#006b54",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "on-surface-variant": "#3e4944",
+                    "on-tertiary-fixed": "#40000c",
+                    "on-background": "#191c1d",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed-variant": "#920028",
+                    "on-tertiary-container": "#ffcccd",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed": "#ffddb8",
+                    "outline-variant": "#bec9c3",
+                    "secondary": "#855300",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "primary": "#00513f",
+                    "surface": "#f8f9fa",
+                    "surface-container": "#edeeef",
+                    "surface-bright": "#f8f9fa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "header-height": "64px",
+                    "stack-md": "1rem",
+                    "stack-sm": "0.5rem",
+                    "gutter": "1.5rem",
+                    "container-padding": "2rem",
+                    "sidebar-width": "240px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Geist"],
+                    "label-md": ["Geist"],
+                    "headline-xl": ["Geist"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #bec9c3;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar (Authority: JSON & Style Guidance) -->
+<aside class="fixed left-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col py-stack-md shadow-sm z-50">
+<div class="px-6 mb-8">
+<span class="text-headline-lg font-headline-lg font-bold text-primary">AIMS</span>
+</div>
+<div class="px-4 mb-6">
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional close-up portrait of a modern farmer in high-resolution, featuring soft natural sunlight and a blurred agricultural background. The subject has a confident expression, representing professional farm management. The lighting is bright and clean, matching a high-end corporate dashboard aesthetic with soft tonal transitions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX8RnKAiZig1voGT5keGpnmCpIF1k08exurV_GWO9BuyiofYdhLzjrHtYG1XKU6zWuqfmKrTMaZYbTTBOmNBKhC4CsC_cSeCWM9Fm9yfVDu5rFfgCyD4Lep50QaOITuMsE0hthxBlR48vqBJjqJL_XPwIOiGELOVRB5oumQxIo2-2sYTPPfbQOytF25fST8aQlv9DbctFGtb4C2gdDpumouzTRyxc-d3axMPT7BUI6JW9xPTyegFcaLW6vngZglYc8KAL7MDypaaQ"/>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface">John Doe</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Farmer</span>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-3 py-2.5 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 py-2.5 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md font-label-md">My Profile</span>
+</a>
+<!-- Active State: Land Parcels -->
+<a class="flex items-center gap-3 py-2.5 px-4 bg-secondary-container text-on-secondary-container rounded-full mx-2 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="text-label-md font-label-md">Land Parcels</span>
+</a>
+<a class="flex items-center gap-3 py-2.5 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="policy">policy</span>
+<span class="text-label-md font-label-md">My Policies</span>
+</a>
+<a class="flex items-center gap-3 py-2.5 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-label-md font-label-md">Claims</span>
+</a>
+<a class="flex items-center gap-3 py-2.5 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="text-label-md font-label-md">Notifications</span>
+</a>
+<a class="flex items-center gap-3 py-2.5 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 space-y-1">
+<button class="w-full mb-4 bg-primary text-on-primary py-3 px-4 rounded-full font-label-md text-label-md shadow-sm hover:opacity-90 transition-opacity">
+                Register New Land
+            </button>
+<a class="flex items-center gap-3 py-2.5 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-label-md font-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-3 py-2.5 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] flex-1 flex flex-col relative min-w-0 bg-background">
+<!-- TopNavBar (Authority: JSON) -->
+<header class="h-[64px] w-full bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-container-padding sticky top-0 z-40">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-12 pr-4 focus:ring-2 focus:ring-primary text-body-md font-body-md outline-none" placeholder="Search land parcels..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 ml-8">
+<button class="p-2 text-outline hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<img class="w-8 h-8 rounded-full border border-outline-variant" data-alt="Small circular avatar of a farmer in a green shirt, high resolution, minimalist photography style, consistent with clean corporate dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpYPemfp2bDA6yJweFqHZSVj9WTyONdUcMKOe8CqKtEtrkNf43ppp14-GZRcYvJNjFbP1V1Wc5GtJjNUekhreCK-9VaUWysDRS3wPhGu9dOI5PuksPolaTwa_KK3SNkQFVKJP11KBbojK_uy-ChdafQeNbT60ZGho2fGbnh1lEJ6IrB4Amcq0zPlYN2peUDpv_xjnDa2GPv3MImyDnJjcvtWIMvR4bpu2atLTAGo6uvtJFCoMlNvrIdb_Hapk2c3m5xY2xvgLzj-A"/>
+</div>
+</header>
+<!-- Screen Content -->
+<div class="p-container-padding">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="text-headline-xl font-headline-xl text-on-surface">My Land Parcels</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Manage and monitor your agricultural assets across all regions.</p>
+</div>
+<button class="bg-[#006B54] text-white px-8 py-3 rounded-full font-label-md text-label-md flex items-center gap-2 hover:shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    Add New Parcel
+                </button>
+</div>
+<!-- Filters Bar -->
+<div class="flex flex-wrap items-center gap-3 mb-8">
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-full border border-outline-variant shadow-sm">
+<span class="text-label-md font-label-md text-on-surface-variant">Crop Type:</span>
+<select class="bg-transparent border-none focus:ring-0 text-label-md font-label-md text-on-surface cursor-pointer">
+<option>All Crops</option>
+<option>Wheat</option>
+<option>Cotton</option>
+<option>Corn</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-full border border-outline-variant shadow-sm">
+<span class="text-label-md font-label-md text-on-surface-variant">Status:</span>
+<select class="bg-transparent border-none focus:ring-0 text-label-md font-label-md text-on-surface cursor-pointer">
+<option>Any Status</option>
+<option>Active</option>
+<option>Harvested</option>
+<option>Fallow</option>
+</select>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-full border border-outline-variant shadow-sm">
+<span class="text-label-md font-label-md text-on-surface-variant">Sort By:</span>
+<select class="bg-transparent border-none focus:ring-0 text-label-md font-label-md text-on-surface cursor-pointer">
+<option>Recently Added</option>
+<option>Area (Size)</option>
+<option>Alphabetical</option>
+</select>
+</div>
+<button class="ml-auto text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                    Clear All
+                </button>
+</div>
+<!-- Grid of Cards (Bento-inspired asymmetric feel) -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Card 1: North Field -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-sm overflow-hidden flex flex-col group hover:shadow-md transition-shadow">
+<div class="h-48 relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A high-resolution satellite-style aerial map view of a rectangular lush green wheat field with clear boundary markers. The image is clean, sharp, and professional, designed for an agritech dashboard interface. The colors are vibrant greens and earthy browns with a soft morning light casting gentle shadows across the irrigation rows." data-location="Iowa" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAl_1mi9uPk_UTCes93zAYAAngQc5SBz8s559BxIp6VzpH-C09Gp413Dangbhc5AEvuJY2eh6MQ6O76EMaK1I1CMOjWVSfi-HOdt-mCO10yKaRcIaBCvMU2OGNE5JxcDFzRZrDCxy71DJgw3DWPvEdXpzwPoESYXi9p5Qowfet_5nuDyUmEu8HqSpgOqT34aqqGD_IFBZflgXtcffk1b8TIl1yZiqR9A-riSm6xULBbHFWgqv5CvzVxlEZ7VH8QNRseaLJvEjc1284')"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full text-label-sm font-label-sm shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="grass">grass</span>
+                                Wheat
+                            </span>
+</div>
+<div class="absolute top-4 right-4">
+<span class="bg-surface-container-lowest/90 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-label-sm font-label-sm border border-outline-variant shadow-sm">
+                                Active
+                            </span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-headline-lg font-headline-lg text-on-surface">North Field</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                                    Plot 102, Boone County, IA
+                                </p>
+</div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant">
+<div>
+<span class="text-label-sm font-label-sm text-outline-variant block mb-1">Total Area</span>
+<span class="text-label-md font-label-md text-on-surface">120.5 Acres</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-outline-variant block mb-1">GPS Coordinates</span>
+<span class="text-label-md font-label-md text-on-surface">42.035, -93.882</span>
+</div>
+</div>
+<button class="w-full mt-6 py-2.5 rounded-full border border-primary text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                            View Details
+                        </button>
+</div>
+</div>
+<!-- Card 2: West Orchard -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-sm overflow-hidden flex flex-col group hover:shadow-md transition-shadow">
+<div class="h-48 relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="A professional aerial photograph of an almond orchard in California, captured from a high angle. The trees are perfectly aligned in a grid, creating a mesmerizing geometric pattern. The lighting is golden hour, casting long, soft shadows. The overall aesthetic is clean and high-contrast, fitting for a modern agricultural dashboard." data-location="California" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAj4CQ6jjU6OlUPPYNeMWrI2pHeVBHDeZxVtwUDJPAiOXl514JA3hcP7xm3oGULm3am6PO403gxwbF79t0EwfD1-GJReDNi9E1SBtJIcaW-TcPiJz3mXinCfWKDV1zpCdFCaIEYEtU65coUeEaSFA4dnCHvs7178W3vFqHCnEdyeJxdp1SpvUqI4BWGw6hXEwyrmNod3uiyN9Z6UbKQh6xwFTb6zrJivar4qyRsY1UrNxherBH7xFhbvLr7Wxp5weOaZZYgbJMbH64')"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-label-sm font-label-sm shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="eco">eco</span>
+                                Cotton
+                            </span>
+</div>
+<div class="absolute top-4 right-4">
+<span class="bg-surface-container-lowest/90 backdrop-blur-sm text-primary px-3 py-1 rounded-full text-label-sm font-label-sm border border-outline-variant shadow-sm">
+                                Active
+                            </span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-headline-lg font-headline-lg text-on-surface">West Orchard</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                                    San Joaquin Valley, CA
+                                </p>
+</div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant">
+<div>
+<span class="text-label-sm font-label-sm text-outline-variant block mb-1">Total Area</span>
+<span class="text-label-md font-label-md text-on-surface">85.2 Acres</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-outline-variant block mb-1">GPS Coordinates</span>
+<span class="text-label-md font-label-md text-on-surface">36.778, -119.417</span>
+</div>
+</div>
+<button class="w-full mt-6 py-2.5 rounded-full border border-primary text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                            View Details
+                        </button>
+</div>
+</div>
+<!-- Card 3: East Ridge -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-sm overflow-hidden flex flex-col group hover:shadow-md transition-shadow">
+<div class="h-48 relative overflow-hidden opacity-90">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110 grayscale-[0.2]" data-alt="An expansive view of a harvested corn field in the Midwest. The rows of stubble create a stark, linear texture across the landscape under a crisp autumn sky. The palette consists of muted ochres, tans, and deep blues. Professional agricultural photography style, sharp focus, clean composition for an insurance or land management dashboard." data-location="Nebraska" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABZ7SnLPP8gVzxLL8Ygi40tGEQa6XTLDwSZQkRzLPE3IRVrj7NVPYr781CLR_oPYoZwvffh9UN4Wx04wkdZG4rOCuDb4oYJmuWpmPTFV5saFy6xbrCWCsyc21WJcbg1pBLuEulZCFWU-dzSXYK3Vdo6crmeqslCD0GeXmuwmIPdOW1rESxeF-gZJsRoB-rqAYjFDFxyss2s-w2GcJj4-Cve1sd2A5Q2G9yKPFZiA_vqBgwgkpZEpoUx_vTWUDFbhSa4SYgvoR-Evs')"></div>
+<div class="absolute top-4 left-4">
+<span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full text-label-sm font-label-sm shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="grain">grain</span>
+                                Corn
+                            </span>
+</div>
+<div class="absolute top-4 right-4">
+<span class="bg-tertiary-container text-white px-3 py-1 rounded-full text-label-sm font-label-sm border border-outline-variant shadow-sm">
+                                Harvested
+                            </span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-headline-lg font-headline-lg text-on-surface">East Ridge</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                                    Ridge Rd, Lincoln, NE
+                                </p>
+</div>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant">
+<div>
+<span class="text-label-sm font-label-sm text-outline-variant block mb-1">Total Area</span>
+<span class="text-label-md font-label-md text-on-surface">210.0 Acres</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-outline-variant block mb-1">GPS Coordinates</span>
+<span class="text-label-md font-label-md text-on-surface">40.814, -96.703</span>
+</div>
+</div>
+<button class="w-full mt-6 py-2.5 rounded-full border border-primary text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors">
+                            View Details
+                        </button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex justify-between items-center bg-surface-container-lowest px-6 py-4 rounded-full border border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface-variant">Showing 3 of 12 parcels</span>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-surface-container-low transition-colors text-outline disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white font-label-md text-label-md shadow-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-surface-container-low transition-colors text-on-surface font-label-md text-label-md">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-surface-container-low transition-colors text-on-surface font-label-md text-label-md">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant hover:bg-surface-container-low transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Floating Decorative Element (Atmospheric) -->
+<div class="absolute bottom-8 right-8 pointer-events-none opacity-20">
+
+</div>
+</main>
+<script>
+        // Micro-interactions and hover effects
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.style.transform = 'scale(0.98)';
+                el.style.opacity = '0.85';
+            });
+            el.addEventListener('mouseup', () => {
+                el.style.transform = '';
+                el.style.opacity = '';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+                el.style.opacity = '';
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        if (searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('shadow-md');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('shadow-md');
+            });
+        }
+    </script>
+</body></html>

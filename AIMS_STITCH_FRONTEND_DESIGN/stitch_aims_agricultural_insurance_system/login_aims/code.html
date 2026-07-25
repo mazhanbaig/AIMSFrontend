@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Geist:wght@400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-high": "#e9e8e7",
+                    "error": "#ba1a1a",
+                    "tertiary": "#474646",
+                    "surface-dim": "#dbdad9",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#016b54",
+                    "inverse-primary": "#82d7ba",
+                    "surface": "#fbf9f8",
+                    "primary-fixed-dim": "#82d7ba",
+                    "background": "#fbf9f8",
+                    "on-background": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#8bf3d0",
+                    "inverse-surface": "#303031",
+                    "on-primary-fixed": "#002118",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#007058",
+                    "on-primary-fixed-variant": "#00513f",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e4e2e2",
+                    "surface-bright": "#fbf9f8",
+                    "on-surface-variant": "#3e4944",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "secondary": "#006b54",
+                    "surface-container": "#efeded",
+                    "on-secondary-fixed-variant": "#00513e",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#71d9b8",
+                    "on-error": "#ffffff",
+                    "outline": "#6f7a74",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary-container": "#dbd8d7",
+                    "primary-container": "#006b54",
+                    "on-primary-container": "#94e8cb",
+                    "tertiary-fixed-variant": "#474646",
+                    "tertiary-fixed-dim": "#c9c6c5",
+                    "secondary-fixed": "#8ef6d3",
+                    "inverse-on-surface": "#f2f0f0",
+                    "tertiary-container": "#5f5e5e",
+                    "primary-fixed": "#9ef3d6",
+                    "primary": "#00513f",
+                    "outline-variant": "#bec9c3",
+                    "on-secondary-fixed": "#002117",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-primary-container": "#94e8cb",
+                    "tertiary-fixed": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "section-gap": "80px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Geist"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        
+        .emerald-glow {
+            box-shadow: 0px 0px 12px rgba(0, 135, 106, 0.2);
+        }
+
+        .input-focus-glow:focus-within {
+            box-shadow: 0px 0px 0px 4px rgba(0, 135, 106, 0.1);
+            border-color: #00876A;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .gradient-bg {
+            background: radial-gradient(circle at top right, rgba(0, 107, 84, 0.08) 0%, rgba(251, 249, 248, 1) 50%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-lg">
+<main class="flex-grow flex items-stretch gradient-bg">
+<!-- Left Side: Branding & Illustration -->
+<div class="hidden lg:flex lg:w-1/2 flex-col justify-between p-16 relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+<h1 class="font-display-lg text-display-lg text-primary tracking-tighter">AIMS</h1>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface-variant max-w-md">
+                    Agricultural Insurance Management System
+                </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-sm opacity-80">
+                    Providing precision and security for the future of global farming.
+                </p>
+</div>
+<div class="relative z-10 w-full aspect-square max-w-lg mx-auto">
+<img class="w-full h-full object-contain" data-alt="A professional digital illustration of a modern farmer in a lush emerald green wheat field using a high-tech tablet to monitor crop health. The style is clean and corporate, featuring soft morning sunlight, a clear sky, and subtle data overlays symbolizing precision agriculture. The primary colors are deep emerald green, white, and soft earthy tones, maintaining a high-trust and secure atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjJnogJhPNhPlQMt69qpw6p7Lt2pJn4hNIjRzzGFXHiGvQ3KAFgdwaeKDAQdVQ3eEi1Lldw28s_2FTtxokaiVylAb5L_tGrZtlGNrc9dN6Exkhu44eZY9s-CHQKKj25zd_lKPsi1jp9VZF4li3FZTooP3asp6L2DryN_6Iml04Xcky3LBKQ0IWD2NcA13u1d5eKoyJXDPZFZ9q6Dce0l6qll5vzq3BLUzwgpA2vBZX90ph5MU1SaMiNuIzv6N1mGdwvQa5TOOlzHk"/>
+</div>
+<div class="relative z-10">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-1 bg-primary rounded-full"></div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-widest">Innovation in Stability</span>
+</div>
+</div>
+<!-- Atmospheric Elements -->
+<div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[20%] left-[-5%] w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
+</div>
+<!-- Right Side: Login Card -->
+<div class="w-full lg:w-1/2 flex flex-col items-center justify-center p-6 md:p-12">
+<div class="w-full max-w-md">
+<!-- Mobile Logo -->
+<div class="lg:hidden flex items-center justify-center gap-2 mb-10">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-display-lg text-headline-lg text-primary">AIMS</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-8 md:p-10 shadow-[0px_4px_20px_rgba(0,0,0,0.05)] border-t-4 border-secondary">
+<div class="mb-8">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Welcome Back</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sign in to your account to manage your policies.</p>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-4">Email Address</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline">mail</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-full border border-outline-variant bg-surface-container-lowest focus:outline-none input-focus-glow transition-all font-body-lg" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant ml-4">Password</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline">lock</span>
+<input class="w-full pl-12 pr-12 py-4 rounded-full border border-outline-variant bg-surface-container-lowest focus:outline-none input-focus-glow transition-all font-body-lg" id="password-input" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 text-outline hover:text-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" id="password-toggle">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex justify-end">
+<a class="font-label-md text-label-md text-secondary hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+<button class="w-full py-4 bg-secondary text-white rounded-full font-title-md emerald-glow hover:bg-[#00876A] active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
+                            Sign In
+                            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="relative my-8 flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="px-4 font-label-md text-label-md text-outline uppercase">continue with</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 px-6 rounded-full border-1.5 border-secondary text-secondary font-label-md hover:bg-secondary/5 transition-all">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="currentColor"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="currentColor"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="currentColor"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="currentColor"></path>
+</svg>
+                            Google
+                        </button>
+<button class="flex items-center justify-center gap-3 py-3 px-6 rounded-full border-1.5 border-secondary text-secondary font-label-md hover:bg-secondary/5 transition-all">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M17.05 20.28c-.96.95-2.21 1.72-3.72 1.72-1.51 0-2.39-.77-3.69-.77-1.3 0-2.37.75-3.68.75-1.51 0-2.88-.84-3.95-2.18-2.16-2.71-2.16-7.07 0-9.78 1.07-1.34 2.44-2.18 3.95-2.18 1.31 0 2.38.75 3.68.75 1.3 0 2.18-.75 3.69-.75 1.51 0 2.76.77 3.72 1.72.67.66 1.18 1.51 1.48 2.42-3.08 1.28-2.58 5.75.52 6.96-.3.91-.81 1.76-1.48 2.42zM12 2c0 2.13 1.73 3.86 3.86 3.86.11 0 .22 0 .32-.01C16.03 3.72 14.3 2 12.17 2c-.06 0-.11 0-.17.01V2z" fill="currentColor"></path>
+</svg>
+                            Apple
+                        </button>
+</div>
+<div class="mt-10 text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Don't have an account? 
+                            <a class="text-secondary font-bold hover:underline ml-1" href="#">Register</a>
+</p>
+</div>
+</div>
+<p class="mt-8 text-center text-outline font-label-md opacity-60">
+                    © 2024 AIMS Agricultural Insurance Management System.
+                </p>
+</div>
+</div>
+</main>
+<script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password-input');
+            const passwordToggle = document.getElementById('password-toggle');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordToggle.innerText = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                passwordToggle.innerText = 'visibility';
+            }
+        }
+
+        // Simple form interaction
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#006B54';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#6f7a74';
+            });
+        });
+    </script>
+</body></html>

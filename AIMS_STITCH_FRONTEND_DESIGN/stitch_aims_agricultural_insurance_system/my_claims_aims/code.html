@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Claims Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-primary-fixed": "#002118",
+                  "tertiary-fixed-dim": "#ffb3b6",
+                  "surface-variant": "#e1e3e4",
+                  "surface": "#f8f9fa",
+                  "on-tertiary-fixed-variant": "#920028",
+                  "on-primary-fixed-variant": "#00513f",
+                  "inverse-surface": "#2e3132",
+                  "secondary-fixed-dim": "#ffb95f",
+                  "outline": "#6f7a74",
+                  "on-primary": "#ffffff",
+                  "on-background": "#191c1d",
+                  "on-tertiary-container": "#ffcccd",
+                  "on-error": "#ffffff",
+                  "inverse-primary": "#82d7ba",
+                  "surface-bright": "#f8f9fa",
+                  "inverse-on-surface": "#f0f1f2",
+                  "background": "#f8f9fa",
+                  "surface-tint": "#016b54",
+                  "surface-container-highest": "#e1e3e4",
+                  "tertiary-fixed": "#ffdada",
+                  "on-primary-container": "#94e8cb",
+                  "error-container": "#ffdad6",
+                  "secondary-container": "#fea619",
+                  "on-error-container": "#93000a",
+                  "surface-dim": "#d9dadb",
+                  "secondary-fixed": "#ffddb8",
+                  "primary": "#00513f",
+                  "on-secondary-fixed-variant": "#653e00",
+                  "surface-container-high": "#e7e8e9",
+                  "on-surface-variant": "#3e4944",
+                  "secondary": "#855300",
+                  "primary-fixed": "#9ef3d6",
+                  "tertiary-container": "#be0037",
+                  "on-secondary-container": "#684000",
+                  "on-tertiary": "#ffffff",
+                  "on-surface": "#191c1d",
+                  "on-secondary": "#ffffff",
+                  "surface-container-low": "#f3f4f5",
+                  "on-tertiary-fixed": "#40000c",
+                  "outline-variant": "#bec9c3",
+                  "surface-container": "#edeeef",
+                  "error": "#ba1a1a",
+                  "primary-fixed-dim": "#82d7ba",
+                  "on-secondary-fixed": "#2a1700",
+                  "primary-container": "#006b54",
+                  "tertiary": "#920028",
+                  "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+                  "DEFAULT": "1rem",
+                  "lg": "2rem",
+                  "xl": "3rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "header-height": "64px",
+                  "container-padding": "2rem",
+                  "stack-md": "1rem",
+                  "stack-sm": "0.5rem",
+                  "sidebar-width": "240px",
+                  "gutter": "1.5rem"
+          },
+          "fontFamily": {
+                  "headline-lg-mobile": ["Geist"],
+                  "body-md": ["Inter"],
+                  "label-sm": ["Geist"],
+                  "headline-xl": ["Geist"],
+                  "body-sm": ["Inter"],
+                  "label-md": ["Geist"],
+                  "headline-lg": ["Geist"]
+          },
+          "fontSize": {
+                  "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "600"}],
+                  "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                  "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                  "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #f8f9fa;
+      color: #191c1d;
+      font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .sidebar-transition {
+      transition: all 0.3s ease-in-out;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #bec9c3;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-background">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-container-lowest border-r border-outline-variant shadow-sm z-50 flex flex-col py-stack-md sidebar-transition">
+<div class="px-6 mb-8">
+<span class="text-headline-lg font-headline-lg font-bold text-primary">AIMS</span>
+</div>
+<!-- User Profile Header -->
+<div class="px-4 mb-6 flex items-center gap-3">
+<img class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A professional studio portrait of a modern farmer, John Doe, wearing a clean olive green utility shirt, looking confidently into the camera with a warm, approachable smile. The background is a soft-focus agricultural field during golden hour, emphasizing a high-end corporate agricultural identity with warm, natural lighting and sharp focus on his features." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8f_axoef3gbKkFfLvDpg3BDRJ1M-Ih8GIQnQAttbt3ayV65473vVxO8iyh5KjOhHej7m7RBFmSeCZoucpExS1sRalXgEQb23Q6YlT8ty1drNosfhIekiH88qSfc0QKAibO63uDUGPzv7o8OXr7P0MhmKoAE_b8WFKlpV96GjUuTRKjLi_5LrZpYzP_k0HAUHF0anDZWDZ73mC78ZLeCisL68CBM069dbcEc7icGXZ3r9JZXBKvO1T5EM8BzaQLWcLs5no08lp2ns"/>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md font-bold text-on-surface">John Doe</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Farmer</span>
+</div>
+</div>
+<!-- Main Navigation -->
+<nav class="flex-1 flex flex-col space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md font-label-md">My Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-label-md font-label-md">Land Parcels</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="policy">policy</span>
+<span class="text-label-md font-label-md">My Policies</span>
+</a>
+<!-- ACTIVE TAB: Claims -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full mx-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="text-label-md font-label-md font-bold">Claims</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="text-label-md font-label-md">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<!-- Sidebar CTA & Footer -->
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-full font-label-md text-label-md mb-4 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+        Register New Land
+      </button>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-label-md font-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-error hover:bg-error-container/10 rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-sidebar-width min-h-screen flex flex-col">
+<!-- Top AppBar -->
+<header class="h-header-height bg-surface-container-lowest border-b border-outline-variant shadow-sm sticky top-0 z-40 flex justify-between items-center px-container-padding">
+<div class="flex items-center gap-6">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">Claims</h1>
+<!-- Quick Search -->
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-body-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Search claims by ID or policy..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="post_add">post_add</span>
+          New Claim
+        </button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-container-padding max-w-[1400px] mx-auto w-full">
+<!-- Summary Statistics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-8">
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm flex flex-col">
+<span class="text-label-md font-label-md text-on-surface-variant mb-2">Total Claims</span>
+<div class="flex items-end justify-between">
+<span class="text-headline-xl font-headline-xl text-on-surface">24</span>
+<span class="text-primary font-bold text-label-sm">+12% vs last year</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm flex flex-col">
+<span class="text-label-md font-label-md text-on-surface-variant mb-2">Pending Approval</span>
+<div class="flex items-end justify-between">
+<span class="text-headline-xl font-headline-xl text-on-surface">5</span>
+<div class="bg-secondary-container/20 text-on-secondary-container px-3 py-1 rounded-full text-label-sm">In Review</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm flex flex-col">
+<span class="text-label-md font-label-md text-on-surface-variant mb-2">Total Payouts</span>
+<div class="flex items-end justify-between">
+<span class="text-headline-xl font-headline-xl text-on-surface">$128k</span>
+<span class="material-symbols-outlined text-primary" data-icon="payments">payments</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant shadow-sm flex flex-col">
+<span class="text-label-md font-label-md text-on-surface-variant mb-2">Avg. Settlement Time</span>
+<div class="flex items-end justify-between">
+<span class="text-headline-xl font-headline-xl text-on-surface">14d</span>
+<span class="text-on-surface-variant text-label-sm">Target: 10d</span>
+</div>
+</div>
+</section>
+<!-- Filter Bar -->
+<section class="flex flex-wrap items-center justify-between gap-4 mb-6 bg-surface-container-low p-4 rounded-lg">
+<div class="flex items-center gap-2">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full text-label-md font-label-md">All Claims</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high px-4 py-2 rounded-full text-label-md font-label-md transition-colors">Pending</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high px-4 py-2 rounded-full text-label-md font-label-md transition-colors">Approved</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high px-4 py-2 rounded-full text-label-md font-label-md transition-colors">Rejected</button>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+            Filters
+          </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full text-label-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+            Export
+          </button>
+</div>
+</section>
+<!-- Claims Table / Grid -->
+<section class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-low/50">
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant">Claim ID</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant">Land Parcel</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant">Date Filed</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant">Type</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant text-center">Risk Score</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant">Status</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant">Payout</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-on-surface">#CLM-9231</span>
+<span class="text-label-sm text-outline">Policy: AGRI-PREM-88</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container shadow-sm overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Satellite view of a lush green agricultural plot featuring precision irrigation circles, showcasing healthy crop development. The image uses professional agricultural data visualization style with high contrast and natural earthy tones of deep greens and rich browns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKVu6lp0O4-RGWqcXQ_GcGNu3jm6N0ZpS8tPiurYwP8rrfvN_qsYcRjpCfmSoX1uRJY1LRRwJShRyaM18NXGyAufRgAEXRLNdt8bxOLpFNTHhshJNdJcKf60Ycf12HK4pqTtwwsFbyTG1N91ZpfHIA92XkCJyHER-7X1vBCWqUpvuwrxe2Yvb7CGTwplyKk93JNg1Wk2XcZ08nYSj26RSefSA0EA10fsvx_7G70pNaIZb-S0klWjHY0SH2jxkMY9ADm_xA0CkdBCE"/>
+</div>
+<span class="text-body-sm font-medium">North Valley P-04</span>
+</div>
+</td>
+<td class="px-6 py-5 text-body-sm text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-6 py-5">
+<span class="text-body-sm bg-surface-container-low px-3 py-1 rounded-full border border-outline-variant">Crop Damage</span>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-100 text-green-800 text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-green-600"></span>
+                  Low
+                </div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm font-medium">Approved</span>
+</div>
+</td>
+<td class="px-6 py-5 text-body-sm font-bold text-on-surface">$12,450.00</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-on-surface">#CLM-8820</span>
+<span class="text-label-sm text-outline">Policy: AGRI-STD-12</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container shadow-sm overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A wide drone shot of a drought-affected wheat field, illustrating golden withered stalks under a clear blue sky. The visual style is crisp and documentary-like, emphasizing professional agricultural assessment and environmental monitoring with realistic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVucNGFcJJS7pjeJx9u5iibOICOi7uSCJU_8pUF466oDeMXk8rudPS7ft6I97wszAH7ajkmBaF0HmodxY-ebyRhrPDB4zck-csEFvqUtzt9ICx8Iecul_1qCKyxxAsS45Iyq2zs_SQRgdeONa8NamzTleb1mAFK_61Pqhh-yBcX4S2Bz787CQRXMtCOCmpBe7f-q3KCXpSfBgI-vQEmCpjGgzuU2puVWWCgfwIkJtWeejJT-4oLPglSlTlsIR_9y6qsUhYGSeutKA"/>
+</div>
+<span class="text-body-sm font-medium">East Ridge P-12</span>
+</div>
+</td>
+<td class="px-6 py-5 text-body-sm text-on-surface-variant">Oct 28, 2023</td>
+<td class="px-6 py-5">
+<span class="text-body-sm bg-surface-container-low px-3 py-1 rounded-full border border-outline-variant">Drought Impact</span>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-yellow-600"></span>
+                  Medium
+                </div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="hourglass_empty">hourglass_empty</span>
+<span class="text-body-sm font-medium">Under Review</span>
+</div>
+</td>
+<td class="px-6 py-5 text-body-sm font-bold text-on-surface-variant">TBD</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-body-md font-bold text-on-surface">#CLM-8765</span>
+<span class="text-label-sm text-outline">Policy: AGRI-PREM-88</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container shadow-sm overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A detailed macro view of high-tech agricultural moisture sensors embedded in rich soil, glowing with soft blue interface lights. The composition is sleek and technical, reflecting modern farm management and IoT integration within a clean, professional agricultural context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJTymwYRzxakyR2unUzKv9A3FaRsdMtNq97jC3ebzj_HiUVbTIeWu6nNxQmxNlh4BCny7smh6S_Epd2to-yLgNbstnbFEoLncvZUpus5JdwZztHPpAHrWfT67sBF4FW-YOgUbDqel7RWLCvveA-C15n_wWsmO2fRPWQsUCo4YNXpiPy1dUTXfXuszX-y4WCXiJG_jjYVgF6lGe7v-qJVr0gX9Bi6xINgIBQE1j2xiWNsdTon_90-SNu_r8Q1OTAoyDJ1CnoRzUi4Q"/>
+</div>
+<span class="text-body-sm font-medium">South Orchard S-01</span>
+</div>
+</td>
+<td class="px-6 py-5 text-body-sm text-on-surface-variant">Sep 15, 2023</td>
+<td class="px-6 py-5">
+<span class="text-body-sm bg-surface-container-low px-3 py-1 rounded-full border border-outline-variant">Pest Infestation</span>
+</td>
+<td class="px-6 py-5 text-center">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-800 text-label-sm font-bold">
+<span class="w-2 h-2 rounded-full bg-red-600"></span>
+                  High
+                </div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-error">
+<span class="material-symbols-outlined text-[18px]" data-icon="cancel" style="font-variation-settings: 'FILL' 1;">cancel</span>
+<span class="text-body-sm font-medium">Rejected</span>
+</div>
+</td>
+<td class="px-6 py-5 text-body-sm font-bold text-on-surface">$0.00</td>
+<td class="px-6 py-5 text-right">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-outline-variant flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant">Showing 1 to 3 of 24 entries</span>
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-on-primary font-label-md">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low font-label-md">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low font-label-md">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Risk Insight Section (Asymmetric Layout) -->
+<section class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-lg border border-outline-variant p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-headline-lg font-headline-lg font-bold text-primary">Claim Trends &amp; Predictions</h2>
+<button class="text-primary text-label-md font-bold flex items-center gap-1">
+              View Detailed Report
+              <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="h-64 flex items-center justify-center bg-surface-container-low rounded-lg relative overflow-hidden">
+<!-- Simulated Graph/Illustration area -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #00513f 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative text-center p-8 max-w-md">
+<span class="material-symbols-outlined text-[48px] text-primary mb-4" data-icon="auto_graph">auto_graph</span>
+<p class="text-body-md text-on-surface-variant">Claim volume is predicted to rise by <strong class="text-primary">15%</strong> next month due to early frost warnings in the North Valley region. Ensure all policies are reviewed.</p>
+</div>
+</div>
+</div>
+<div class="bg-primary text-on-primary p-8 rounded-lg shadow-lg flex flex-col justify-between relative overflow-hidden">
+<!-- Atmospheric Design Element -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+<div>
+<span class="material-symbols-outlined text-[32px] mb-4" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h3 class="text-headline-lg font-headline-lg font-bold mb-4">AIMS Pro Shield</h3>
+<p class="text-body-md opacity-90 leading-relaxed mb-6">You have 2 upcoming policy renewals. Secure your harvests today with our premium frost protection rider.</p>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container py-3 rounded-full font-bold hover:bg-white hover:text-primary transition-colors">
+            Upgrade Now
+          </button>
+</div>
+</section>
+</div>
+<!-- Sticky Footer for Mobile Responsive Placeholder (Hidden on Desktop) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t border-outline-variant p-4 flex justify-around items-center z-50">
+<span class="material-symbols-outlined text-primary" data-icon="dashboard">dashboard</span>
+<span class="material-symbols-outlined text-outline" data-icon="person">person</span>
+<span class="material-symbols-outlined text-outline" data-icon="map">map</span>
+<span class="material-symbols-outlined text-primary" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="material-symbols-outlined text-outline" data-icon="settings">settings</span>
+</div>
+</main>
+<script>
+    // Micro-interaction for hover effects or sidebar toggle logic
+    document.querySelectorAll('tr').forEach(row => {
+      row.addEventListener('click', () => {
+        // Just a UI signal for "active selection"
+        document.querySelectorAll('tr').forEach(r => r.classList.remove('bg-surface-container-low'));
+        row.classList.add('bg-surface-container-low');
+      });
+    });
+  </script>
+</body></html>

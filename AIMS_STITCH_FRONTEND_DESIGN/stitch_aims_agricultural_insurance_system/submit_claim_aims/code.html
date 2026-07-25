@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Submit Claim</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#002118",
+                    "tertiary-fixed-dim": "#ffb3b6",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#920028",
+                    "on-primary-fixed-variant": "#00513f",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "outline": "#6f7a74",
+                    "on-primary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "on-tertiary-container": "#ffcccd",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#82d7ba",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "surface-tint": "#016b54",
+                    "surface-container-highest": "#e1e3e4",
+                    "tertiary-fixed": "#ffdada",
+                    "on-primary-container": "#94e8cb",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#fea619",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed": "#ffddb8",
+                    "primary": "#00513f",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "surface-container-high": "#e7e8e9",
+                    "on-surface-variant": "#3e4944",
+                    "secondary": "#855300",
+                    "primary-fixed": "#9ef3d6",
+                    "tertiary-container": "#be0037",
+                    "on-secondary-container": "#684000",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed": "#40000c",
+                    "outline-variant": "#bec9c3",
+                    "surface-container": "#edeeef",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#82d7ba",
+                    "on-secondary-fixed": "#2a1700",
+                    "primary-container": "#006b54",
+                    "tertiary": "#920028",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "header-height": "64px",
+                    "container-padding": "2rem",
+                    "stack-md": "1rem",
+                    "stack-sm": "0.5rem",
+                    "sidebar-width": "240px",
+                    "gutter": "1.5rem"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Geist"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-xl": ["Geist"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Geist"],
+                    "headline-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .step-active { @apply text-primary-container font-bold border-primary-container; }
+        .step-inactive { @apply text-outline-variant border-outline-variant; }
+        
+        /* Hide all steps by default */
+        .claim-step { display: none; }
+        .claim-step.active { display: block; }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #bec9c3; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface flex min-h-screen">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant shadow-sm flex flex-col py-stack-md z-50">
+<div class="px-6 mb-8">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">AIMS</h1>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-md font-label-md">My Profile</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-label-md font-label-md">Land Parcels</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">policy</span>
+<span class="text-label-md font-label-md">My Policies</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 bg-secondary-container text-on-secondary-container rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-label-md font-label-md">Claims</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-md font-label-md">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 space-y-1">
+<div class="p-4 mb-4 bg-surface-container-low rounded-2xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A close-up portrait of a professional farmer in his 40s, wearing a clean olive green utility shirt, with a warm and trustworthy expression. The lighting is bright and natural, reflecting a high-clarity corporate aesthetic with soft shadows. Background is a blurred, serene landscape of wheat fields under a clear morning sky, maintaining a premium agricultural theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHEQcF8uVlne4BAOmPHhlZpAlyTC7ODGRr8er-CouG-iua5s4tyRKNDJr4muMTXT4eipN0MLDdbTrGPaCou-NWsh7Gevdg_Ss4dSf4cl5OJpmkSUDIS39w2QZJnstuOcgCBDCTJ3oXyBW3EqJi94jrXNjqOeU31-waJP2AnyNEXSWpyTkFI-D9Q7zSmJUmVruysyDbzR_7488szyY56FqunrxZgb7Ibepv_tS_LYaZxl5-UIc_Hq9GCp1fa4dY9oxLEZZiY0FsnPw"/>
+</div>
+<div>
+<p class="text-label-md font-bold text-on-surface">John Doe</p>
+<p class="text-label-sm text-outline">Farmer</p>
+</div>
+</div>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-md font-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-error hover:bg-error-container/20 rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-grow min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="h-[64px] bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-container-padding sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<button class="md:hidden p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="text-headline-lg font-headline-lg text-primary">Submit Claim</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-label-md focus:ring-2 focus:ring-primary w-64" placeholder="Search..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A modern Farmer Profile Avatar used in a UI header, showing a friendly male face with subtle stubble, wearing a cap. The aesthetic is clean, professional, and well-lit with a neutral background, matching a high-end administrative dashboard color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-ibi3BoooE7DdpdetajIeig-9XGd2ML-Jeqh-OgRPK2W_9V2vJDpsGTgi4BAb00-V-E_oWfkuX7lTLzwdW0NaQlRUWEysbVTnm5JdIT-y-UlB157-DV97gT1Gm2d5Jt9Vx8UCA5vOrimGFcjruJ2gYo8apsHGW45WRqRQl_FJbgR9hnTyHms94O6XsKUP795s-cT9XsSzOmvduAfZT-nPBFu4Gl4ml6PQ7Lv-3m-cu5LWK2JsyEQAxygka3fGIFv5sjYFLCgY_x4"/>
+</div>
+</div>
+</header>
+<!-- Claim Content Canvas -->
+<div class="flex-grow p-container-padding bg-surface">
+<!-- Stepper -->
+<div class="max-w-4xl mx-auto mb-10">
+<div class="flex items-center justify-between">
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-10 h-10 rounded-full border-2 flex items-center justify-center step-active transition-colors duration-300" id="step-dot-1">1</div>
+<span class="text-label-md font-medium">Incident</span>
+</div>
+<div class="h-[2px] bg-outline-variant flex-1 -mt-8"></div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-10 h-10 rounded-full border-2 flex items-center justify-center step-inactive transition-colors duration-300" id="step-dot-2">2</div>
+<span class="text-label-md font-medium">Documents</span>
+</div>
+<div class="h-[2px] bg-outline-variant flex-1 -mt-8"></div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-10 h-10 rounded-full border-2 flex items-center justify-center step-inactive transition-colors duration-300" id="step-dot-3">3</div>
+<span class="text-label-md font-medium">Review</span>
+</div>
+<div class="h-[2px] bg-outline-variant flex-1 -mt-8"></div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-10 h-10 rounded-full border-2 flex items-center justify-center step-inactive transition-colors duration-300" id="step-dot-4">4</div>
+<span class="text-label-md font-medium">Submit</span>
+</div>
+</div>
+</div>
+<!-- Form Container -->
+<div class="max-w-3xl mx-auto">
+<!-- Step 1: Incident Details -->
+<section class="claim-step active bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-sm" id="step-1">
+<h3 class="text-headline-lg font-bold mb-6 text-primary">Incident Details</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="col-span-2">
+<label class="block text-label-md font-bold mb-2">Select Policy</label>
+<select class="w-full px-4 py-3 rounded-full border-outline-variant focus:border-primary focus:ring-primary bg-surface-container-low appearance-none">
+<option>POL-2024-8832 - Winter Wheat (Zone A)</option>
+<option>POL-2024-9910 - Corn Crop (Zone B)</option>
+<option>POL-2023-4412 - Soybeans (Zone C)</option>
+</select>
+</div>
+<div>
+<label class="block text-label-md font-bold mb-2">Incident Type</label>
+<select class="w-full px-4 py-3 rounded-full border-outline-variant focus:border-primary focus:ring-primary bg-surface-container-low appearance-none" id="incident-type-select">
+<option value="Hail">Hail</option>
+<option value="Flood">Flood</option>
+<option value="Drought">Drought</option>
+<option value="Frost">Frost</option>
+<option value="Pest Infestation">Pest Infestation</option>
+</select>
+</div>
+<div>
+<label class="block text-label-md font-bold mb-2">Date of Incident</label>
+<input class="w-full px-4 py-3 rounded-full border-outline-variant focus:border-primary focus:ring-primary bg-surface-container-low" type="date"/>
+</div>
+<div class="col-span-2">
+<label class="block text-label-md font-bold mb-2">Description</label>
+<textarea class="w-full px-6 py-4 rounded-2xl border-outline-variant focus:border-primary focus:ring-primary bg-surface-container-low resize-none" id="incident-desc" placeholder="Describe what happened in detail..." rows="4"></textarea>
+</div>
+<div class="col-span-2">
+<label class="block text-label-md font-bold mb-2">Claimed Amount ($)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-outline">$</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-full border-outline-variant focus:border-primary focus:ring-primary bg-surface-container-low" id="claimed-amount" placeholder="0.00" type="number"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 2: Upload Documents -->
+<section class="claim-step bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-sm" id="step-2">
+<h3 class="text-headline-lg font-bold mb-6 text-primary">Upload Evidence</h3>
+<p class="text-body-sm text-outline mb-6">Please provide photos of the damage or any official meteorological reports (PDF/JPG/PNG).</p>
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-12 text-center flex flex-col items-center justify-center hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="w-16 h-16 bg-primary-container/20 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
+</div>
+<h4 class="text-headline-lg font-bold">Drag and drop files</h4>
+<p class="text-body-sm text-outline mt-2">or click to browse from your computer</p>
+<input class="hidden" multiple="" type="file"/>
+</div>
+<div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="relative group aspect-square rounded-xl overflow-hidden border border-outline-variant bg-surface">
+<img class="w-full h-full object-cover" data-alt="A high-resolution photograph showing hail damage to a green wheat crop. The image shows flattened stems and shredded leaves under a moody, overcast sky. The lighting is cool and natural, fitting a professional agricultural documentation style for insurance claims." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf2PK0lyQZMITFbDEbSuVFKjfNA_y0MdqOYDvr_Kv5d9BjQg8MQ4-kQt0rcinZIKKb79o-_3HnKZXbE1Atwh9ag-bbV4IRfWgsGyS8rvVkhCUxvFlyVWlfQ-EREaQQHcJJYyjwDhFMRDysh3eMMJQSmRvhB8tEq7SJ6G4wsF3k7J_A9cEusztqGOTP0dXa25CpWLnCLp1hyBDd3tgwwUX81ybu7ljWoDe2YsUqUE4_RX7WT7sLjqOl6KiSFEaeDDes9yTunjd9syY"/>
+<button class="absolute top-1 right-1 bg-error text-white w-6 h-6 rounded-full flex items-center justify-center text-[12px] opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+</div>
+<div class="relative group aspect-square rounded-xl overflow-hidden border border-outline-variant bg-surface flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-outline">description</span>
+<span class="text-[10px] mt-1 font-bold text-outline">REPORT_01.PDF</span>
+<button class="absolute top-1 right-1 bg-error text-white w-6 h-6 rounded-full flex items-center justify-center text-[12px] opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+</div>
+</div>
+</section>
+<!-- Step 3: Review Summary -->
+<section class="claim-step bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-sm" id="step-3">
+<h3 class="text-headline-lg font-bold mb-6 text-primary">Review Claim</h3>
+<div class="space-y-6">
+<div class="p-6 bg-surface-container-low rounded-2xl border border-outline-variant">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h4 class="text-label-sm uppercase tracking-wider text-outline mb-1">Policy Information</h4>
+<p class="text-headline-lg font-bold text-on-surface" id="review-policy">POL-2024-8832</p>
+<p class="text-body-sm text-outline">Winter Wheat (Zone A)</p>
+</div>
+<span class="px-4 py-1 bg-secondary-container text-on-secondary-container rounded-full text-label-md font-bold" id="review-type">Hail</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<h4 class="text-label-sm text-outline mb-1">Incident Date</h4>
+<p class="text-body-md font-bold">October 24, 2023</p>
+</div>
+<div>
+<h4 class="text-label-sm text-outline mb-1">Estimated Loss</h4>
+<p class="text-body-md font-bold" id="review-amount">$12,450.00</p>
+</div>
+</div>
+</div>
+<div>
+<h4 class="text-label-md font-bold mb-2">Description</h4>
+<p class="text-body-md text-on-surface-variant italic" id="review-desc">"Severe hailstorm lasted approximately 20 minutes. Significant shredding of wheat heads observed across 40% of the northwest parcel."</p>
+</div>
+<div>
+<h4 class="text-label-md font-bold mb-2">Attached Documents</h4>
+<div class="flex gap-4">
+<div class="px-4 py-2 bg-surface-container rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">image</span>
+<span class="text-label-md">damage_01.jpg</span>
+</div>
+<div class="px-4 py-2 bg-surface-container rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">description</span>
+<span class="text-label-md">report.pdf</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 4: Success State -->
+<section class="claim-step text-center py-12" id="step-4">
+<div class="w-24 h-24 bg-primary-container/20 rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="text-headline-xl font-bold text-primary mb-4">Claim submitted!</h3>
+<p class="text-body-md text-outline max-w-sm mx-auto mb-10">Your claim has been successfully logged. Our adjusters will review the evidence and contact you within 3-5 business days.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="px-10 py-4 bg-primary text-white rounded-full font-bold shadow-lg hover:shadow-xl transition-all">Track Claim Status</button>
+<button class="px-10 py-4 border border-outline text-on-surface rounded-full font-bold hover:bg-surface-container transition-all" onclick="location.reload()">Back to Dashboard</button>
+</div>
+<!-- Atmospheric Background Asset -->
+<div class="mt-16 relative h-48 w-full rounded-2xl overflow-hidden opacity-30">
+
+</div>
+</section>
+<!-- Navigation Controls -->
+<div class="flex justify-between items-center mt-10" id="nav-controls">
+<button class="px-8 py-3 border border-outline text-on-surface rounded-full font-bold hover:bg-surface-container-low transition-all disabled:opacity-0" disabled="" id="prev-btn" onclick="prevStep()">
+                        Previous
+                    </button>
+<button class="px-8 py-3 bg-primary text-white rounded-full font-bold shadow-md hover:bg-primary-container transition-all flex items-center gap-2" id="next-btn" onclick="nextStep()">
+<span>Continue</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function updateUI() {
+            // Hide all sections
+            document.querySelectorAll('.claim-step').forEach(step => step.classList.remove('active'));
+            // Show current section
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+
+            // Update Stepper Dots
+            for(let i=1; i<=totalSteps; i++) {
+                const dot = document.getElementById(`step-dot-${i}`);
+                if(i < currentStep) {
+                    dot.classList.remove('step-active', 'step-inactive');
+                    dot.classList.add('bg-primary', 'text-white', 'border-primary');
+                    dot.innerHTML = `<span class="material-symbols-outlined">check</span>`;
+                } else if(i === currentStep) {
+                    dot.classList.remove('bg-primary', 'text-white', 'border-primary', 'step-inactive');
+                    dot.classList.add('step-active');
+                    dot.innerHTML = i;
+                } else {
+                    dot.classList.remove('step-active', 'bg-primary', 'text-white', 'border-primary');
+                    dot.classList.add('step-inactive');
+                    dot.innerHTML = i;
+                }
+            }
+
+            // Update Controls
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const navControls = document.getElementById('nav-controls');
+
+            if(currentStep === 1) {
+                prevBtn.disabled = true;
+                prevBtn.classList.add('opacity-0');
+            } else {
+                prevBtn.disabled = false;
+                prevBtn.classList.remove('opacity-0');
+            }
+
+            if(currentStep === 3) {
+                nextBtn.innerHTML = `<span>Submit Claim</span><span class="material-symbols-outlined">send</span>`;
+                nextBtn.classList.replace('bg-primary', 'bg-primary-container');
+                syncReviewData();
+            } else if (currentStep >= 4) {
+                navControls.style.display = 'none';
+            } else {
+                nextBtn.innerHTML = `<span>Continue</span><span class="material-symbols-outlined">arrow_forward</span>`;
+                nextBtn.classList.replace('bg-primary-container', 'bg-primary');
+            }
+        }
+
+        function syncReviewData() {
+            // Mock data syncing from inputs to review card
+            const amount = document.getElementById('claimed-amount').value || "0.00";
+            const type = document.getElementById('incident-type-select').value;
+            const desc = document.getElementById('incident-desc').value || "No description provided.";
+            
+            document.getElementById('review-amount').innerText = `$${parseFloat(amount).toLocaleString()}`;
+            document.getElementById('review-type').innerText = type;
+            document.getElementById('review-desc').innerText = `"${desc}"`;
+        }
+
+        function nextStep() {
+            if(currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function prevStep() {
+            if(currentStep > 1) {
+                currentStep--;
+                updateUI();
+            }
+        }
+
+        // Initialize
+        updateUI();
+    </script>
+</body></html>

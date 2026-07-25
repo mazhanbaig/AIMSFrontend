@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Add New Land Parcel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#684000",
+                    "background": "#f8f9fa",
+                    "outline": "#6f7a74",
+                    "primary-fixed": "#9ef3d6",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-fixed": "#2a1700",
+                    "surface-dim": "#d9dadb",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#be0037",
+                    "tertiary-fixed": "#ffdada",
+                    "on-surface": "#191c1d",
+                    "surface-tint": "#016b54",
+                    "tertiary-fixed-dim": "#ffb3b6",
+                    "on-primary-fixed-variant": "#00513f",
+                    "primary-fixed-dim": "#82d7ba",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-container": "#fea619",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "tertiary": "#920028",
+                    "inverse-primary": "#82d7ba",
+                    "on-primary-fixed": "#002118",
+                    "on-primary-container": "#94e8cb",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-container": "#006b54",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "on-background": "#191c1d",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed-variant": "#920028",
+                    "on-tertiary-container": "#ffcccd",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed": "#ffddb8",
+                    "outline-variant": "#bec9c3",
+                    "secondary": "#855300",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "primary": "#00513f",
+                    "surface": "#f8f9fa",
+                    "surface-container": "#edeeef",
+                    "surface-bright": "#f8f9fa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "header-height": "64px",
+                    "stack-md": "1rem",
+                    "stack-sm": "0.5rem",
+                    "gutter": "1.5rem",
+                    "container-padding": "2rem",
+                    "sidebar-width": "240px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Geist"],
+                    "label-md": ["Geist"],
+                    "headline-xl": ["Geist"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #191c1d; }
+        .font-headline { font-family: 'Geist', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .pill-input {
+            border-radius: 9999px !important;
+            border: 1px solid #E5E7EB;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            transition: all 0.2s ease;
+        }
+        .pill-input:focus {
+            outline: none;
+            border-color: #006B54;
+            box-shadow: 0 0 0 2px rgba(0, 107, 84, 0.2);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #bec9c3; border-radius: 10px; }
+    </style>
+</head>
+<body class="flex min-h-screen bg-background">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col py-stack-md z-50">
+<div class="px-6 mb-8">
+<span class="text-headline-lg font-headline-lg font-bold text-primary">AIMS</span>
+</div>
+<div class="flex-1 space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- My Profile -->
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>My Profile</span>
+</a>
+<!-- Land Parcels (ACTIVE) -->
+<a class="flex items-center gap-3 px-4 py-3 mx-2 bg-secondary-container text-on-secondary-container rounded-full transition-all duration-300 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+<span>Land Parcels</span>
+</a>
+<!-- My Policies -->
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="policy">policy</span>
+<span>My Policies</span>
+</a>
+<!-- Claims -->
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Claims</span>
+</a>
+<!-- Notifications -->
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="mt-auto px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<button class="w-full flex items-center gap-3 px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300 ease-in-out font-label-md text-label-md mt-2">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</button>
+<div class="flex items-center gap-3 px-4 py-4 mt-4 border-t border-outline-variant">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A detailed, professional studio portrait of a middle-aged farmer named John Doe. He is wearing a clean denim shirt and has a warm, confident smile. The background is a soft-focus agricultural field during golden hour, emphasizing a corporate-friendly and reliable agricultural expert aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9HvA1qundzK1ofzllPYZsfRoxg2ItJ4rZEMdqMYGk1WmKql-rO7UvUf5QeJtLAlb2c5micFQ0g7N5QUFwG6Xt4l9U0i96zJ1B1ieeB_2mUoak8nAAr_efnLwk4NljGwIqLfw1TYPEOo1PkawNewEmqsY8OujKt3i_fEYT5jp2OYblqdJ0Bs_RumpvfrTltCpMRLB15YHiqG6F3ZJmLwQcLHJIcfXS8er1gzcspAg3bGZ5dLoh7uFUMdSamZUz9m8S1d1BlFeAKWU"/>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface">John Doe</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Farmer</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar Component -->
+<header class="h-[64px] w-full bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-container-padding sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">Add New Land Parcel</h1>
+</div>
+<div class="flex items-center gap-6">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Cancel</a>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors" data-icon="notifications">notifications</button>
+</div>
+</div>
+</header>
+<!-- Form Content -->
+<div class="p-8 max-w-[1200px] mx-auto w-full">
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Form Inputs Section -->
+<div class="col-span-12 lg:col-span-5 space-y-6">
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-6 shadow-sm space-y-6">
+<div class="space-y-2">
+<label class="block text-label-md font-label-md text-on-surface-variant px-1">Parcel Name</label>
+<input class="w-full h-12 pill-input text-body-md font-body-md" placeholder="e.g. North Valley Farm - Section A" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-label-md font-label-md text-on-surface-variant px-1">Address</label>
+<textarea class="w-full rounded-lg border border-outline-variant p-4 text-body-md font-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none" placeholder="Street, City, State, ZIP" rows="3"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="block text-label-md font-label-md text-on-surface-variant px-1">Area (Acres)</label>
+<input class="w-full h-12 pill-input text-body-md font-body-md" placeholder="0.00" type="number"/>
+</div>
+<div class="space-y-2">
+<label class="block text-label-md font-label-md text-on-surface-variant px-1">Crop Type</label>
+<div class="relative">
+<select class="w-full h-12 pill-input text-body-md font-body-md appearance-none">
+<option disabled="" selected="" value="">Select Crop</option>
+<option value="wheat">Wheat</option>
+<option value="corn">Corn</option>
+<option value="soybeans">Soybeans</option>
+<option value="barley">Barley</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-label-md font-label-md text-on-surface-variant px-1">GPS Coordinates</label>
+<div class="flex gap-2">
+<input class="flex-1 h-12 pill-input text-body-md font-body-md bg-surface-container-low" placeholder="Lat, Long" readonly="" type="text"/>
+<button class="h-12 px-6 rounded-full border border-primary text-primary hover:bg-primary/5 transition-colors flex items-center gap-2 font-label-md text-label-md">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+                                    Pick
+                                </button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-4 pt-4">
+<button class="flex-1 h-14 bg-primary text-on-primary rounded-full font-label-md text-label-md shadow-md hover:shadow-lg hover:opacity-90 transition-all">
+                            Register Parcel
+                        </button>
+<button class="flex-1 h-14 border border-outline text-primary rounded-full font-label-md text-label-md hover:bg-surface-container-low transition-all">
+                            Save as Draft
+                        </button>
+</div>
+</div>
+<!-- Map Picker Section -->
+<div class="col-span-12 lg:col-span-7 h-[600px] lg:h-auto">
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-sm h-full overflow-hidden flex flex-col">
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="text-label-md font-label-md text-on-surface">Satellite Map Picker</h3>
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="my_location">my_location</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+</button>
+</div>
+</div>
+<div class="relative flex-1 bg-surface-variant group cursor-crosshair">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-[10s] group-hover:scale-105" data-alt="A high-resolution satellite view of vast, lush green agricultural farmlands in the American Midwest. Neat, geometric fields of varied crops create a bento-like pattern from above. A translucent green polygon overlay highlights a specific 50-acre section of land. The image has a crisp, modern aesthetic with a cool-toned professional color grade consistent with high-end GIS software." data-location="Iowa Farmland" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAl_1mi9uPk_UTCes93zAYAAngQc5SBz8s559BxIp6VzpH-C09Gp413Dangbhc5AEvuJY2eh6MQ6O76EMaK1I1CMOjWVSfi-HOdt-mCO10yKaRcIaBCvMU2OGNE5JxcDFzRZrDCxy71DJgw3DWPvEdXpzwPoESYXi9p5Qowfet_5nuDyUmEu8HqSpgOqT34aqqGD_IFBZflgXtcffk1b8TIl1yZiqR9A-riSm6xULBbHFWgqv5CvzVxlEZ7VH8QNRseaLJvEjc1284')"></div>
+<!-- Map UI Overlay -->
+<div class="absolute top-4 left-4 flex flex-col gap-2">
+<div class="bg-surface-container-lowest rounded-full shadow-lg p-1 flex">
+<button class="px-4 py-2 bg-secondary-container text-on-secondary-container rounded-full text-label-sm font-label-sm">Draw Boundary</button>
+<button class="px-4 py-2 text-on-surface-variant rounded-full text-label-sm font-label-sm hover:bg-surface-container-low">Pin Location</button>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 bg-surface-container-lowest/90 backdrop-blur rounded-lg p-3 shadow-md border border-outline-variant">
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-1">Cursor Coordinates</div>
+<div class="text-label-md font-label-md text-on-surface tabular-nums">41.8781° N, 87.6298° W</div>
+</div>
+<!-- Animated Selection Pulse -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<div class="w-32 h-32 border-2 border-primary rounded-lg flex items-center justify-center animate-pulse">
+<div class="w-1 h-1 bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 bg-surface-container-low flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Selected Area: <strong class="text-on-surface">42.5 Acres</strong></span>
+<div class="flex gap-4">
+<button class="text-primary text-label-md font-label-md hover:underline">Clear Selection</button>
+<button class="text-primary text-label-md font-label-md hover:underline">Undo</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interactions and simulation for UI feel
+        document.querySelectorAll('input, select, textarea').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Simple button active effect
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.classList.add('scale-95', 'opacity-80');
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.classList.remove('scale-95', 'opacity-80');
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.classList.remove('scale-95', 'opacity-80');
+            });
+        });
+    </script>
+</body></html>

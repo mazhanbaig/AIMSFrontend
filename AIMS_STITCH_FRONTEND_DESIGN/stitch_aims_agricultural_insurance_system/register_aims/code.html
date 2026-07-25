@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Register</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter & Geist -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-high": "#e9e8e7",
+                    "error": "#ba1a1a",
+                    "tertiary": "#474646",
+                    "surface-dim": "#dbdad9",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#016b54",
+                    "inverse-primary": "#82d7ba",
+                    "surface": "#fbf9f8",
+                    "primary-fixed-dim": "#82d7ba",
+                    "background": "#fbf9f8",
+                    "on-background": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#8bf3d0",
+                    "inverse-surface": "#303031",
+                    "on-primary-fixed": "#002118",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#007058",
+                    "on-primary-fixed-variant": "#00513f",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e4e2e2",
+                    "surface-bright": "#fbf9f8",
+                    "on-surface-variant": "#3e4944",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "secondary": "#006b54",
+                    "surface-container": "#efeded",
+                    "on-secondary-fixed-variant": "#00513e",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#71d9b8",
+                    "on-error": "#ffffff",
+                    "outline": "#6f7a74",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary-container": "#dbd8d7",
+                    "primary-container": "#006b54",
+                    "on-tertiary-container": "#94e8cb",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "tertiary-fixed-dim": "#c9c6c5",
+                    "secondary-fixed": "#8ef6d3",
+                    "inverse-on-surface": "#f2f0f0",
+                    "tertiary-container": "#5f5e5e",
+                    "primary-fixed": "#9ef3d6",
+                    "primary": "#00513f",
+                    "outline-variant": "#bec9c3",
+                    "on-secondary-fixed": "#002117",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-primary-container": "#94e8cb",
+                    "tertiary-fixed": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "section-gap": "80px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Geist"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            color: #00876A;
+        }
+        .emerald-glow {
+            box-shadow: 0px 0px 12px rgba(0, 135, 106, 0.2);
+        }
+        .card-top-border {
+            border-top: 4px solid #006B54;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .transition-soft {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-lg text-on-surface antialiased overflow-x-hidden min-h-screen">
+<main class="flex flex-col md:flex-row min-h-screen">
+<!-- Left Side: Visual/Hero -->
+<div class="hidden md:flex md:w-1/2 relative bg-primary overflow-hidden items-center justify-center p-margin-desktop">
+<!-- Animated Background Placeholder -->
+
+<div class="relative z-10 max-w-lg text-white">
+<div class="mb-12">
+<span class="font-display-lg text-display-lg font-bold">AIMS</span>
+<p class="font-title-md text-title-md mt-4 text-on-primary-container">Agricultural Insurance Management System</p>
+</div>
+<h1 class="font-headline-lg text-headline-lg mb-6">Securing the future of global agriculture through precision insurance.</h1>
+<div class="grid grid-cols-2 gap-6 mt-12">
+<div class="glass-effect p-6 rounded-lg text-on-surface">
+<span class="material-symbols-outlined mb-2 text-primary" style="font-variation-settings: 'FILL' 1;">eco</span>
+<div class="font-bold text-title-md">1.2M+</div>
+<div class="text-body-sm opacity-80">Farmers Protected</div>
+</div>
+<div class="glass-effect p-6 rounded-lg text-on-surface">
+<span class="material-symbols-outlined mb-2 text-primary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div class="font-bold text-title-md">99.8%</div>
+<div class="text-body-sm opacity-80">Claims Accuracy</div>
+</div>
+</div>
+</div>
+<!-- Absolute Overlay Image -->
+<div class="absolute bottom-0 right-0 w-full h-1/2 opacity-20 pointer-events-none" data-alt="A cinematic, high-angle aerial photograph of lush, undulating emerald green farm fields at sunrise. The soft, golden morning light catches the dew on the crops, creating a shimmering, high-trust atmosphere. The composition is clean and minimalist, echoing the modern corporate UI aesthetic with a focus on growth and agricultural stability. Deep shadows and vibrant highlights emphasize the precision of a managed landscape." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMUccjNybXKk2kTLljLrpWTPl1x9DQernrybbo_EufFk2LMgoI0PQn9vh53kk_Fmilj7uqhQKh-wPtg-JiydtJb59P45FWMi6nrpoxeBptBzbuUUmeSY6zgMV4invNQ3uDxD75JgX5n6yd9KXnfaDOQSJ9M6vZq8qPoDGJHViTyj7MkEkPRTwf-M1O6fufyW7ofngMFz9rRe-KEXy5IwpekfM9nO6CUpWRsfMxcwcEXaVe0w7i3kNWIwAY2iVDPQIT0zY64hl7VB8')"></div>
+</div>
+<!-- Right Side: Registration Form -->
+<div class="w-full md:w-1/2 flex items-center justify-center p-6 md:p-margin-desktop bg-surface">
+<div class="w-full max-w-[520px] space-y-8 py-12">
+<!-- Header -->
+<div class="text-center md:text-left">
+<h2 class="font-display-lg text-headline-lg md:text-display-lg text-primary mb-2">Create Account</h2>
+<p class="font-body-lg text-on-surface-variant">Join AIMS as a Farmer or Insurance Provider</p>
+</div>
+<!-- Role Selection -->
+<div class="grid grid-cols-2 gap-4">
+<button class="role-card flex flex-col items-center justify-center p-6 bg-white border-2 border-outline-variant rounded-lg transition-soft hover:border-primary group" id="role-farmer" onclick="selectRole('farmer')" type="button">
+<span class="material-symbols-outlined text-[32px] mb-3 group-hover:scale-110 transition-transform">leaf_spark</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant group-hover:text-primary">Farmer</span>
+</button>
+<button class="role-card flex flex-col items-center justify-center p-6 bg-white border-2 border-outline-variant rounded-lg transition-soft hover:border-primary group" id="role-provider" onclick="selectRole('provider')" type="button">
+<span class="material-symbols-outlined text-[32px] mb-3 group-hover:scale-110 transition-transform">apartment</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant group-hover:text-primary">Insurance Staff</span>
+</button>
+</div>
+<!-- Form -->
+<form class="space-y-5" onsubmit="event.preventDefault();">
+<div class="space-y-4">
+<!-- Name -->
+<div class="relative group">
+<input class="w-full h-14 px-6 rounded-full border border-outline-variant bg-white focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/10 transition-soft peer" placeholder="Full Name" type="text"/>
+</div>
+<!-- Email -->
+<div class="relative group">
+<input class="w-full h-14 px-6 rounded-full border border-outline-variant bg-white focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/10 transition-soft peer" placeholder="Email Address" type="email"/>
+</div>
+<!-- Phone -->
+<div class="relative group">
+<input class="w-full h-14 px-6 rounded-full border border-outline-variant bg-white focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/10 transition-soft peer" placeholder="Phone Number" type="tel"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Password -->
+<div class="relative group">
+<input class="w-full h-14 px-6 rounded-full border border-outline-variant bg-white focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/10 transition-soft peer" placeholder="Password" type="password"/>
+</div>
+<!-- Confirm Password -->
+<div class="relative group">
+<input class="w-full h-14 px-6 rounded-full border border-outline-variant bg-white focus:outline-none focus:border-secondary focus:ring-4 focus:ring-secondary/10 transition-soft peer" placeholder="Confirm Password" type="password"/>
+</div>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-center gap-3 px-2">
+<input class="w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary cursor-pointer" id="terms" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface-variant cursor-pointer" for="terms">
+                            I agree to the <a class="text-secondary font-semibold hover:underline" href="#">Terms &amp; Privacy Policy</a>
+</label>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-14 rounded-full bg-secondary text-white font-title-md text-title-md emerald-glow hover:bg-[#00876A] active:scale-[0.98] transition-soft shadow-lg" type="submit">
+                        Create Account
+                    </button>
+</form>
+<!-- Footer Links -->
+<div class="text-center pt-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-secondary font-bold hover:underline ml-1" href="#">Login</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        function selectRole(role) {
+            const farmerBtn = document.getElementById('role-farmer');
+            const providerBtn = document.getElementById('role-provider');
+            
+            // Reset styles
+            [farmerBtn, providerBtn].forEach(btn => {
+                btn.classList.remove('border-secondary', 'bg-secondary/5', 'ring-2', 'ring-secondary/20');
+                btn.classList.add('border-outline-variant');
+            });
+
+            // Apply active style
+            const activeBtn = role === 'farmer' ? farmerBtn : providerBtn;
+            activeBtn.classList.remove('border-outline-variant');
+            activeBtn.classList.add('border-secondary', 'bg-secondary/5', 'ring-2', 'ring-secondary/20');
+            
+            // Add scale animation effect
+            activeBtn.classList.add('scale-[1.02]');
+            setTimeout(() => activeBtn.classList.remove('scale-[1.02]'), 200);
+        }
+
+        // Initialize with farmer selected
+        window.onload = () => selectRole('farmer');
+    </script>
+</body></html>

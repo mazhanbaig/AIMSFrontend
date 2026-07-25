@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reset Password | AIMS</title>
+<!-- Google Fonts: Inter & Geist -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Geist:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f5f3f3",
+                    "surface-container-high": "#e9e8e7",
+                    "error": "#ba1a1a",
+                    "tertiary": "#474646",
+                    "surface-dim": "#dbdad9",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#016b54",
+                    "inverse-primary": "#82d7ba",
+                    "surface": "#fbf9f8",
+                    "primary-fixed-dim": "#82d7ba",
+                    "background": "#fbf9f8",
+                    "on-background": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#8bf3d0",
+                    "inverse-surface": "#303031",
+                    "on-primary-fixed": "#002118",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#007058",
+                    "on-primary-fixed-variant": "#00513f",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e4e2e2",
+                    "surface-bright": "#fbf9f8",
+                    "on-surface-variant": "#3e4944",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "secondary": "#006b54",
+                    "surface-container": "#efeded",
+                    "on-secondary-fixed-variant": "#00513e",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed-dim": "#71d9b8",
+                    "on-error": "#ffffff",
+                    "outline": "#6f7a74",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary-container": "#dbd8d7",
+                    "primary-container": "#006b54",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "tertiary-fixed-dim": "#c9c6c5",
+                    "secondary-fixed": "#8ef6d3",
+                    "inverse-on-surface": "#f2f0f0",
+                    "tertiary-container": "#5f5e5e",
+                    "primary-fixed": "#9ef3d6",
+                    "primary": "#00513f",
+                    "outline-variant": "#bec9c3",
+                    "on-secondary-fixed": "#002117",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-primary-container": "#94e8cb",
+                    "tertiary-fixed": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "section-gap": "80px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Geist"],
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .emerald-glow:focus-within {
+            box-shadow: 0px 0px 12px rgba(0, 135, 106, 0.1);
+        }
+        .primary-button-glow:hover {
+            box-shadow: 0px 0px 12px rgba(0, 107, 84, 0.4);
+        }
+        .auth-card {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #006B54;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col selection:bg-secondary-container">
+<!-- TopNavBar (Shared Component) -->
+<!-- Suppressed on focused auth task screens per "The Semantic Shell Mandate" but shown here as a subtle non-interactive branding anchor if preferred. Actually, mandate says "Suppress navigation shell if page intent is Login/Sign-up/Linear". So we omit the full TopNavBar and Footer for the Reset Password screen. -->
+<main class="flex-grow flex items-center justify-center px-margin-mobile md:px-0 py-section-gap">
+<!-- Reset Password Container -->
+<div class="relative w-full max-w-[480px] bg-surface-container-lowest rounded-lg auth-card p-8 md:p-10 transition-all duration-500" id="reset-container">
+<!-- Header -->
+<div class="text-center mb-10">
+<div class="inline-flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-[32px]">shield_person</span>
+<span class="font-display-lg text-headline-lg text-primary tracking-tight">AIMS</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Create New Password</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Enter your new password below</p>
+</div>
+<!-- Form -->
+<form class="space-y-6" id="reset-form" onsubmit="handleReset(event)">
+<!-- New Password Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-4">NEW PASSWORD</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">lock</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-full border border-outline-variant bg-surface focus:border-secondary focus:ring-0 emerald-glow transition-all outline-none text-on-surface font-body-lg" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Confirm Password Field -->
+<div class="space-y-2">
+<label class="font-label-md text-label-md text-on-surface-variant px-4">CONFIRM PASSWORD</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">lock_reset</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-full border border-outline-variant bg-surface focus:border-secondary focus:ring-0 emerald-glow transition-all outline-none text-on-surface font-body-lg" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Password Requirements Checklist -->
+<div class="bg-surface-container-low rounded-xl p-4 space-y-3">
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">SECURITY REQUIREMENTS</p>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px] text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">At least 8 characters</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px] text-outline-variant">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm text-on-surface">Include at least one number</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px] text-outline-variant">radio_button_unchecked</span>
+<span class="font-body-sm text-body-sm text-on-surface">Include a special character (!@#)</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full py-4 bg-secondary text-on-secondary font-title-md text-title-md rounded-full primary-button-glow transition-all active:scale-95 flex items-center justify-center gap-2" type="submit">
+                    Reset Password
+                </button>
+</form>
+<!-- Back to Login Link -->
+<div class="mt-8 text-center">
+<a class="font-body-sm text-body-sm text-primary hover:underline flex items-center justify-center gap-1 transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                    Back to Login
+                </a>
+</div>
+</div>
+<!-- Success State (Hidden by default) -->
+<div class="hidden absolute inset-0 bg-surface-container-lowest rounded-lg z-10 flex flex-col items-center justify-center p-10 text-center animate-in fade-in duration-500" id="success-overlay">
+<div class="w-24 h-24 bg-secondary-container rounded-full flex items-center justify-center mb-6 scale-0 transition-transform duration-700 delay-200" id="success-icon">
+<span class="material-symbols-outlined text-on-secondary-container text-[48px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-3">Password Reset Successfully</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-[300px] mx-auto">Your security credentials have been updated. You can now log in to your AIMS account.</p>
+<button class="px-10 py-4 bg-secondary text-on-secondary font-title-md text-title-md rounded-full primary-button-glow transition-all active:scale-95" onclick="window.location.reload()">
+                Go to Login
+            </button>
+</div>
+</main>
+<!-- Background Decorative Element (Shader Placeholder) -->
+<div class="fixed inset-0 -z-10 opacity-30 pointer-events-none">
+
+</div>
+<!-- Script for interaction -->
+<script>
+        function handleReset(event) {
+            event.preventDefault();
+            const container = document.getElementById('reset-container');
+            const overlay = document.getElementById('success-overlay');
+            const icon = document.getElementById('success-icon');
+
+            // Simulate loading state
+            const btn = event.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="animate-spin material-symbols-outlined">progress_activity</span> Updating...';
+
+            setTimeout(() => {
+                // Remove form content
+                document.getElementById('reset-form').style.opacity = '0';
+                
+                // Show success overlay
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                
+                // Trigger icon animation
+                setTimeout(() => {
+                    icon.classList.remove('scale-0');
+                    icon.classList.add('scale-100');
+                }, 100);
+            }, 1500);
+        }
+    </script>
+</body></html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Geist:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .glass-card {
+      background: rgba(20, 20, 20, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(62, 73, 68, 0.5);
+    }
+    .emerald-glow {
+      box-shadow: 0 0 20px rgba(0, 107, 84, 0.15);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #3e4944;
+      border-radius: 10px;
+    }
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .status-pulse {
+      animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed": "#1c1b1b",
+            "surface-container-high": "#262b29",
+            "primary-fixed": "#9ef3d6",
+            "outline": "#88938e",
+            "background": "#101412",
+            "on-secondary-container": "#bab8b7",
+            "on-error": "#690005",
+            "tertiary-fixed-dim": "#c6c6c7",
+            "surface-tint": "#82d7ba",
+            "on-surface": "#e0e3e0",
+            "tertiary-fixed": "#e2e2e2",
+            "tertiary-container": "#5c5e5e",
+            "surface-dim": "#101412",
+            "error-container": "#93000a",
+            "tertiary": "#c6c6c7",
+            "secondary-fixed-dim": "#c9c6c5",
+            "surface-container-highest": "#313633",
+            "secondary-container": "#4a4949",
+            "primary-fixed-dim": "#82d7ba",
+            "on-primary-fixed-variant": "#00513f",
+            "primary-container": "#006b54",
+            "surface-container-lowest": "#0b0f0d",
+            "on-primary-fixed": "#002118",
+            "on-primary-container": "#94e8cb",
+            "inverse-primary": "#016b54",
+            "on-tertiary-fixed": "#1a1c1c",
+            "on-background": "#e0e3e0",
+            "on-surface-variant": "#bec9c3",
+            "on-secondary-fixed-variant": "#474646",
+            "error": "#ffb4ab",
+            "on-tertiary": "#2f3131",
+            "secondary-fixed": "#e5e2e1",
+            "inverse-surface": "#e0e3e0",
+            "on-tertiary-container": "#d7d7d8",
+            "surface-container-low": "#181d1b",
+            "on-tertiary-fixed-variant": "#454747",
+            "on-primary": "#00382b",
+            "inverse-on-surface": "#2d312f",
+            "surface-variant": "#313633",
+            "secondary": "#c9c6c5",
+            "outline-variant": "#3e4944",
+            "surface-container": "#1c211e",
+            "surface-bright": "#363a38",
+            "surface": "#101412",
+            "primary": "#82d7ba",
+            "on-secondary": "#313030",
+            "on-error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "stack-sm": "8px",
+            "stack-md": "16px",
+            "unit": "4px",
+            "gutter": "24px",
+            "stack-lg": "32px",
+            "container-padding": "32px"
+          },
+          "fontFamily": {
+            "headline-lg": ["Hanken Grotesk"],
+            "display-lg": ["Hanken Grotesk"],
+            "body-lg": ["Inter"],
+            "code-sm": ["Geist"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "title-md": ["Hanken Grotesk"],
+            "body-sm": ["Inter"],
+            "label-caps": ["Geist"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "code-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen overflow-x-hidden">
+<!-- Side Navigation Bar -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] z-50 bg-surface-container-low border-r border-outline-variant shadow-sm flex flex-col py-stack-lg gap-unit">
+<div class="px-8 mb-stack-lg">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container">shield</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-primary text-[20px] leading-tight">AIMS Admin</h1>
+<p class="font-label-caps text-on-surface-variant text-[10px]">Elite Precision</p>
+</div>
+</div>
+</div>
+<nav class="flex-grow space-y-1">
+<div class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all cursor-pointer active:scale-[0.98]">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps uppercase">Dashboard</span>
+</div>
+<div class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all cursor-pointer active:scale-[0.98]">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps uppercase">Staff</span>
+</div>
+<div class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all cursor-pointer active:scale-[0.98]">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps uppercase">Policies</span>
+</div>
+<div class="bg-primary-container text-on-primary-container rounded-full mx-4 px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-all duration-200">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-caps uppercase">Claims</span>
+</div>
+<div class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all cursor-pointer active:scale-[0.98]">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps uppercase">Settings</span>
+</div>
+<div class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all cursor-pointer active:scale-[0.98]">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-caps uppercase">Billing</span>
+</div>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary text-on-primary py-3 rounded-full font-label-caps uppercase flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+        New Policy
+      </button>
+<div class="mt-stack-md text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all cursor-pointer">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps uppercase">Logout</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[280px] min-h-screen p-stack-lg relative pb-32">
+<!-- Top Header -->
+<header class="flex justify-between items-center mb-stack-lg">
+<div class="flex items-center gap-stack-md">
+<button class="p-2 rounded-full border border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h2 class="font-headline-lg text-on-surface">Claim #CLM-2024-002</h2>
+<div class="flex items-center gap-stack-sm mt-1">
+<span class="bg-[#FFE082]/10 text-[#FFE082] px-3 py-0.5 rounded-full font-label-caps text-[10px] uppercase status-pulse border border-[#FFE082]/20">Under Review</span>
+<span class="text-on-surface-variant text-body-sm">• Submission Date: Oct 24, 2023</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-background bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a claims manager with a warm expression, wearing executive business attire, set against a blurred high-end office background with emerald green accents to match the corporate AIMS dashboard branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgQK0hDO2iJzkp2v8jh5d2TwM8rGrr44KPSixh2VqdYHsuYQuSqBs9hpPGW6MFkIqkH1fQW6ouqTSzbAcWxS3NLD4y8aFwbpxzyfiGijQtqC8FITk6dLNrJWmAFNgrcciZ7lASxAOWPYZhpPHcGhOq1BBhMasS0fKln8pDXs7pZ8XR4JrclImbXvHY8rw5smVundJK_6nGio4P-gjwXW-ThMaWoTegfiQjFQLxf_p9txfjnrVII7_hfpFc6OxnoqFalaAyVK_E0RA"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-background bg-primary-container text-on-primary-container flex items-center justify-center text-[10px] font-bold">+2</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">help</button>
+</div>
+</header>
+<!-- Content Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Primary Metrics & Info -->
+<div class="col-span-8 space-y-gutter">
+<!-- Fraud Score Gauge & High-Level Metrics -->
+<section class="glass-card rounded-lg p-stack-lg flex items-center justify-between emerald-glow">
+<div class="flex items-center gap-stack-lg">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary transition-all duration-1000" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-dasharray="351.8" stroke-dashoffset="193.5" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-[32px] leading-none">45</span>
+<span class="font-label-caps text-on-surface-variant">Medium</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-md text-on-surface">Fraud Score Analysis</h3>
+<p class="text-body-sm text-on-surface-variant mt-1 max-w-md">Risk level is within manageable bounds. AI identifies anomalies in weather data vs. yield reporting.</p>
+<div class="flex gap-stack-sm mt-stack-md">
+<div class="bg-surface-container px-3 py-1.5 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-caps text-[11px]">SATELLITE VERIFIED</span>
+</div>
+<div class="bg-surface-container px-3 py-1.5 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-caps text-[11px]">HISTORICAL OUTLIER</span>
+</div>
+</div>
+</div>
+</div>
+<div class="h-16 w-px bg-outline-variant hidden md:block"></div>
+<div class="text-right">
+<p class="font-label-caps text-on-surface-variant">Claim Value</p>
+<p class="font-display-lg text-primary">$12,450.00</p>
+<p class="text-body-sm text-on-secondary-container">Coverage Plan: Platinum Crop</p>
+</div>
+</section>
+<!-- Two Column: Farmer & Policy Info -->
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Farmer Info -->
+<div class="glass-card rounded-lg p-stack-lg border-l-4 border-primary">
+<div class="flex justify-between items-start mb-stack-md">
+<h3 class="font-label-caps text-on-surface-variant uppercase tracking-widest">Farmer Information</h3>
+<button class="text-primary text-[11px] font-bold flex items-center gap-1 hover:underline">
+                View Profile <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+<div class="flex items-center gap-stack-md mb-stack-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A dignified elderly farmer with weather-beaten features, wearing traditional rural attire and a soft cap. The portrait is captured in high-resolution, with dramatic lighting that emphasizes texture and character, consistent with a high-end administrative dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6hCCLAGJGVaw2KvVfFjoSQ4SoPeCeim6FmplXODqI3g5wywwWWNJJVggQD9WKaRfLfp7Z0P9XaZ2PPLX9x_IG3os1mJkZ2hGosQ6KaodUXw65NNPPpg1_rR-VS-emqdHCJHbRLpaOUqxRcNInh3UgDQOjdZXlcsjVylNgodtqeK0FAh1B6sH0uokxOuMMbnjPGZl0Sd5m5rIOE3aaCsa5M4hdUjbjAgU039THw-Cvd752Q8XzRcgWlg7_ornTkxakPoyPfk_GQqg"/>
+</div>
+<div>
+<p class="font-title-md text-on-surface">Ahmed Khalil</p>
+<p class="text-body-sm text-on-surface-variant">ID: FRM-8829-01</p>
+</div>
+</div>
+<div class="space-y-unit text-body-sm">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">CNIC:</span>
+<span class="text-on-surface font-code-sm">35201-8829102-3</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Contact:</span>
+<span class="text-on-surface">+92 300 1234567</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Location:</span>
+<span class="text-on-surface">Punjab, Sector 12</span>
+</div>
+</div>
+</div>
+<!-- Policy Info -->
+<div class="glass-card rounded-lg p-stack-lg border-l-4 border-tertiary">
+<div class="flex justify-between items-start mb-stack-md">
+<h3 class="font-label-caps text-on-surface-variant uppercase tracking-widest">Policy Information</h3>
+<button class="text-primary text-[11px] font-bold flex items-center gap-1 hover:underline">
+                Policy Ledger <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</div>
+<div class="flex items-center gap-stack-md mb-stack-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">verified_user</span>
+</div>
+<div>
+<p class="font-title-md text-on-surface">POL-2023-X99</p>
+<p class="text-body-sm text-on-surface-variant">Active since Jan 2023</p>
+</div>
+</div>
+<div class="space-y-unit text-body-sm">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Plan:</span>
+<span class="text-on-surface">Multi-Peril Crop</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Coverage Cap:</span>
+<span class="text-on-surface">$50,000.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Premium:</span>
+<span class="text-on-surface">$450.00 / Mo</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Detailed Claim Content -->
+<section class="glass-card rounded-lg p-stack-lg">
+<h3 class="font-title-md text-on-surface mb-stack-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">assignment</span> Claim Breakdown
+          </h3>
+<div class="grid grid-cols-3 gap-stack-lg mb-stack-lg">
+<div class="space-y-unit">
+<p class="font-label-caps text-on-surface-variant">Incident Date</p>
+<p class="text-on-surface">Oct 18, 2023</p>
+</div>
+<div class="space-y-unit">
+<p class="font-label-caps text-on-surface-variant">Type</p>
+<p class="text-on-surface">Severe Hail Damage</p>
+</div>
+<div class="space-y-unit">
+<p class="font-label-caps text-on-surface-variant">Land Parcel</p>
+<p class="text-primary font-code-sm">P-992-B</p>
+</div>
+</div>
+<div class="space-y-stack-md p-stack-md bg-surface-container-low rounded-lg border border-outline-variant">
+<p class="font-label-caps text-on-surface-variant uppercase">Description</p>
+<p class="text-body-sm leading-relaxed text-on-surface-variant">
+              Heavy hail storm lasting approximately 40 minutes caused massive physical damage to the wheat standing in Sector 12. Estimated loss of 60% of the yield. Neighboring farms reporting similar patterns. Satellite imagery from T+4 hours shows visible texture changes in the canopy.
+            </p>
+</div>
+<div class="mt-stack-lg">
+<div class="flex justify-between items-end mb-stack-md">
+<h4 class="font-label-caps text-on-surface-variant uppercase">Evidence Documents</h4>
+<button class="bg-surface-container-highest px-4 py-2 rounded-full text-body-sm font-medium hover:bg-surface-variant transition-colors">Download All</button>
+</div>
+<div class="grid grid-cols-4 gap-stack-md">
+<!-- Evidence Card 1 -->
+<div class="relative group cursor-pointer">
+<div class="aspect-square rounded-lg overflow-hidden border border-outline-variant group-hover:border-primary transition-all">
+<img class="w-full h-full object-cover" data-alt="A high-altitude aerial drone photograph of a wheat field showing significant hail damage, with crushed stalks and uneven textures. The lighting is bright daylight, highlighting the contrast between healthy and damaged areas. The visual style is crisp, professional, and diagnostic, fitting an elite insurance dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTXJLCVawHA3a7ajanzUh92QwIM8XoZ2As8u2iv5YXArV-IEdq6GZUfYDDY0ch4aIC82ntHJZIwYl_WeZm8uJ5V6cdy3ihd3Y0SpkQlkNvf9lSFEeq7vlCVzEorZTykvyQF59AAy5NGJ_2GCPIN2EtR7hPHo25rYNmx8WprN80X61tyBU2tWcB6IOHSBmLe-o-46j7FoyIwuqq6hEPFbMh4-VEE_uIpauQcYCqwRKbsu7RAhvAhOIM3GtBZOjNRT_Ou-KfPZ0mVnY"/>
+</div>
+<div class="absolute top-2 right-2 bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">check_circle</span> Verified
+                </div>
+<p class="text-[11px] mt-1 text-center text-on-surface-variant">Field_Img_01.jpg</p>
+</div>
+<!-- Evidence Card 2 -->
+<div class="relative group cursor-pointer">
+<div class="aspect-square rounded-lg overflow-hidden border border-outline-variant group-hover:border-primary transition-all">
+<img class="w-full h-full object-cover" data-alt="A detailed macro photograph of hail-damaged wheat heads, showing physical bruising and broken kernels. The shot is clear and sharp, taken under neutral outdoor lighting for evidence documentation. Part of a forensic agricultural claims process in a dark-themed UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQg5Z8pdtbqx8gDh-KQ00bC-MN9Fj8VeeUWav8E2G7jVLje69wUD7cmbRP7Vmf15K-WIC8PPpcdMPol3IdkpaL5EWAYYq0BacRBDxCuCdrBs7ubjYeFcV9W1ngeCeolV3Je4-XZycjax-u9DELqT-5rc3kwMbv69MfPzrw0JzrG4HZXktn68u4yD6SqgMDIjba4qemEop8gWvERlt-zwJ9KohI1Hf3329ceHk7lrQs2Xs0ee5uE_j4Ps1ASbb4NTFIwn92I9uGzhs"/>
+</div>
+<div class="absolute top-2 right-2 bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">check_circle</span> Verified
+                </div>
+<p class="text-[11px] mt-1 text-center text-on-surface-variant">Detail_Crop.jpg</p>
+</div>
+<!-- Evidence Card 3 -->
+<div class="relative group cursor-pointer">
+<div class="aspect-square rounded-lg bg-surface-container flex flex-col items-center justify-center border border-outline-variant group-hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[32px] text-on-surface-variant">description</span>
+<span class="text-[10px] font-bold mt-2">PDF REPORT</span>
+</div>
+<div class="absolute top-2 right-2 bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[10px]">check_circle</span> Verified
+                </div>
+<p class="text-[11px] mt-1 text-center text-on-surface-variant">Weather_Log.pdf</p>
+</div>
+<!-- Evidence Card 4 -->
+<div class="relative group cursor-pointer">
+<div class="aspect-square rounded-lg bg-surface-container-highest flex flex-col items-center justify-center border border-dashed border-outline-variant hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[24px] text-primary">add</span>
+<span class="text-[10px] font-bold mt-1">ADD MORE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Analysis & Timeline -->
+<div class="col-span-4 space-y-gutter">
+<!-- Fraud Analysis Breakdown -->
+<section class="glass-card rounded-lg p-stack-lg border-t-4 border-primary">
+<h3 class="font-label-caps text-on-surface-variant uppercase tracking-widest mb-stack-lg">Fraud Analysis Breakdown</h3>
+<div class="space-y-stack-md">
+<div class="flex items-center justify-between p-3 rounded-full bg-surface-container-low border border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">content_copy</span>
+<span class="text-body-sm">Duplicate Check</span>
+</div>
+<span class="font-code-sm text-primary">+0</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-full bg-surface-container-low border border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">image</span>
+<span class="text-body-sm">Image Analysis</span>
+</div>
+<span class="font-code-sm text-primary">+15</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-full bg-surface-container-low border border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">analytics</span>
+<span class="text-body-sm">NDVI Drop</span>
+</div>
+<span class="font-code-sm text-primary">+10</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-full bg-surface-container-low border border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">cloud</span>
+<span class="text-body-sm">Weather Verify</span>
+</div>
+<span class="font-code-sm text-primary">+10</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-full bg-surface-container-low border border-outline-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[20px]">history_edu</span>
+<span class="text-body-sm">Farmer History</span>
+</div>
+<span class="font-code-sm text-primary">+10</span>
+</div>
+</div>
+<div class="mt-stack-lg pt-stack-lg border-t border-outline-variant">
+<div class="flex justify-between items-center">
+<span class="text-body-sm text-on-surface-variant font-bold">Aggregate Risk</span>
+<span class="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full text-[12px] font-bold">45% (NORMAL)</span>
+</div>
+</div>
+</section>
+<!-- Timeline -->
+<section class="glass-card rounded-lg p-stack-lg">
+<h3 class="font-label-caps text-on-surface-variant uppercase tracking-widest mb-stack-lg">Claim Journey</h3>
+<div class="relative space-y-stack-lg">
+<div class="absolute left-[11px] top-1 bottom-1 w-px bg-outline-variant"></div>
+<div class="relative pl-10">
+<div class="absolute left-0 top-1 w-[22px] h-[22px] rounded-full bg-primary-container border-4 border-background z-10"></div>
+<p class="text-body-sm font-bold text-on-surface">Under Review</p>
+<p class="text-[11px] text-on-surface-variant">Oct 25, 10:45 AM • System</p>
+<p class="text-[12px] mt-1 text-on-secondary-container">Claim flagged for manual officer verification due to value threshold.</p>
+</div>
+<div class="relative pl-10 opacity-70">
+<div class="absolute left-0 top-1 w-[22px] h-[22px] rounded-full bg-surface-container-highest border-4 border-background z-10"></div>
+<p class="text-body-sm font-bold text-on-surface">Fraud Engine Score Generated</p>
+<p class="text-[11px] text-on-surface-variant">Oct 24, 04:12 PM • AI Core</p>
+</div>
+<div class="relative pl-10 opacity-70">
+<div class="absolute left-0 top-1 w-[22px] h-[22px] rounded-full bg-surface-container-highest border-4 border-background z-10"></div>
+<p class="text-body-sm font-bold text-on-surface">Claim Submitted</p>
+<p class="text-[11px] text-on-surface-variant">Oct 24, 02:30 PM • Ahmed Khalil</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Sticky Action Footer -->
+<div class="fixed bottom-0 left-[280px] right-0 bg-background/80 backdrop-blur-md border-t border-outline-variant p-gutter z-40">
+<div class="max-w-[1200px] mx-auto flex items-center justify-between">
+<div class="flex gap-stack-md">
+<button class="px-6 py-3 rounded-full border border-outline-variant text-on-surface font-label-caps uppercase flex items-center gap-2 hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">person_add</span> Assign to Officer
+          </button>
+<button class="px-6 py-3 rounded-full border border-outline-variant text-on-surface font-label-caps uppercase flex items-center gap-2 hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">pending_actions</span> Request Evidence
+          </button>
+</div>
+<div class="flex gap-stack-md">
+<button class="px-6 py-3 rounded-full bg-error text-on-error font-label-caps uppercase flex items-center gap-2 hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">block</span> Reject
+          </button>
+<button class="px-6 py-3 rounded-full bg-orange-500 text-white font-label-caps uppercase flex items-center gap-2 hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">priority_high</span> Escalate
+          </button>
+<button class="px-8 py-3 rounded-full bg-primary-container text-on-primary-container font-label-caps uppercase flex items-center gap-2 hover:opacity-90 transition-all active:scale-95 shadow-lg shadow-primary-container/20">
+<span class="material-symbols-outlined text-[20px]">check</span> Approve Claim
+          </button>
+</div>
+</div>
+</div>
+</main>
+<script>
+    // Micro-interactions and effects
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('mouseenter', () => {
+        // Subtle interaction placeholder
+      });
+    });
+
+    // Add small visual feedback for tabs
+    const navItems = document.querySelectorAll('nav > div');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navItems.forEach(i => i.classList.remove('bg-primary-container', 'text-on-primary-container'));
+        navItems.forEach(i => i.classList.add('text-on-surface-variant'));
+        item.classList.remove('text-on-surface-variant');
+        item.classList.add('bg-primary-container', 'text-on-primary-container');
+      });
+    });
+  </script>
+</body></html>

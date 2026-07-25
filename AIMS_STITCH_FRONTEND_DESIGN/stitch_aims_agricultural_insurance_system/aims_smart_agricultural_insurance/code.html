@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Smart Agricultural Insurance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-low": "#f5f3f3",
+                "surface-container-high": "#e9e8e7",
+                "error": "#ba1a1a",
+                "tertiary": "#474646",
+                "surface-dim": "#dbdad9",
+                "error-container": "#ffdad6",
+                "surface-tint": "#016b54",
+                "inverse-primary": "#82d7ba",
+                "surface": "#fbf9f8",
+                "primary-fixed-dim": "#82d7ba",
+                "background": "#fbf9f8",
+                "on-background": "#1b1c1c",
+                "on-tertiary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "secondary-container": "#8bf3d0",
+                "inverse-surface": "#303031",
+                "on-primary-fixed": "#002118",
+                "on-error-container": "#93000a",
+                "on-secondary-container": "#007058",
+                "on-primary-fixed-variant": "#00513f",
+                "on-primary": "#ffffff",
+                "surface-variant": "#e4e2e2",
+                "surface-bright": "#fbf9f8",
+                "on-surface-variant": "#3e4944",
+                "on-tertiary-fixed": "#1c1b1b",
+                "secondary": "#006b54",
+                "surface-container": "#efeded",
+                "on-secondary-fixed-variant": "#00513e",
+                "on-secondary": "#ffffff",
+                "secondary-fixed-dim": "#71d9b8",
+                "on-error": "#ffffff",
+                "outline": "#6f7a74",
+                "on-surface": "#1b1c1c",
+                "on-tertiary-container": "#dbd8d7",
+                "primary-container": "#006b54",
+                "on-tertiary-fixed-variant": "#474646",
+                "tertiary-fixed-dim": "#c9c6c5",
+                "secondary-fixed": "#8ef6d3",
+                "inverse-on-surface": "#f2f0f0",
+                "tertiary-container": "#5f5e5e",
+                "primary-fixed": "#9ef3d6",
+                "primary": "#00513f",
+                "outline-variant": "#bec9c3",
+                "on-secondary-fixed": "#002117",
+                "surface-container-highest": "#e4e2e2",
+                "on-primary-container": "#94e8cb",
+                "tertiary-fixed": "#e5e2e1"
+            },
+            "borderRadius": {
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "gutter": "24px",
+                "container-max": "1280px",
+                "margin-mobile": "16px",
+                "unit": "8px",
+                "section-gap": "80px",
+                "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                "body-lg": ["Inter"],
+                "label-md": ["Geist"],
+                "display-lg": ["Inter"],
+                "title-md": ["Inter"],
+                "body-sm": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "title-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .emerald-glow {
+            box-shadow: 0px 0px 12px rgba(0, 107, 84, 0.2);
+        }
+        .nav-scrolled {
+            background-color: rgba(251, 249, 248, 0.9) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-4 px-margin-desktop" id="main-nav">
+<div class="max-w-container-max mx-auto flex justify-between items-center">
+<div class="flex items-center gap-2 font-display-lg text-title-md font-bold text-primary">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+                AIMS
+            </div>
+<div class="hidden md:flex items-center gap-8 font-title-md text-body-lg">
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold" href="#">Features</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Solutions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:block px-6 py-2.5 rounded-full border-1.5 border-secondary text-secondary font-semibold hover:bg-secondary/5 transition-all active:scale-95">
+                    Login
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-secondary text-white font-semibold emerald-glow hover:bg-[#00876A] transition-all active:scale-95">
+                    Get Started
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<main class="relative pt-32 pb-section-gap overflow-hidden">
+<!-- Subtle background animation -->
+
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-2 items-center gap-16">
+<!-- Left Content -->
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20">
+<span class="font-label-md text-label-md uppercase tracking-wider">AI-Powered Protection</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface max-w-lg leading-tight">
+                    Smart Agricultural <span class="text-secondary">Insurance</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                    Protect your crops, secure your future with AI-powered insurance designed for the modern farmer. Real-time monitoring, instant claims, and complete peace of mind.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="px-10 py-4 rounded-full bg-secondary text-white font-bold text-title-md emerald-glow hover:bg-[#00876A] transition-all transform hover:-translate-y-1 active:scale-95">
+                        Get Started Now
+                    </button>
+<button class="px-8 py-4 rounded-full border-2 border-outline-variant text-on-surface font-semibold hover:bg-surface-container-low transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">play_circle</span>
+                        How it works
+                    </button>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-8 pt-12 border-t border-outline-variant/30">
+<div>
+<div class="font-display-lg text-headline-lg font-bold text-primary">10k+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant uppercase tracking-tighter">Farmers</div>
+</div>
+<div>
+<div class="font-display-lg text-headline-lg font-bold text-primary">500+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant uppercase tracking-tighter">Policies</div>
+</div>
+<div>
+<div class="font-display-lg text-headline-lg font-bold text-primary">98%</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant uppercase tracking-tighter">Approval Rate</div>
+</div>
+</div>
+</div>
+<!-- Right Visual -->
+<div class="relative group">
+<div class="absolute -inset-4 bg-secondary/5 rounded-xl blur-3xl group-hover:bg-secondary/10 transition-all duration-700"></div>
+<div class="relative rounded-lg overflow-hidden shadow-2xl border border-white/20 bg-white/50 backdrop-blur-sm p-4">
+<div class="bg-cover bg-center w-full aspect-[4/3] rounded-DEFAULT" data-alt="A modern, high-quality digital illustration of a professional farmer in a sun-drenched, vibrant green wheat field. The farmer is holding a high-tech smartphone displaying a clean, emerald-themed insurance dashboard with growth charts and weather data. The style is professional and innovative, using a palette of deep emerald greens, pristine whites, and warm sunlight. Soft bokeh lighting illuminates the scene, conveying trust, technology, and agricultural success." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIUZQrFq1tqHsmyvC5uKUWd1PaeMlcIOWBUMsEsUx9Buzu1MTHoaDk1jbyXQQRyWbvs58pW2nMcY-WM3Szso4XyQkiGx3akwnL86-4hpajNwJazMMntfBnDnbOA0nTh1oaqZN0KqUV0zHHrPKrNsAM7VdYxFKc64aKQb2oahHzJleQKFNcWnuO9kIhTmF7VAT5noXpEKVdHFGjwHuVHO9hFatiq0RKt-o4eW-bmtFhHb6YC4631IcZRErtsLhFwJsa5ZNdcPQZRJo')"></div>
+<!-- Floating UI Card Overlay -->
+<div class="absolute bottom-12 -left-8 bg-white p-6 rounded-lg shadow-xl border-t-4 border-secondary max-w-[200px] animate-bounce-slow">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-title-md text-body-sm font-bold text-primary">Claim Paid</span>
+</div>
+<div class="text-display-lg text-title-md font-bold text-on-surface">$4,250.00</div>
+<div class="text-body-sm text-on-surface-variant">Instant Payout</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Features Section -->
+<section class="bg-surface-container-lowest py-section-gap relative overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+<h2 class="font-display-lg text-headline-lg text-on-surface">Precision Features for Peace of Mind</h2>
+<p class="font-body-lg text-on-surface-variant">We combine satellite data, machine learning, and transparent payouts to ensure you're never left in the dark.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-white p-8 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.05)] border-t-4 border-secondary hover:-translate-y-2 transition-transform duration-300">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">bolt</span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<h3 class="font-title-md text-title-md text-primary">Fast Claims</h3>
+<span class="font-label-md text-[10px] px-2 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20 uppercase font-bold">Priority</span>
+</div>
+<p class="font-body-sm text-on-surface-variant">Experience the fastest claim process in the industry. Our automated system verifies data instantly to get you paid when it matters most.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-white p-8 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.05)] border-t-4 border-secondary hover:-translate-y-2 transition-transform duration-300">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">psychology</span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<h3 class="font-title-md text-title-md text-primary">AI-Fraud Detection</h3>
+<span class="font-label-md text-[10px] px-2 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20 uppercase font-bold">Secure</span>
+</div>
+<p class="font-body-sm text-on-surface-variant">Advanced machine learning algorithms protect the pool and ensure honest farmers get better rates through sophisticated fraud mitigation.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-white p-8 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.05)] border-t-4 border-secondary hover:-translate-y-2 transition-transform duration-300">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">account_balance_wallet</span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<h3 class="font-title-md text-title-md text-primary">Auto Payouts</h3>
+<span class="font-label-md text-[10px] px-2 py-0.5 rounded-full bg-secondary/10 text-secondary border border-secondary/20 uppercase font-bold">Smart</span>
+</div>
+<p class="font-body-sm text-on-surface-variant">No paperwork required. If our satellite and ground sensors detect a covered weather event, your payout is triggered automatically.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface border-t border-outline-variant dark:border-outline">
+<div class="max-w-container-max mx-auto py-12 px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+<div class="max-w-xs space-y-4">
+<div class="font-title-md text-title-md font-bold text-primary dark:text-primary-fixed flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+                        AIMS
+                    </div>
+<p class="font-body-sm text-on-surface-variant">Empowering global agriculture through data-driven insurance solutions and financial stability for every farm.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+<div class="space-y-4">
+<h4 class="font-title-md text-body-lg font-bold text-primary dark:text-primary-fixed">Platform</h4>
+<ul class="space-y-2 font-body-sm text-on-surface-variant">
+<li><a class="hover:underline hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="hover:underline hover:text-primary transition-colors" href="#">Solutions</a></li>
+<li><a class="hover:underline hover:text-primary transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-title-md text-body-lg font-bold text-primary dark:text-primary-fixed">Resources</h4>
+<ul class="space-y-2 font-body-sm text-on-surface-variant">
+<li><a class="hover:underline hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:underline hover:text-primary transition-colors" href="#">Security</a></li>
+<li><a class="hover:underline hover:text-primary transition-colors" href="#">API Docs</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-title-md text-body-lg font-bold text-primary dark:text-primary-fixed">Legal</h4>
+<ul class="space-y-2 font-body-sm text-on-surface-variant">
+<li><a class="hover:underline hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:underline hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 AIMS Agricultural Insurance Management System. All rights reserved.</p>
+<div class="flex gap-6 font-body-sm text-on-surface-variant">
+<a class="hover:text-primary" href="#">Status</a>
+<a class="hover:text-primary" href="#">Careers</a>
+<a class="hover:text-primary" href="#">Contact Us</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Scroll interaction for NavBar
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+                nav.classList.remove('bg-transparent');
+                nav.classList.remove('py-4');
+                nav.classList.add('py-2');
+            } else {
+                nav.classList.remove('nav-scrolled');
+                nav.classList.add('bg-transparent');
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
+
+        // Simple bounce animation for the overlay card
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce-slow {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+            .animate-bounce-slow {
+                animation: bounce-slow 4s ease-in-out infinite;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

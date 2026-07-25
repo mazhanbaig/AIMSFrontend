@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS Dashboard | Claims Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Geist:wght@400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#1c1b1b",
+                    "surface-container-high": "#262b29",
+                    "primary-fixed": "#9ef3d6",
+                    "outline": "#88938e",
+                    "background": "#101412",
+                    "on-secondary-container": "#bab8b7",
+                    "on-error": "#690005",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "surface-tint": "#82d7ba",
+                    "on-surface": "#e0e3e0",
+                    "tertiary-fixed": "#e2e2e2",
+                    "tertiary-container": "#5c5e5e",
+                    "surface-dim": "#101412",
+                    "error-container": "#93000a",
+                    "tertiary": "#c6c6c7",
+                    "secondary-fixed-dim": "#c9c6c5",
+                    "surface-container-highest": "#313633",
+                    "secondary-container": "#4a4949",
+                    "primary-fixed-dim": "#82d7ba",
+                    "on-primary-fixed-variant": "#00513f",
+                    "primary-container": "#006b54",
+                    "surface-container-lowest": "#0b0f0d",
+                    "on-primary-fixed": "#002118",
+                    "on-primary-container": "#94e8cb",
+                    "inverse-primary": "#016b54",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-background": "#e0e3e0",
+                    "on-surface-variant": "#bec9c3",
+                    "on-secondary-fixed-variant": "#474646",
+                    "error": "#ffb4ab",
+                    "on-tertiary": "#2f3131",
+                    "secondary-fixed": "#e5e2e1",
+                    "inverse-surface": "#e0e3e0",
+                    "on-tertiary-container": "#d7d7d8",
+                    "surface-container-low": "#181d1b",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-primary": "#00382b",
+                    "inverse-on-surface": "#2d312f",
+                    "surface-variant": "#313633",
+                    "secondary": "#c9c6c5",
+                    "outline-variant": "#3e4944",
+                    "surface-container": "#1c211e",
+                    "surface-bright": "#363a38",
+                    "surface": "#101412",
+                    "primary": "#82d7ba",
+                    "on-secondary": "#313030",
+                    "on-error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "stack-lg": "32px",
+                    "container-padding": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"],
+                    "code-sm": ["Geist"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "title-md": ["Hanken Grotesk"],
+                    "body-sm": ["Inter"],
+                    "label-caps": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "code-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0A;
+            color: #e0e3e0;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(62, 73, 68, 0.3);
+        }
+        .emerald-glow {
+            box-shadow: 0 0 20px rgba(0, 107, 84, 0.15);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3e4944;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-lg text-body-lg">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-[280px] z-50 bg-surface-container-low border-r border-outline-variant flex flex-col py-stack-lg gap-unit shadow-sm hidden md:flex">
+<div class="px-gutter mb-8 flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center emerald-glow">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary leading-tight">AIMS Admin</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Elite Precision</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-caps text-label-caps">Staff</span>
+</a>
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-label-caps">Policies</span>
+</a>
+<a class="bg-primary-container text-on-primary-container rounded-full mx-4 px-4 py-3 flex items-center gap-3 active:scale-[0.98] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span class="font-label-caps text-label-caps">Claims</span>
+</a>
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-caps text-label-caps">Settings</span>
+</a>
+<a class="text-on-surface-variant mx-4 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high rounded-full transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-caps text-label-caps">Billing</span>
+</a>
+</nav>
+<div class="px-gutter pt-stack-lg mt-auto border-t border-outline-variant/30">
+<button class="w-full bg-primary text-on-primary font-label-caps text-label-caps py-4 rounded-full emerald-glow hover:opacity-90 transition-opacity active:scale-95 mb-6">
+                New Policy
+            </button>
+<a class="text-on-surface-variant flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-caps text-label-caps">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<main class="md:ml-[280px] min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-0 md:left-[280px] z-40 bg-background/80 backdrop-blur-md border-b border-outline-variant flex justify-between items-center h-16 px-gutter">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container border-outline-variant border rounded-full py-2 pl-12 pr-4 text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Global search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<div class="hidden lg:flex items-center gap-stack-md">
+<button class="text-on-surface-variant font-body-lg text-body-lg hover:text-primary transition-colors">Support</button>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary cursor-pointer active:scale-95 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary cursor-pointer active:scale-95 transition-all">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-px h-6 bg-outline-variant"></div>
+<img class="w-8 h-8 rounded-full border border-primary-container object-cover" data-alt="Close up portrait of a professional male insurance administrator with a sharp, high-end executive look, dark obsidian aesthetic environment, focused lighting on face, wearing a dark gray modern suit, professional and authoritative tone, highly detailed digital photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ8pPQNIqcDnPQkjiCER0OrySWJaVGpN1o1khywr4vdVIgZn5wbVDkMgDP036uHjJKO99nu3L9sS00OVKFU7_dU-rbHUE4QB8V8Iwgo6ICsKZpQm_Ma7pBD6TQuzspUBu7GsIXB8D0EQURzCyZGiO-5rQRzNJqfPypdHdFUX0ibgUUswym2lSkYKpb-Fia8Ilqb0YWigih1hLb8X5xpvBvwhX8escmugjjMLtcbBCFeqpTKKpdudQ2tMe3_nK02ofAU-ypyoVkBKs"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="pt-24 px-gutter pb-12 max-w-[1600px] mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-lg mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-unit">All Claims</h2>
+<p class="text-on-surface-variant text-body-sm">Manage and review incoming agricultural insurance claims.</p>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container border border-outline-variant rounded-full text-on-surface-variant text-body-sm hover:border-primary hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">file_download</span>
+                        Export CSV
+                    </button>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-full text-body-sm font-semibold emerald-glow hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 600;">add</span>
+                        Manual Claim
+                    </button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<div class="glass-card rounded-lg p-6 flex flex-col gap-unit">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-label-caps">Total Claims</span>
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">summarize</span>
+</div>
+</div>
+<div class="text-[32px] font-bold text-on-surface">186</div>
+<div class="text-body-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                        +12% from last month
+                    </div>
+</div>
+<div class="glass-card rounded-lg p-6 flex flex-col gap-unit">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-label-caps">Pending Review</span>
+<div class="w-8 h-8 rounded-full bg-yellow-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-yellow-500 text-sm">pending_actions</span>
+</div>
+</div>
+<div class="text-[32px] font-bold text-yellow-500">43</div>
+<div class="text-body-sm text-on-surface-variant">Requiring verification</div>
+</div>
+<div class="glass-card rounded-lg p-6 flex flex-col gap-unit border-l-4 border-l-primary-container">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-label-caps">Approved</span>
+<div class="w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-500 text-sm">check_circle</span>
+</div>
+</div>
+<div class="text-[32px] font-bold text-green-500">112</div>
+<div class="text-body-sm text-on-surface-variant">Settled this quarter</div>
+</div>
+<div class="glass-card rounded-lg p-6 flex flex-col gap-unit">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-label-caps">Rejected</span>
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-sm">cancel</span>
+</div>
+</div>
+<div class="text-[32px] font-bold text-error">31</div>
+<div class="text-body-sm text-error/60">Flagged as invalid</div>
+</div>
+</div>
+<!-- Filters Section -->
+<div class="glass-card rounded-lg p-6 mb-stack-lg border-primary/20">
+<div class="flex flex-wrap items-center gap-stack-md">
+<div class="flex-1 min-w-[200px]">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">filter_alt</span>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2.5 pl-11 pr-4 text-body-sm text-on-surface focus:outline-none appearance-none">
+<option>Status: All</option>
+<option>Pending</option>
+<option>Approved</option>
+<option>Rejected</option>
+</select>
+</div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">calendar_today</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2.5 pl-11 pr-4 text-body-sm text-on-surface focus:outline-none" placeholder="Date range" type="text" value="Oct 01 - Oct 24, 2023"/>
+</div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">security</span>
+<select class="w-full bg-surface-container-low border border-outline-variant rounded-full py-2.5 pl-11 pr-4 text-body-sm text-on-surface focus:outline-none appearance-none">
+<option>Fraud Score: All</option>
+<option>Low</option>
+<option>Medium</option>
+<option>High</option>
+<option>Critical</option>
+</select>
+</div>
+</div>
+<button class="px-6 py-2.5 bg-surface-container border border-outline-variant rounded-full text-on-surface text-body-sm hover:bg-surface-container-highest transition-colors active:scale-95">
+                        Clear Filters
+                    </button>
+</div>
+</div>
+<!-- Table Card -->
+<div class="glass-card rounded-lg overflow-hidden border-outline-variant/30">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full border-collapse text-left">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-low">
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Claim #</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Farmer</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Policy</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Incident Date</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Amount</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Fraud Score</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">Status</th>
+<th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="px-6 py-4 text-body-sm font-medium text-primary">CLM-8294</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-xs">JH</div>
+<span class="text-body-sm">John Harrison</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm">Crop Pro Plus</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Oct 14, 2023</td>
+<td class="px-6 py-4 text-body-sm font-semibold">$12,450.00</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-900/30 text-green-400 text-[10px] uppercase font-bold rounded-full border border-green-400/20">Low</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-yellow-500">
+<div class="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
+<span class="text-body-sm">Pending</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="px-4 py-1.5 bg-surface-container-highest rounded-full text-[12px] font-semibold hover:bg-primary hover:text-on-primary transition-all active:scale-95">View</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="px-6 py-4 text-body-sm font-medium text-primary">CLM-8301</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-xs">SL</div>
+<span class="text-body-sm">Sarah Lyons</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm">Livestock Elite</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-6 py-4 text-body-sm font-semibold">$8,900.00</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-yellow-900/30 text-yellow-500 text-[10px] uppercase font-bold rounded-full border border-yellow-500/20">Medium</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-green-500">
+<div class="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+<span class="text-body-sm">Approved</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="px-4 py-1.5 bg-surface-container-highest rounded-full text-[12px] font-semibold hover:bg-primary hover:text-on-primary transition-all active:scale-95">View</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container/50 transition-colors bg-error/5">
+<td class="px-6 py-4 text-body-sm font-medium text-primary">CLM-8315</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-error/20 flex items-center justify-center text-xs text-error">MD</div>
+<span class="text-body-sm">Mark Davis</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm">Storm Guard</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Oct 18, 2023</td>
+<td class="px-6 py-4 text-body-sm font-semibold">$24,100.00</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-red-900/30 text-red-500 text-[10px] uppercase font-bold rounded-full border border-red-500/20">Critical</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-error">
+<div class="w-1.5 h-1.5 rounded-full bg-error"></div>
+<span class="text-body-sm">Flagged</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="px-4 py-1.5 bg-error text-on-error rounded-full text-[12px] font-semibold hover:opacity-90 transition-all active:scale-95">Verify</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="px-6 py-4 text-body-sm font-medium text-primary">CLM-8322</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-xs">EW</div>
+<span class="text-body-sm">Elena Walsh</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm">Equipment Shield</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Oct 20, 2023</td>
+<td class="px-6 py-4 text-body-sm font-semibold">$5,230.00</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-orange-900/30 text-orange-500 text-[10px] uppercase font-bold rounded-full border border-orange-500/20">High</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant"></div>
+<span class="text-body-sm">Rejected</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="px-4 py-1.5 bg-surface-container-highest rounded-full text-[12px] font-semibold hover:bg-primary hover:text-on-primary transition-all active:scale-95">View</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container/50 transition-colors">
+<td class="px-6 py-4 text-body-sm font-medium text-primary">CLM-8340</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-xs">RK</div>
+<span class="text-body-sm">Robert King</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm">Grain Protection</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Oct 22, 2023</td>
+<td class="px-6 py-4 text-body-sm font-semibold">$4,100.00</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-green-900/30 text-green-400 text-[10px] uppercase font-bold rounded-full border border-green-400/20">Low</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-yellow-500">
+<div class="w-1.5 h-1.5 rounded-full bg-yellow-500"></div>
+<span class="text-body-sm">Pending</span>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="px-4 py-1.5 bg-surface-container-highest rounded-full text-[12px] font-semibold hover:bg-primary hover:text-on-primary transition-all active:scale-95">View</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-surface-container-lowest border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-body-sm text-on-surface-variant">Showing 1 to 5 of 186 entries</span>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-primary text-on-primary font-bold text-sm">1</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high text-on-surface transition-colors text-sm">2</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high text-on-surface transition-colors text-sm">3</button>
+<span class="text-on-surface-variant mx-1">...</span>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high text-on-surface transition-colors text-sm">38</button>
+<button class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple interactivity for demonstration
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.cursor = 'pointer';
+            });
+        });
+        
+        // Dynamic search highlight simulation
+        const searchInput = document.querySelector('input[placeholder="Global search..."]');
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(val) ? '' : 'none';
+            });
+        });
+    </script>
+</body></html>

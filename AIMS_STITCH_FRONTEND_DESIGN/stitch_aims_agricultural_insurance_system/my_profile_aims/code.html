@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Farmer Profile</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        /* Custom scrollbar for side nav */
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: #bec9c3;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#684000",
+                        "background": "#f8f9fa",
+                        "outline": "#6f7a74",
+                        "primary-fixed": "#9ef3d6",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed": "#2a1700",
+                        "surface-dim": "#d9dadb",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#be0037",
+                        "tertiary-fixed": "#ffdada",
+                        "on-surface": "#191c1d",
+                        "surface-tint": "#016b54",
+                        "tertiary-fixed-dim": "#ffb3b6",
+                        "on-primary-fixed-variant": "#00513f",
+                        "primary-fixed-dim": "#82d7ba",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-container": "#fea619",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "tertiary": "#920028",
+                        "inverse-primary": "#82d7ba",
+                        "on-primary-fixed": "#002118",
+                        "on-primary-container": "#94e8cb",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#006b54",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "on-surface-variant": "#3e4944",
+                        "on-tertiary-fixed": "#40000c",
+                        "on-background": "#191c1d",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed-variant": "#920028",
+                        "on-tertiary-container": "#ffcccd",
+                        "inverse-surface": "#2e3132",
+                        "secondary-fixed": "#ffddb8",
+                        "outline-variant": "#bec9c3",
+                        "secondary": "#855300",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "primary": "#00513f",
+                        "surface": "#f8f9fa",
+                        "surface-container": "#edeeef",
+                        "surface-bright": "#f8f9fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "header-height": "64px",
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "gutter": "1.5rem",
+                        "container-padding": "2rem",
+                        "sidebar-width": "240px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-md": ["Geist"],
+                        "headline-xl": ["Geist"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Shell Container -->
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest dark:bg-inverse-surface border-r border-outline-variant dark:border-outline shadow-sm flex flex-col py-stack-md z-50 sidebar-transition">
+<div class="px-6 mb-8">
+<span class="text-headline-lg font-headline-lg font-bold text-primary">AIMS</span>
+</div>
+<!-- Profile Mini Header -->
+<div class="flex items-center gap-3 px-6 mb-8">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional close-up studio portrait of a modern farmer in high-resolution, featuring warm, natural lighting and a clean, light-colored background. The farmer is wearing professional agricultural attire, projecting expertise and trustworthiness. The overall aesthetic is clean, corporate-modern, and minimalist, fitting a premium digital administrative dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAD6aANDkQGSywoU68_aSa-Srx-zjc5yIjdP77PKPB3T_x83BK6dJgKZcr_nlwK_IzAc9miuTSg49FqtqbvDWq66qiv-Sfb7OqqU58pVcimH-ah9Ga_n0nsy8nq62M8cMshtv2lSdwVxabetzAJtUtZYmde_qBYCpJKZ8ziMg0dUaV0q8AJTXHYvAg9Kxxn6jLC586IeFhMuTmgBFq3bXKhs6ePN8op7ARTG8as5WEfI4uV1UUIH5frh0weYHsSb7zjt1-_0jWQ30"/>
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface">John Doe</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Farmer</span>
+</div>
+</div>
+<nav class="flex-1 space-y-1 sidebar-scroll overflow-y-auto">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 py-3 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- My Profile (ACTIVE) -->
+<a class="flex items-center gap-3 py-3 px-4 bg-secondary-container text-on-secondary-container rounded-full mx-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-md font-label-md">My Profile</span>
+</a>
+<!-- Land Parcels -->
+<a class="flex items-center gap-3 py-3 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-label-md font-label-md">Land Parcels</span>
+</a>
+<!-- My Policies -->
+<a class="flex items-center gap-3 py-3 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">policy</span>
+<span class="text-label-md font-label-md">My Policies</span>
+</a>
+<!-- Claims -->
+<a class="flex items-center gap-3 py-3 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-label-md font-label-md">Claims</span>
+</a>
+<!-- Notifications -->
+<a class="flex items-center gap-3 py-3 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="text-label-md font-label-md">Notifications</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 py-3 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full mx-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-2 space-y-1">
+<a class="flex items-center gap-3 py-3 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-md font-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-md font-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-[240px] transition-all duration-300">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-40 h-[64px] bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center w-full px-container-padding">
+<div class="flex items-center gap-4">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">My Profile</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 border border-primary text-primary font-label-md rounded-full hover:bg-surface-container-low transition-colors">
+                        Edit Profile
+                    </button>
+<div class="relative">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">notifications</span>
+<div class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></div>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-container-padding max-w-7xl mx-auto space-y-gutter">
+<!-- Profile Card Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-8 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative overflow-hidden">
+<!-- Background Atmospheric Shader (simulated with CSS pattern for lightness) -->
+<div class="absolute top-0 right-0 w-64 h-64 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle, #006B54 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- Avatar with Camera Overlay -->
+<div class="relative group">
+<div class="w-[120px] h-[120px] rounded-full border-4 border-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A detailed digital close-up of a middle-aged male farmer, exuding confidence and reliability. He is outdoors with soft-focus agricultural fields in the background, captured in high-key morning sunlight. The color palette is natural greens and warm sun-lit tones, maintaining a clean corporate-modern dashboard style. The image is crisp, professional, and optimized for a high-end UI profile avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXqDbnhCTDk8mqBc4RU5poYj4KLJ7pmI1jQBQtFvARNyaXhqNZH-CoaWYAnk6Fy3Qx8Gn-4NDZ9XYOIOMk0FMtL5QbesaUZljwGKOn-3xiog3AQa5NmC6-kd10Ui2p3UWM3NGR7iqbjFtfCABszfgMgCGGTBh2JlyQHfLfKan9zk4pLJoFFSl6nN5C-Neml3Bml0pBrv724nWzKpWk9wMdlvW5xNLAqKQdNROT_KSDW_93lIOhZgCSd0jjLpYYumQ6Yszrit86bdI"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-white p-2 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+</button>
+</div>
+<!-- Identity Info -->
+<div class="flex-1 space-y-4">
+<div class="flex flex-wrap items-center gap-3">
+<h2 class="text-headline-xl font-headline-xl text-on-surface">John Doe</h2>
+<div class="flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-label-sm font-label-sm px-3 py-1 rounded-full">Farmer</span>
+<span class="bg-primary-fixed text-primary px-3 py-1 rounded-full flex items-center gap-1 text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                    Verified
+                                </span>
+</div>
+</div>
+<p class="text-label-md font-label-md text-on-surface-variant tracking-wider uppercase">ID: #F-2024-001</p>
+<!-- Stats Grid inside Profile Card -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 pt-6 border-t border-outline-variant">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-outline">Land Size</span>
+<span class="text-headline-lg font-headline-lg text-primary">12.5 Acres</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-outline">Active Policies</span>
+<span class="text-headline-lg font-headline-lg text-primary">8</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-outline">Claims Filed</span>
+<span class="text-headline-lg font-headline-lg text-primary">5</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-outline">Approval Rate</span>
+<span class="text-headline-lg font-headline-lg text-secondary">92%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Information Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Left Columns: Personal Details -->
+<div class="lg:col-span-2 space-y-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-8 shadow-sm">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+<h3 class="text-headline-lg font-headline-lg text-on-surface">General Information</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+<!-- Column 1 -->
+<div class="space-y-6">
+<div class="group border-b border-surface-container pb-2">
+<label class="text-label-sm font-label-sm text-outline block mb-1">Full Name</label>
+<p class="text-body-md font-body-md text-on-surface">Johnathan Doe</p>
+</div>
+<div class="group border-b border-surface-container pb-2">
+<label class="text-label-sm font-label-sm text-outline block mb-1">Email Address</label>
+<p class="text-body-md font-body-md text-on-surface">john.doe@farmershub.com</p>
+</div>
+<div class="group border-b border-surface-container pb-2">
+<label class="text-label-sm font-label-sm text-outline block mb-1">Phone Number</label>
+<p class="text-body-md font-body-md text-on-surface">+1 (555) 012-3456</p>
+</div>
+<div class="group border-b border-surface-container pb-2">
+<label class="text-label-sm font-label-sm text-outline block mb-1">CNIC / Tax ID</label>
+<p class="text-body-md font-body-md text-on-surface">42101-9876543-1</p>
+</div>
+</div>
+<!-- Column 2 -->
+<div class="space-y-6">
+<div class="group border-b border-surface-container pb-2">
+<label class="text-label-sm font-label-sm text-outline block mb-1">Date of Birth</label>
+<p class="text-body-md font-body-md text-on-surface">14 March 1978</p>
+</div>
+<div class="group border-b border-surface-container pb-2">
+<label class="text-label-sm font-label-sm text-outline block mb-1">Gender</label>
+<p class="text-body-md font-body-md text-on-surface">Male</p>
+</div>
+<div class="group border-b border-surface-container pb-2">
+<label class="text-label-sm font-label-sm text-outline block mb-1">Residential Address</label>
+<p class="text-body-md font-body-md text-on-surface">Suite 450, Greenfield Farms, County Road 42</p>
+</div>
+<div class="group border-b border-surface-container pb-2">
+<label class="text-label-sm font-label-sm text-outline block mb-1">Registration Date</label>
+<p class="text-body-md font-body-md text-on-surface">January 12, 2022</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Secondary Cards -->
+<div class="space-y-gutter">
+<!-- Quick Stats Visualization -->
+<div class="bg-primary-container text-white p-8 rounded-lg shadow-sm relative overflow-hidden group">
+
+<div class="relative z-10 space-y-4">
+<h3 class="text-label-md font-label-md text-on-primary-container tracking-widest uppercase">Performance Index</h3>
+<div class="flex items-end gap-2">
+<span class="text-headline-xl font-headline-xl">A+</span>
+<span class="text-label-sm font-label-sm mb-2 text-on-primary-container">Top 5% in Region</span>
+</div>
+<div class="w-full bg-white/20 h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full w-[92%]"></div>
+</div>
+<p class="text-body-sm font-body-sm text-on-primary-container">Excellent claim history and parcel management compliance.</p>
+</div>
+</div>
+<!-- Documents Status -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm">
+<h3 class="text-label-md font-label-md text-on-surface mb-4">Required Documents</h3>
+<ul class="space-y-3">
+<li class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">description</span>
+<span class="text-body-sm font-body-sm">National ID Card</span>
+</div>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</li>
+<li class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<span class="text-body-sm font-body-sm">Land Ownership Deed</span>
+</div>
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+</li>
+<li class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg opacity-60">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">verified_user</span>
+<span class="text-body-sm font-body-sm">Insurance History</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline">Optional</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Bottom Action Area -->
+<div class="flex justify-end gap-4 pb-12">
+<button class="flex items-center gap-2 px-6 py-3 text-error font-label-md hover:bg-error-container/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-lg">delete_forever</span>
+                        Request Data Deletion
+                    </button>
+<button class="bg-primary-container text-on-primary text-label-md font-label-md px-10 py-3 rounded-full hover:shadow-lg transition-all active:scale-95">
+                        Download Complete Profile PDF
+                    </button>
+</div>
+</div>
+</main>
+</div>
+<!-- Floating Action Button (Suppressed on Details Screen as per guidance, but here's a subtle helper) -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="w-14 h-14 bg-secondary text-white rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform" id="help-fab">
+<span class="material-symbols-outlined">support_agent</span>
+</button>
+</div>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Prevent real navigation for demo
+                if(link.getAttribute('href') === '#') e.preventDefault();
+            });
+        });
+
+        const fab = document.getElementById('help-fab');
+        fab.addEventListener('click', () => {
+            alert('Connecting to AIMS Support Center...');
+        });
+
+        // Simple smooth entrance for cards
+        window.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('section, .bg-surface-container-lowest');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease-out';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body></html>

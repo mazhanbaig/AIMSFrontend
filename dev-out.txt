@@ -1,0 +1,83 @@
+  ▲ Next.js 14.2.29
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 8.5s
+ ○ Compiling /src/middleware ...
+ ✓ Compiled /src/middleware in 1277ms (177 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 7.9s (720 modules)
+ ✓ Compiled in 1392ms (360 modules)
+ ✓ Compiled in 186ms (346 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename 'C:\Users\kk\Desktop\AIMSFrontend\.next\cache\webpack\client-development\10.pack.gz_' -> 'C:\Users\kk\Desktop\AIMSFrontend\.next\cache\webpack\client-development\10.pack.gz'
+ ✓ Compiled / in 505ms (361 modules)
+ ⨯ Error: Invariant: missing bootstrap script. This is a bug in Next.js
+    at rR (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:39:2277)
+    at C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:39:25591
+    at C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\server\lib\trace\tracer.js:191:62
+    at C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\server\lib\trace\tracer.js:140:36
+    at NoopContextManager.with (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NoopTracer.startActiveSpan (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18093)
+    at ProxyTracer.startActiveSpan (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:18854)
+    at C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\server\lib\trace\tracer.js:122:103
+    at NoopContextManager.with (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:7062)
+    at ContextAPI.with (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\compiled\@opentelemetry\api\index.js:1:518)
+    at NextTracerImpl.trace (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\server\lib\trace\tracer.js:122:28)
+    at C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\server\lib\trace\tracer.js:191:31
+    at r3 (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\compiled\next-server\app-page.runtime.dev.js:41:1678)
+    at async doRender (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\server\base-server.js:1427:30)
+    at async cacheEntry.responseCache.get.routeKind (C:\Users\kk\Desktop\AIMSFrontend\node_modules\next\dist\server\base-server.js:1588:28) {
+  page: '/'
+}
+ ○ Compiling /_error ...
+ GET / 500 in 4992ms
+ ✓ Compiled /_error in 7.7s (934 modules)
+ GET / 200 in 546ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 1881ms (986 modules)
+ GET /login 200 in 2421ms
+ ○ Compiling /register ...
+ ✓ Compiled /register in 4.8s (1331 modules)
+ GET /register 200 in 5498ms
+ ○ Compiling /forgot-password ...
+ ✓ Compiled /forgot-password in 653ms (1341 modules)
+ GET /forgot-password 200 in 967ms
+ GET /login 200 in 213ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1203ms (1344 modules)
+ GET /dashboard 404 in 1434ms
+ GET /login 200 in 180ms
+ GET / 200 in 225ms
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /register in 4.8s (776 modules)
+ ✓ Compiled (998 modules)
+ GET /api/auth/session 200 in 8075ms
+ GET /api/auth/session 200 in 64ms
+ GET /api/auth/session 200 in 64ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 933ms (1693 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1269ms
+ GET /api/auth/session 200 in 292ms
+ GET /api/auth/session 200 in 95ms
+ GET /api/auth/session 200 in 80ms
+ GET /api/auth/session 200 in 77ms
+   Reload env: .env.local
+ ✓ Compiled in 1678ms (1492 modules)
+   Reload env: .env.local
+ ✓ Compiled in 1086ms (1492 modules)
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 1346ms (984 modules)
+ GET /api/auth/session 200 in 2204ms
+ GET /api/auth/csrf 200 in 48ms
+ POST /api/auth/signout 200 in 60ms
+ ○ Compiling /login ...
+ ✓ Compiled /login in 1009ms (990 modules)
+ GET /login 200 in 1645ms
+ GET /register 200 in 369ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 1306ms (1685 modules)
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 1727ms
+ GET /api/auth/session 200 in 124ms
+ GET /api/auth/session 200 in 45ms

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AIMS - Policy Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Geist:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#002118",
+                    "tertiary-fixed-dim": "#ffb3b6",
+                    "surface-variant": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "on-tertiary-fixed-variant": "#920028",
+                    "on-primary-fixed-variant": "#00513f",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "outline": "#6f7a74",
+                    "on-primary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "on-tertiary-container": "#ffcccd",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#82d7ba",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "surface-tint": "#016b54",
+                    "surface-container-highest": "#e1e3e4",
+                    "tertiary-fixed": "#ffdada",
+                    "on-primary-container": "#94e8cb",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#fea619",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed": "#ffddb8",
+                    "primary": "#00513f",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "surface-container-high": "#e7e8e9",
+                    "on-surface-variant": "#3e4944",
+                    "secondary": "#855300",
+                    "primary-fixed": "#9ef3d6",
+                    "tertiary-container": "#be0037",
+                    "on-secondary-container": "#684000",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary-fixed": "#40000c",
+                    "outline-variant": "#bec9c3",
+                    "surface-container": "#edeeef",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#82d7ba",
+                    "on-secondary-fixed": "#2a1700",
+                    "primary-container": "#006b54",
+                    "tertiary": "#920028",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "header-height": "64px",
+                    "container-padding": "2rem",
+                    "stack-md": "1rem",
+                    "stack-sm": "0.5rem",
+                    "sidebar-width": "240px",
+                    "gutter": "1.5rem"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Geist"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Geist"],
+                    "headline-xl": ["Geist"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Geist"],
+                    "headline-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .card-elevation {
+            box-shadow: 0px 1px 3px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- SideNavBar (Hidden on mobile) -->
+<aside class="hidden md:flex flex-col py-stack-md bg-surface-container-lowest border-r border-outline-variant w-[240px] fixed h-full z-50">
+<div class="px-6 mb-8">
+<span class="text-headline-lg font-headline-lg font-bold text-primary">AIMS</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3">person</span>
+<span class="text-label-md font-label-md">My Profile</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3">map</span>
+<span class="text-label-md font-label-md">Land Parcels</span>
+</a>
+<!-- Active State: My Policies -->
+<a class="flex items-center px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full mx-2 transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3">policy</span>
+<span class="text-label-md font-label-md">My Policies</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3">description</span>
+<span class="text-label-md font-label-md">Claims</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3">notifications</span>
+<span class="text-label-md font-label-md">Notifications</span>
+</a>
+<a class="flex items-center px-4 py-3 mx-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-2 mt-auto">
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3">help</span>
+<span class="text-label-md font-label-md">Help Center</span>
+</a>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3 text-error">logout</span>
+<span class="text-label-md font-label-md text-error">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 md:ml-[240px] flex flex-col min-w-0 bg-background">
+<!-- TopNavBar -->
+<header class="h-[64px] bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-8 sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+</button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">Policy #POL-2024-001</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 border border-primary text-primary font-label-md text-label-md rounded-full hover:bg-surface-container-low transition-all">
+                    Download PDF
+                </button>
+<div class="relative group">
+<img class="w-10 h-10 rounded-full border-2 border-primary-fixed cursor-pointer" data-alt="A portrait of a middle-aged South Asian farmer wearing a traditional white turban and a green vest, smiling warmly against a blurred background of a lush wheat field during sunset. The lighting is golden and soft, emphasizing a professional yet approachable dashboard profile aesthetic for an agricultural insurance platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1E5PHVUgqUiq3kemBfUdsqX4wrgQDBrgX5D1xsHliKYOdUi_R7nYUHKmL_fu6i0gra7dszM7EdiLNFwb8gVV4hJU19n8T_s2hvR3grZmVqwx5rDeA2WBwAh3XUr2-DL9KfnAS4jTDRfgFQlS4qCT-LoqvucsgrabHbfuaGEJUoI5PnN1A5BDGGf8RB-p3unpYxZeduk2nVyzztO8gZlhSs_zQdesmQFBjahylCZNhA2sxVn1QL7q4Mu3tBHQv-x3oYOB90VTJg_Y"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8 max-w-7xl mx-auto w-full space-y-gutter">
+<!-- Main Policy & Farmer Details Grid -->
+<div class="bento-grid">
+<!-- Left: Policy Details Card -->
+<div class="col-span-12 lg:col-span-7 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT p-8 card-elevation">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Policy Details</h2>
+<p class="text-body-sm text-on-surface-variant">Current active coverage information</p>
+</div>
+<span class="px-4 py-1 bg-primary-fixed text-on-primary-fixed font-label-md text-label-md rounded-full">Active</span>
+</div>
+<div class="grid grid-cols-2 gap-y-6 gap-x-12">
+<div class="space-y-1">
+<span class="text-label-sm text-outline uppercase tracking-wider">Policy Number</span>
+<p class="text-body-md font-semibold text-on-surface">#POL-2024-001</p>
+</div>
+<div class="space-y-1">
+<span class="text-label-sm text-outline uppercase tracking-wider">Plan Name</span>
+<p class="text-body-md font-semibold text-on-surface">Premium Crop Guard</p>
+</div>
+<div class="space-y-1">
+<span class="text-label-sm text-outline uppercase tracking-wider">Coverage Amount</span>
+<p class="text-body-md font-semibold text-primary">Rs. 1,250,000</p>
+</div>
+<div class="space-y-1">
+<span class="text-label-sm text-outline uppercase tracking-wider">Annual Premium</span>
+<p class="text-body-md font-semibold text-on-surface">Rs. 45,000</p>
+</div>
+<div class="space-y-1">
+<span class="text-label-sm text-outline uppercase tracking-wider">Policy Term</span>
+<p class="text-body-md font-semibold text-on-surface">12 Months</p>
+</div>
+<div class="space-y-1">
+<span class="text-label-sm text-outline uppercase tracking-wider">Effective Dates</span>
+<p class="text-body-md font-semibold text-on-surface">Jan 01, 2024 - Dec 31, 2024</p>
+</div>
+</div>
+</div>
+<!-- Right: Farmer & Land Details -->
+<div class="col-span-12 lg:col-span-5 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT p-8 card-elevation">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-8">Farmer &amp; Land</h2>
+<div class="space-y-6">
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-DEFAULT">
+<div class="w-12 h-12 bg-primary-fixed text-on-primary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="text-body-md font-semibold text-on-surface">John Doe</p>
+<p class="text-body-sm text-on-surface-variant">CNIC: 42101-XXXXXXX-1</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between text-body-md">
+<span class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">call</span> Contact
+                                </span>
+<span class="font-medium">+92 300 1234567</span>
+</div>
+<div class="flex items-center justify-between text-body-md">
+<span class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">distance</span> Land Parcel
+                                </span>
+<span class="font-medium">North Field (12.5 Acres)</span>
+</div>
+<div class="flex items-center justify-between text-body-md">
+<span class="text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">agriculture</span> Primary Crop
+                                </span>
+<span class="font-medium">Wheat (Durum)</span>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant">
+<div class="h-32 rounded-DEFAULT overflow-hidden relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A top-down satellite view of a healthy rectangular wheat field in a rural agricultural landscape. The field is divided into neat plots with vibrant green and golden hues, surrounded by narrow dirt access roads and sparse trees. The style is clear and systematic, reminiscent of a high-resolution precision farming GIS interface with a professional, clean corporate modern aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA_YZdylNXv3fHdUEB-L3Y0-1sikkkpyQapkBUnVLtgVNsPMJOAr1KEAk1fC8JwH0fIx4m-MpDp9QGFQogZx-KDlkmn2yoZVCLZQ2lV3JD1qgLW2oV2e8sT8gH400pY1RR3pQ23Y73JmS6USAc7Y1W0lR_1dGwBGq1Mn49Iu3ohZ9qUhO1iGqQUyC9tjmw1_OmETWXRPLd_iS3bA_pdFFVW2TwP6GHKvaye0IQ0j5OT0Og06rLPs0cWrqBH-3FFkeRZt7aJsFdB4lk')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<span class="absolute bottom-2 left-3 text-white text-label-sm">Location: Sargodha, Punjab</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Monitoring & NDVI Status (Middle Row) -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT p-8 card-elevation">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-6">Auto-Trigger Monitoring</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="p-6 bg-surface-container rounded-DEFAULT flex items-center gap-6">
+<div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">satellite_alt</span>
+</div>
+<div>
+<p class="text-label-sm text-outline uppercase">Satellite Monitoring</p>
+<p class="text-headline-lg-mobile font-bold text-on-surface">Active</p>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="text-label-sm">Live Feed Connected</span>
+</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container rounded-DEFAULT flex items-center gap-6">
+<div class="w-16 h-16 bg-secondary-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl">insights</span>
+</div>
+<div>
+<p class="text-label-sm text-outline uppercase">NDVI Status</p>
+<p class="text-headline-lg-mobile font-bold text-on-surface">Healthy (0.72)</p>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="text-label-sm">Above Threshold</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<div class="flex justify-between items-end mb-2">
+<span class="text-label-md font-medium text-on-surface">Growth Index Trend</span>
+<span class="text-label-sm text-outline">Last Updated: 2 Hours Ago</span>
+</div>
+<div class="h-24 flex items-end gap-1">
+<!-- Simple Sparkline with Tailwind -->
+<div class="flex-1 bg-primary-fixed-dim h-12 rounded-t-sm"></div>
+<div class="flex-1 bg-primary-fixed-dim h-14 rounded-t-sm"></div>
+<div class="flex-1 bg-primary-fixed-dim h-10 rounded-t-sm"></div>
+<div class="flex-1 bg-primary-fixed-dim h-16 rounded-t-sm"></div>
+<div class="flex-1 bg-primary-fixed-dim h-18 rounded-t-sm"></div>
+<div class="flex-1 bg-primary-fixed-dim h-20 rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-24 rounded-t-sm"></div>
+</div>
+</div>
+</div>
+<!-- Coverage Summary -->
+<div class="col-span-12 md:col-span-4 bg-primary-container text-on-primary-container rounded-DEFAULT p-8 relative overflow-hidden flex flex-col justify-between">
+<div class="relative z-10">
+<h2 class="text-headline-lg font-headline-lg mb-2">Coverage Summary</h2>
+<p class="text-body-sm opacity-90 mb-6">Key protection metrics for this policy period.</p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-0.5">verified</span>
+<div>
+<p class="text-label-md font-bold">Comprehensive Loss</p>
+<p class="text-body-sm opacity-80">Protection against total crop failure.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-0.5">thunderstorm</span>
+<div>
+<p class="text-label-md font-bold">Climate Protection</p>
+<p class="text-body-sm opacity-80">Drought, flood, and hail coverage.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined mt-0.5">bug_report</span>
+<div>
+<p class="text-label-md font-bold">Pest &amp; Disease</p>
+<p class="text-body-sm opacity-80">Locust and rust infestation shield.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+</div>
+<!-- Claim History Table -->
+<div class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT overflow-hidden card-elevation">
+<div class="p-8 border-b border-outline-variant flex justify-between items-center">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Claim History</h2>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+                            View All <span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-8 py-4 text-label-sm text-outline uppercase font-bold">Claim ID</th>
+<th class="px-8 py-4 text-label-sm text-outline uppercase font-bold">Incident Date</th>
+<th class="px-8 py-4 text-label-sm text-outline uppercase font-bold">Cause</th>
+<th class="px-8 py-4 text-label-sm text-outline uppercase font-bold">Amount Requested</th>
+<th class="px-8 py-4 text-label-sm text-outline uppercase font-bold">Status</th>
+<th class="px-8 py-4 text-label-sm text-outline uppercase font-bold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5 text-body-md font-medium">#CLM-99812</td>
+<td class="px-8 py-5 text-body-sm">Oct 12, 2023</td>
+<td class="px-8 py-5 text-body-sm">Minor Flood Damage</td>
+<td class="px-8 py-5 text-body-md font-semibold">Rs. 85,000</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-label-sm">Approved</span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="p-2 text-outline hover:text-primary rounded-full transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5 text-body-md font-medium">#CLM-95430</td>
+<td class="px-8 py-5 text-body-sm">Aug 21, 2022</td>
+<td class="px-8 py-5 text-body-sm">Hailstorm Impact</td>
+<td class="px-8 py-5 text-body-md font-semibold">Rs. 120,000</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-label-sm">Approved</span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="p-2 text-outline hover:text-primary rounded-full transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5 text-body-md font-medium">#CLM-88124</td>
+<td class="px-8 py-5 text-body-sm">Jul 05, 2022</td>
+<td class="px-8 py-5 text-body-sm">Pest Infestation</td>
+<td class="px-8 py-5 text-body-md font-semibold">Rs. 45,000</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-label-sm">Rejected</span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="p-2 text-outline hover:text-primary rounded-full transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Bottom Action Buttons -->
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 border-t border-outline-variant">
+<button class="w-full sm:w-auto px-12 py-4 bg-primary text-white rounded-full font-label-md text-label-md shadow-lg hover:opacity-90 active:scale-95 transition-all">
+                    File a Claim
+                </button>
+<button class="w-full sm:w-auto px-12 py-4 border-2 border-primary text-primary rounded-full font-label-md text-label-md hover:bg-surface-container-low active:scale-95 transition-all">
+                    Renew Policy
+                </button>
+<button class="w-full sm:w-auto px-12 py-4 text-error hover:bg-red-50 rounded-full font-label-md text-label-md active:scale-95 transition-all">
+                    Cancel Policy
+                </button>
+</div>
+</div>
+<!-- Space for Footer Padding -->
+<div class="h-12"></div>
+</main>
+<script>
+        // Simple micro-interaction for rows
+        document.querySelectorAll('tbody tr').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.add('bg-surface-container-high');
+                setTimeout(() => row.classList.remove('bg-surface-container-high'), 200);
+            });
+        });
+    </script>
+</body></html>
