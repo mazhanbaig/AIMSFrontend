@@ -57,13 +57,17 @@ export default function DashboardHome() {
     if (role && role !== 'FARMER') {
       const dashboard = getDashboardRoute(role);
       if (dashboard !== '/dashboard') {
-        router.push(dashboard);
+        router.replace(dashboard);
       }
     }
   }, [role, router]);
 
   if (role && role !== 'FARMER') {
-    return null;
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <LoadingSpinner size="lg" text="Redirecting to your dashboard..." />
+      </div>
+    );
   }
 
   const policiesRes = policiesData as any;
