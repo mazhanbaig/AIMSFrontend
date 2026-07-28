@@ -3,7 +3,7 @@
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Bell, LogOut, Settings, User } from 'lucide-react';
+import { Bell, LogOut, Settings, User, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -33,7 +33,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-[#E8ECEF] bg-white px-4 sm:px-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)]">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 flex-1">
         <Button
           variant="ghost"
           size="icon"
@@ -44,18 +44,22 @@ export function Header() {
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </Button>
-        <div>
-          <h1 className="text-lg font-semibold text-[#1A1A1A]">Agricultural Insurance Management</h1>
-          <p className="text-sm text-[#666666] hidden sm:block">
-            {session?.user?.role?.replace('_', ' ') || 'Dashboard'}
-          </p>
+
+        {/* Search Bar - matching Stitch design */}
+        <div className="relative w-full max-w-md hidden md:block">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6f7a74]" />
+          <input
+            type="text"
+            placeholder="Search parcels, policies..."
+            className="w-full pl-11 pr-4 py-2 bg-[#f3f4f5] border-none rounded-full text-sm text-[#1A1A1A] focus:outline-none focus:ring-2 focus:ring-[#006B54] focus:bg-white transition-all placeholder:text-[#6f7a74]"
+          />
         </div>
       </div>
 
       <div className="flex items-center gap-2">
         {/* Notifications */}
         <Link href="/notifications">
-          <Button variant="ghost" size="icon" className="relative rounded-full">
+          <Button variant="ghost" size="icon" className="relative rounded-full hover:bg-[#F8F9FA]">
             <Bell className="h-5 w-5 text-[#666666]" />
             {unreadCount > 0 && (
               <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#006B54] text-[10px] font-bold text-white">
@@ -65,13 +69,16 @@ export function Header() {
           </Button>
         </Link>
 
+        {/* Separator */}
+        <div className="h-6 w-px bg-[#E8ECEF] mx-1 hidden sm:block" />
+
         {/* User Menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2 px-2 rounded-full">
-              <Avatar className="h-8 w-8">
+            <Button variant="ghost" className="flex items-center gap-2 px-2 rounded-full hover:bg-[#F8F9FA]">
+              <Avatar className="h-8 w-8 border border-[#E8ECEF]">
                 <AvatarImage src={user?.avatar || ''} alt={user?.name || ''} />
-                <AvatarFallback className="bg-[#006B54] text-white">
+                <AvatarFallback className="bg-[#006B54] text-white text-xs">
                   {initials}
                 </AvatarFallback>
               </Avatar>

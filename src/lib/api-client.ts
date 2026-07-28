@@ -67,6 +67,7 @@ export const authApi = {
     email: string;
     password: string;
     role: string;
+    phone?: string;
     tenantSlug?: string;
   }) => apiClient.post('/api/v1/auth/register', data),
   /**
@@ -147,11 +148,9 @@ export const claimApi = {
     apiClient.patch(`/api/v1/claims/${id}/status`, data),
   assign: (id: string, data: any) =>
     apiClient.patch(`/api/v1/claims/${id}/assign`, data),
-  listAll: (params?: any) => apiClient.get('/api/v1/claims/admin/all', { params }),
+  listAll: (params?: any) => apiClient.get('/api/v1/claims', { params }),
   getFraudAnalysis: (id: string) =>
-    apiClient.get(`/api/v1/claims/${id}/fraud-analysis`),
-  addNote: (id: string, data: any) =>
-    apiClient.post(`/api/v1/claims/${id}/notes`, data),
+    apiClient.get(`/api/v1/damage/${id}`),
 };
 
 // =====================
@@ -183,8 +182,6 @@ export const notificationApi = {
 export const adminApi = {
   getDashboard: () => apiClient.get('/api/v1/admin/dashboard'),
   getAnalytics: (params?: any) => apiClient.get('/api/v1/admin/analytics/claims', { params }),
-  getAnalyticsRevenue: (params?: any) =>
-    apiClient.get('/api/v1/admin/analytics/revenue', { params }),
   listStaff: (params?: any) => apiClient.get('/api/v1/admin/staff', { params }),
   createStaff: (data: any) => apiClient.post('/api/v1/admin/staff', data),
   updateStaff: (id: string, data: any) =>
@@ -205,10 +202,12 @@ export const platformApi = {
     apiClient.patch(`/api/v1/platform/tenants/${id}`, data),
   deleteTenant: (id: string) =>
     apiClient.delete(`/api/v1/platform/tenants/${id}`),
+  suspendTenant: (id: string) =>
+    apiClient.patch(`/api/v1/platform/tenants/${id}/suspend`),
+  approveTenant: (id: string) =>
+    apiClient.patch(`/api/v1/platform/tenants/${id}/approve`),
   seedTenant: (id: string) =>
     apiClient.post(`/api/v1/platform/tenants/${id}/seed`),
-  getPlatformAnalytics: (params?: any) =>
-    apiClient.get('/api/v1/platform/analytics', { params }),
 };
 
 // =====================
@@ -277,8 +276,10 @@ export const importApi = {
     apiClient.post('/api/v1/import/farmers-policies', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     }),
-  getJobStatus: (jobId: string) =>
-    apiClient.get(`/api/v1/import/jobs/${jobId}`),
+  exportFarmers: (params?: any) =>
+    apiClient.get('/api/v1/import/export/farmers', { params }),
+  exportClaims: (params?: any) =>
+    apiClient.get('/api/v1/import/export/claims', { params }),
 };
 
 // =====================

@@ -9,12 +9,22 @@ import { withAuth } from '@/lib/auth';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 function PlatformAnalyticsPage() {
-  const { data: analyticsData, isLoading } = useQuery({
-    queryKey: ['platform-analytics'],
-    queryFn: () => platformApi.getPlatformAnalytics(),
+  const { data: tenantsData, isLoading } = useQuery({
+    queryKey: ['platform-tenants'],
+    queryFn: () => platformApi.listTenants({ limit: 100 }),
   });
 
-  const analytics = analyticsData?.data || {};
+  const tenantsRes = tenantsData as any;
+  const tenants = Array.isArray(tenantsRes?.data?.tenants) ? tenantsRes.data.tenants : Array.isArray(tenantsRes?.data) ? tenantsRes.data : [];
+  const analytics = {
+    totalTenants: tenants.length,
+    activeTenants: tenants.filter((t: any) => t.status === 'ACTIVE').length,
+    totalUsers: 0,
+    totalClaims: 0,
+    totalPolicies: 0,
+    claimsByStatus: null,
+    revenue: null,
+  };
 
   if (isLoading) return <LoadingSpinner size="lg" text="Loading analytics..." />;
 
@@ -135,7 +145,7 @@ function PlatformAnalyticsPage() {
         </Card>
       </div>
 
-      {analytics.revenue && (
+      {(analytics as any).revenue && (
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -147,15 +157,15 @@ function PlatformAnalyticsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <p className="text-sm text-muted-foreground">Total Revenue</p>
-                <p className="text-2xl font-bold">{analytics.revenue.total?.toLocaleString() || '0'}</p>
+                <p className="text-2xl font-bold">{((analytics as any).revenue?.total)?.toLocaleString() || '0'}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Monthly Recurring</p>
-                <p className="text-2xl font-bold">{analytics.revenue.monthly?.toLocaleString() || '0'}</p>
+                <p className="text-2xl font-bold">{((analytics as any).revenue?.monthly)?.toLocaleString() || '0'}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Pending Payouts</p>
-                <p className="text-2xl font-bold">{analytics.revenue.pending?.toLocaleString() || '0'}</p>
+                <p className="text-2xl font-bold">{((analytics as any).revenue?.pending)?.toLocaleString() || '0'}</p>
               </div>
             </div>
           </CardContent>

@@ -6,3 +6,5 @@
  ✓ Ready in 6.3s
    Reload env: .env.local
    Reload env: .env.local
+
+C:\Users\kk\Desktop\AIMSFrontend>

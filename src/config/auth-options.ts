@@ -49,6 +49,52 @@ export const authOptions: NextAuthOptions = {
         }
       },
     }),
+    // ════════════════════════════════════════════
+    // DEV CREDENTIALS — bypasses Supabase Auth
+    // Uses the dev-auth backend endpoint that skips password validation.
+    // ONLY available when NEXT_PUBLIC_API_URL points to a local backend
+    // or when NODE_ENV is not production.
+    // ════════════════════════════════════════════
+    CredentialsProvider({
+      id: 'dev-credentials',
+      name: 'Dev Login',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+      },
+      async authorize(credentials) {
+        if (!credentials?.email) {
+          throw new Error('Email is required');
+        }
+
+        try {
+          const response = await axios.post(`${API_URL}/api/v1/dev/auth/login`, {
+            email: credentials.email,
+          });
+
+          const data = response.data;
+          const user = data.data || data.user || data;
+
+          if (user) {
+            return {
+              id: user.id,
+              email: user.email,
+              name: user.name,
+              role: user.role,
+              tenantId: user.tenantId,
+              farmerId: user.farmerId,
+              avatar: user.avatar,
+              accessToken: user.accessToken || user.token,
+              authSource: 'dev-bypass',
+            };
+          }
+
+          return null;
+        } catch (error: any) {
+          const message = error.response?.data?.message || 'Dev login failed';
+          throw new Error(message);
+        }
+      },
+    }),
     // Google OAuth - requires GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET env vars
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || '',

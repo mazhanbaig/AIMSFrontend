@@ -99,3 +99,71 @@
  GET /.well-known/appspecific/com.chrome.devtools.json 404 in 63ms
  GET /api/auth/session 200 in 50ms
  GET /api/auth/session 200 in 40ms
+ GET /api/auth/session 200 in 102ms
+ GET /api/auth/csrf 200 in 96ms
+ POST /api/auth/signout 200 in 59ms
+ GET /login 200 in 157ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 115ms
+ GET /api/auth/session 200 in 95ms
+ GET /api/auth/session 200 in 55ms
+ GET /api/auth/session 200 in 57ms
+ GET /api/auth/csrf 200 in 59ms
+ POST /api/auth/signout 200 in 36ms
+ GET /login 200 in 93ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 93ms
+ GET /api/auth/session 200 in 48ms
+ GET /api/auth/session 200 in 34ms
+ GET /api/auth/session 200 in 86ms
+ GET /api/auth/csrf 200 in 52ms
+ POST /api/auth/signout 200 in 45ms
+ GET /login 200 in 240ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 154ms
+ GET /api/auth/session 200 in 134ms
+ GET /api/auth/session 200 in 58ms
+ GET /api/auth/providers 200 in 201ms
+ GET /api/auth/csrf 200 in 69ms
+ POST /api/auth/callback/credentials 401 in 1650ms
+ GET /api/auth/providers 200 in 69ms
+ GET /api/auth/csrf 200 in 110ms
+ POST /api/auth/callback/credentials 401 in 940ms
+ GET /api/auth/providers 200 in 65ms
+ GET /api/auth/csrf 200 in 59ms
+ POST /api/auth/callback/credentials 401 in 935ms
+ GET /register 200 in 128ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 180ms
+ GET /api/auth/session 200 in 109ms
+ GET /api/auth/session 200 in 90ms
+ GET /register 200 in 233ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 157ms
+ GET /api/auth/session 200 in 73ms
+ GET /api/auth/session 200 in 48ms
+ GET /api/auth/session 200 in 59ms
+ GET /api/auth/csrf 200 in 58ms
+ POST /api/auth/signout 200 in 53ms
+ GET /login 200 in 128ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 109ms
+ GET /api/auth/session 200 in 40ms
+ GET /api/auth/session 200 in 29ms
+ GET /api/auth/session 200 in 83ms
+ GET /api/auth/csrf 200 in 45ms
+ POST /api/auth/signout 200 in 46ms
+ GET /login 200 in 115ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 120ms
+ GET /api/auth/session 200 in 84ms
+ GET /api/auth/session 200 in 69ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 65ms
+ GET /api/auth/session 200 in 240ms
+ GET /api/auth/session 200 in 161ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 415ms
+ GET /api/auth/session 200 in 205ms
+ GET /.well-known/appspecific/com.chrome.devtools.json 404 in 133ms
+ GET /api/auth/session 200 in 126ms
+ GET /api/auth/session 200 in 95ms
+ ○ Compiling / ...
+ ✓ Compiled / in 8.5s (643 modules)
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 2.9s (990 modules)
+ GET /api/auth/session 200 in 4137ms
+ GET /api/auth/session 200 in 1077ms
+
+C:\Users\kk\Desktop\AIMSFrontend>
