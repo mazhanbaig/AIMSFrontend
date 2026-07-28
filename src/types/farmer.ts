@@ -2,36 +2,37 @@ export interface Farmer {
   id: string;
   userId: string;
   tenantId: string;
-  name: string;
-  phone: string;
+  fullName: string;
+  guardianName?: string;
+  cnicNumber: string;
   address?: string;
   city?: string;
-  state?: string;
-  country?: string;
+  province?: string;
   dateOfBirth?: string;
-  governmentId?: string;
-  isVerified: boolean;
-  dynamicFields?: Record<string, any>;
+  gender?: string;
+  bankName?: string;
+  bankAccountNumber?: string;
+  accountTitle?: string;
+  profilePhotoUrl?: string;
+  customData?: Record<string, any>;
   createdAt: string;
-  updatedAt: string;
 }
 
 export interface LandParcel {
   id: string;
   farmerId: string;
-  name: string;
-  size: number;
-  unit: string;
-  location: string;
-  coordinates?: {
-    lat: number;
-    lng: number;
-  };
-  cropType?: string;
+  tenantId: string;
+  landTitleNumber?: string;
+  address: string;
+  latitude?: number;
+  longitude?: number;
+  areaAcres: number;
   soilType?: string;
-  isActive: boolean;
+  cropType: string;
+  irrigationType?: string;
+  ownershipType?: string;
+  district?: string;
   createdAt: string;
-  updatedAt: string;
 }
 
 export interface FarmerField {
@@ -48,22 +49,30 @@ export interface FarmerField {
 }
 
 export interface CreateFarmerInput {
-  name: string;
-  phone: string;
+  fullName: string;
+  guardianName?: string;
+  cnicNumber: string;
   address?: string;
   city?: string;
-  state?: string;
+  province?: string;
   dateOfBirth?: string;
-  governmentId?: string;
-  dynamicFields?: Record<string, any>;
+  gender?: string;
+  bankName?: string;
+  bankAccountNumber?: string;
+  accountTitle?: string;
+  profilePhotoUrl?: string;
+  customData?: Record<string, any>;
 }
 
 export interface CreateLandParcelInput {
-  name: string;
-  size: number;
-  unit: string;
-  location: string;
-  coordinates?: { lat: number; lng: number };
-  cropType?: string;
+  landTitleNumber?: string;
+  address: string;
+  latitude?: number;
+  longitude?: number;
+  areaAcres: number;
   soilType?: string;
+  cropType: string;
+  irrigationType?: string;
+  ownershipType?: string;
+  district?: string;
 }

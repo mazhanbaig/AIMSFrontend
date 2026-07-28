@@ -21,10 +21,9 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 const staffSchema = z.object({
-  name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
   role: z.string().min(1, 'Role is required'),
+  phone: z.string().optional(),
 });
 
 type StaffFormData = z.infer<typeof staffSchema>;
@@ -68,24 +67,15 @@ export function StaffForm({ initialData, mode = 'create' }: StaffFormProps) {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-lg">
       <div className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="name">Full Name <span className="text-destructive">*</span></Label>
-          <Input id="name" placeholder="John Doe" {...register('name')} />
-          {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
-        </div>
-
-        <div className="space-y-2">
           <Label htmlFor="email">Email <span className="text-destructive">*</span></Label>
           <Input id="email" type="email" placeholder="john@example.com" {...register('email')} />
           {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
         </div>
 
-        {mode === 'create' && (
-          <div className="space-y-2">
-            <Label htmlFor="password">Password <span className="text-destructive">*</span></Label>
-            <Input id="password" type="password" placeholder="••••••••" {...register('password')} />
-            {errors.password && <p className="text-sm text-destructive">{errors.password.message}</p>}
-          </div>
-        )}
+        <div className="space-y-2">
+          <Label htmlFor="phone">Phone</Label>
+          <Input id="phone" placeholder="+1234567890" {...register('phone')} />
+        </div>
 
         <div className="space-y-2">
           <Label htmlFor="role">Role <span className="text-destructive">*</span></Label>

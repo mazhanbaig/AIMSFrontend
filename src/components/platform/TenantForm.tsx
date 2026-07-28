@@ -19,9 +19,9 @@ const tenantSchema = z.object({
     .string()
     .min(2, 'Slug must be at least 2 characters')
     .regex(/^[a-z0-9-]+$/, 'Slug must be lowercase alphanumeric with hyphens'),
-  domain: z.string().optional(),
-  primaryColor: z.string().optional(),
-  subscriptionTier: z.string().optional(),
+  adminEmail: z.string().email('Valid admin email is required'),
+  logoUrl: z.string().url().optional().or(z.literal('')),
+  billingEnabled: z.boolean().optional(),
 });
 
 type TenantFormData = z.infer<typeof tenantSchema>;
@@ -89,28 +89,14 @@ export function TenantForm({ initialData, mode = 'create', tenantId }: TenantFor
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="domain">Custom Domain</Label>
-              <Input id="domain" placeholder="insurance.example.com" {...register('domain')} />
+              <Label htmlFor="adminEmail">Admin Email <span className="text-destructive">*</span></Label>
+              <Input id="adminEmail" type="email" placeholder="admin@example.com" {...register('adminEmail')} />
+              {errors.adminEmail && <p className="text-sm text-destructive">{errors.adminEmail.message}</p>}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="subscriptionTier">Subscription Tier</Label>
-              <select
-                id="subscriptionTier"
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
-                {...register('subscriptionTier')}
-              >
-                <option value="">Select tier</option>
-                <option value="FREE">Free</option>
-                <option value="BASIC">Basic</option>
-                <option value="PRO">Pro</option>
-                <option value="ENTERPRISE">Enterprise</option>
-              </select>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="primaryColor">Brand Color</Label>
-              <Input id="primaryColor" type="color" className="h-10" {...register('primaryColor')} />
+              <Label htmlFor="logoUrl">Logo URL</Label>
+              <Input id="logoUrl" placeholder="https://example.com/logo.png" {...register('logoUrl')} />
             </div>
           </div>
         </CardContent>

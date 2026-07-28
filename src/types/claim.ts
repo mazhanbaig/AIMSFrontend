@@ -1,5 +1,4 @@
 export type ClaimStatus = 'DRAFT' | 'SUBMITTED' | 'UNDER_REVIEW' | 'INVESTIGATION' | 'APPROVED' | 'REJECTED' | 'PAID';
-export type ClaimPriority = 'LOW' | 'MEDIUM' | 'HIGH' | 'URGENT';
 
 export interface Claim {
   id: string;
@@ -9,23 +8,20 @@ export interface Claim {
   policyId: string;
   policy?: any;
   status: ClaimStatus;
-  priority: ClaimPriority;
-  title: string;
+  incidentType: string;
   description: string;
   incidentDate: string;
-  reportedDate: string;
-  estimatedLoss: number;
-  estimatedLossCurrency: string;
+  incidentLocation?: string;
+  submittedAt: string;
+  claimedAmount: number;
   approvedAmount?: number;
-  approvedAmountCurrency?: string;
   assignedTo?: string;
   assignedToUser?: any;
   fraudScore?: number;
   fraudVerdict?: string;
   fraudDetails?: any;
   documents?: ClaimDocument[];
-  notes?: ClaimNote[];
-  metadata?: Record<string, any>;
+  statusHistory?: ClaimStatusHistory[];
   createdAt: string;
   updatedAt: string;
 }
@@ -40,24 +36,24 @@ export interface ClaimDocument {
   uploadedAt: string;
 }
 
-export interface ClaimNote {
+export interface ClaimStatusHistory {
   id: string;
   claimId: string;
   userId: string;
-  userName: string;
-  content: string;
-  isInternal: boolean;
+  fromStatus: ClaimStatus;
+  toStatus: ClaimStatus;
+  note?: string;
   createdAt: string;
 }
 
 export interface CreateClaimInput {
   policyId: string;
-  title: string;
+  incidentType: string;
   description: string;
   incidentDate: string;
-  estimatedLoss: number;
-  estimatedLossCurrency?: string;
-  documents?: File[];
+  incidentLocation?: string;
+  claimedAmount: number;
+  estimatedLossPercentage?: number;
 }
 
 export interface UpdateClaimStatusInput {

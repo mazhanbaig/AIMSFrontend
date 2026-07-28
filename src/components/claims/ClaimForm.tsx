@@ -22,10 +22,11 @@ import toast from 'react-hot-toast';
 
 const claimSchema = z.object({
   policyId: z.string().min(1, 'Policy is required'),
-  title: z.string().min(3, 'Title must be at least 3 characters'),
+  incidentType: z.string().min(3, 'Incident type must be at least 3 characters'),
   description: z.string().min(10, 'Description must be at least 10 characters'),
   incidentDate: z.string().min(1, 'Incident date is required'),
-  estimatedLoss: z.coerce.number().min(1, 'Estimated loss is required'),
+  incidentLocation: z.string().optional(),
+  claimedAmount: z.coerce.number().min(1, 'Claimed amount is required'),
 });
 
 type ClaimFormData = z.infer<typeof claimSchema>;
@@ -55,7 +56,7 @@ export function ClaimForm({ onSuccess }: ClaimFormProps) {
     try {
       await createClaim.mutateAsync({
         ...data,
-        documents: files,
+        incidentDate: new Date(data.incidentDate).toISOString(),
       });
       toast.success('Claim submitted successfully');
       onSuccess?.();
@@ -92,19 +93,19 @@ export function ClaimForm({ onSuccess }: ClaimFormProps) {
           )}
         </div>
 
-        {/* Title */}
+        {/* Incident Type */}
         <div className="space-y-2">
-          <Label htmlFor="title">
-            Claim Title <span className="text-destructive">*</span>
+          <Label htmlFor="incidentType">
+            Incident Type <span className="text-destructive">*</span>
           </Label>
           <Input
-            id="title"
-            placeholder="e.g., Crop damage due to heavy rainfall"
-            className={errors.title ? 'border-destructive' : ''}
-            {...register('title')}
+            id="incidentType"
+            placeholder="e.g., Flood, Drought, Pest Attack"
+            className={errors.incidentType ? 'border-destructive' : ''}
+            {...register('incidentType')}
           />
-          {errors.title && (
-            <p className="text-sm text-destructive">{errors.title.message}</p>
+          {errors.incidentType && (
+            <p className="text-sm text-destructive">{errors.incidentType.message}</p>
           )}
         </div>
 
@@ -143,22 +144,32 @@ export function ClaimForm({ onSuccess }: ClaimFormProps) {
           )}
         </div>
 
-        {/* Estimated Loss */}
+        {/* Incident Location */}
         <div className="space-y-2">
-          <Label htmlFor="estimatedLoss">
-            Estimated Loss (USD) <span className="text-destructive">*</span>
+          <Label htmlFor="incidentLocation">Incident Location</Label>
+          <Input
+            id="incidentLocation"
+            placeholder="e.g., Village name, district"
+            {...register('incidentLocation')}
+          />
+        </div>
+
+        {/* Claimed Amount */}
+        <div className="space-y-2">
+          <Label htmlFor="claimedAmount">
+            Claimed Amount (USD) <span className="text-destructive">*</span>
           </Label>
           <Input
-            id="estimatedLoss"
+            id="claimedAmount"
             type="number"
             min="0"
             step="0.01"
             placeholder="5000.00"
-            className={errors.estimatedLoss ? 'border-destructive' : ''}
-            {...register('estimatedLoss')}
+            className={errors.claimedAmount ? 'border-destructive' : ''}
+            {...register('claimedAmount')}
           />
-          {errors.estimatedLoss && (
-            <p className="text-sm text-destructive">{errors.estimatedLoss.message}</p>
+          {errors.claimedAmount && (
+            <p className="text-sm text-destructive">{errors.claimedAmount.message}</p>
           )}
         </div>
 

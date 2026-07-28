@@ -43,11 +43,11 @@ export function FarmerForm({ mode = 'create', onSuccess }: FarmerFormProps) {
 
   // Default static fields
   const staticFields: FieldConfig[] = [
-    { fieldKey: 'name', label: 'Full Name', fieldType: 'text', required: true, placeholder: 'Enter your full name' },
-    { fieldKey: 'phone', label: 'Phone Number', fieldType: 'phone', required: true, placeholder: '+1234567890' },
+    { fieldKey: 'fullName', label: 'Full Name', fieldType: 'text', required: true, placeholder: 'Enter your full name' },
+    { fieldKey: 'cnicNumber', label: 'CNIC Number', fieldType: 'text', required: true, placeholder: '13-digit CNIC number' },
     { fieldKey: 'address', label: 'Address', fieldType: 'text', required: false, placeholder: 'Enter your address' },
     { fieldKey: 'city', label: 'City', fieldType: 'text', required: false, placeholder: 'Enter your city' },
-    { fieldKey: 'state', label: 'State/Province', fieldType: 'text', required: false, placeholder: 'Enter your state' },
+    { fieldKey: 'province', label: 'Province', fieldType: 'text', required: false, placeholder: 'Enter your province' },
     { fieldKey: 'dateOfBirth', label: 'Date of Birth', fieldType: 'date', required: false },
   ];
 

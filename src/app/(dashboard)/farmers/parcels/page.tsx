@@ -65,36 +65,26 @@ export default function LandParcelsPage() {
             </DialogHeader>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
-                <Label htmlFor="name">Parcel Name</Label>
-                <Input id="name" {...register('name', { required: 'Required' })} placeholder="e.g. North Field" />
-                {errors.name && <p className="text-xs text-destructive mt-1">{errors.name.message}</p>}
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="size">Size</Label>
-                  <Input id="size" type="number" step="0.01" {...register('size', { required: 'Required', valueAsNumber: true })} />
-                  {errors.size && <p className="text-xs text-destructive mt-1">{errors.size.message}</p>}
-                </div>
-                <div>
-                  <Label htmlFor="unit">Unit</Label>
-                  <select id="unit" {...register('unit', { required: 'Required' })} className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                    <option value="ACRES">Acres</option>
-                    <option value="HECTARES">Hectares</option>
-                    <option value="SQ_METERS">Sq Meters</option>
-                  </select>
-                </div>
+                <Label htmlFor="landTitleNumber">Parcel Title</Label>
+                <Input id="landTitleNumber" {...register('landTitleNumber')} placeholder="e.g. North Field" />
               </div>
               <div>
-                <Label htmlFor="location">Location</Label>
-                <Input id="location" {...register('location', { required: 'Required' })} placeholder="e.g. Punjab, Pakistan" />
-                {errors.location && <p className="text-xs text-destructive mt-1">{errors.location.message}</p>}
+                <Label htmlFor="address">Address <span className="text-destructive">*</span></Label>
+                <Input id="address" {...register('address', { required: 'Required' })} placeholder="e.g. Punjab, Pakistan" />
+                {errors.address && <p className="text-xs text-destructive mt-1">{errors.address.message}</p>}
               </div>
               <div>
-                <Label htmlFor="cropType">Crop Type (optional)</Label>
-                <Input id="cropType" {...register('cropType')} placeholder="e.g. Wheat, Rice" />
+                <Label htmlFor="areaAcres">Area (Acres) <span className="text-destructive">*</span></Label>
+                <Input id="areaAcres" type="number" step="0.01" {...register('areaAcres', { required: 'Required', valueAsNumber: true })} />
+                {errors.areaAcres && <p className="text-xs text-destructive mt-1">{errors.areaAcres.message}</p>}
               </div>
               <div>
-                <Label htmlFor="soilType">Soil Type (optional)</Label>
+                <Label htmlFor="cropType">Crop Type <span className="text-destructive">*</span></Label>
+                <Input id="cropType" {...register('cropType', { required: 'Required' })} placeholder="e.g. Wheat, Rice" />
+                {errors.cropType && <p className="text-xs text-destructive mt-1">{errors.cropType.message}</p>}
+              </div>
+              <div>
+                <Label htmlFor="soilType">Soil Type</Label>
                 <Input id="soilType" {...register('soilType')} placeholder="e.g. Loamy" />
               </div>
               <Button type="submit" className="w-full" disabled={createParcel.isPending}>
@@ -121,21 +111,18 @@ export default function LandParcelsPage() {
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-2">
                     <MapPin className="h-5 w-5 text-primary" />
-                    <CardTitle className="text-base">{parcel.name}</CardTitle>
+                    <CardTitle className="text-base">{parcel.landTitleNumber || parcel.address}</CardTitle>
                   </div>
-                  <Badge variant={parcel.isActive ? 'success' : 'secondary'}>
-                    {parcel.isActive ? 'Active' : 'Inactive'}
-                  </Badge>
                 </div>
               </CardHeader>
               <CardContent className="space-y-2">
                 <div className="flex items-center gap-2 text-sm">
-                  <span className="text-muted-foreground">Size:</span>
-                  <span className="font-medium">{parcel.size} {parcel.unit}</span>
+                  <span className="text-muted-foreground">Area:</span>
+                  <span className="font-medium">{parcel.areaAcres} acres</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <span className="text-muted-foreground">Location:</span>
-                  <span className="font-medium">{parcel.location}</span>
+                  <span className="text-muted-foreground">Address:</span>
+                  <span className="font-medium">{parcel.address}</span>
                 </div>
                 {parcel.cropType && (
                   <div className="flex items-center gap-2 text-sm">
