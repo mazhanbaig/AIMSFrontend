@@ -60,7 +60,6 @@ apiClient.interceptors.response.use(
 // AUTH API
 // =====================
 export const authApi = {
-  getMe: () => apiClient.get('/api/v1/auth/me'),
   updateProfile: (data: any) => apiClient.patch('/api/v1/auth/profile', data),
   register: (data: {
     name: string;
@@ -70,22 +69,6 @@ export const authApi = {
     phone?: string;
     tenantSlug?: string;
   }) => apiClient.post('/api/v1/auth/register', data),
-  /**
-   * OAuth callback - called after Google/GitHub sign-in to create or fetch
-   * the user in the backend database and return their role/tenantId/permissions.
-   * The backend creates the user if they don't exist, or returns existing data.
-   */
-  oauthCallback: (data: {
-    email: string;
-    name: string;
-    avatar?: string;
-    provider: 'google' | 'github';
-    providerAccountId: string;
-  }) => apiClient.post('/api/v1/auth/oauth/callback', data),
-  /**
-   * Complete OAuth setup - called after the user selects their role and tenant
-   * on the post-signup setup page. Updates the user's profile and redirects to dashboard.
-   */
   completeOAuthSetup: (data: {
     role: UserRole;
     tenantSlug?: string;
@@ -100,7 +83,6 @@ export const farmerApi = {
   getProfile: () => apiClient.get('/api/v1/farmers/profile'),
   createProfile: (data: any) => apiClient.post('/api/v1/farmers/profile', data),
   updateProfile: (data: any) => apiClient.patch('/api/v1/farmers/profile', data),
-  getFields: () => apiClient.get('/api/v1/farmers/fields'),
   list: (params?: any) => apiClient.get('/api/v1/farmers', { params }),
   get: (id: string) => apiClient.get(`/api/v1/farmers/${id}`),
 };
@@ -110,9 +92,7 @@ export const farmerApi = {
 // =====================
 export const landParcelApi = {
   list: (params?: any) => apiClient.get('/api/v1/land-parcels', { params }),
-  get: (id: string) => apiClient.get(`/api/v1/land-parcels/${id}`),
   create: (data: any) => apiClient.post('/api/v1/land-parcels', data),
-  update: (id: string, data: any) => apiClient.patch(`/api/v1/land-parcels/${id}`, data),
   delete: (id: string) => apiClient.delete(`/api/v1/land-parcels/${id}`),
 };
 
@@ -124,7 +104,6 @@ export const policyPlanApi = {
   get: (id: string) => apiClient.get(`/api/v1/policy-plans/${id}`),
   create: (data: any) => apiClient.post('/api/v1/policy-plans', data),
   update: (id: string, data: any) => apiClient.patch(`/api/v1/policy-plans/${id}`, data),
-  delete: (id: string) => apiClient.delete(`/api/v1/policy-plans/${id}`),
   quote: (data: any) => apiClient.post('/api/v1/policy-plans/quote', data),
 };
 
@@ -148,9 +127,8 @@ export const claimApi = {
     apiClient.patch(`/api/v1/claims/${id}/status`, data),
   assign: (id: string, data: any) =>
     apiClient.patch(`/api/v1/claims/${id}/assign`, data),
-  listAll: (params?: any) => apiClient.get('/api/v1/claims', { params }),
   getFraudAnalysis: (id: string) =>
-    apiClient.get(`/api/v1/damage/${id}`),
+    apiClient.get(`/api/v1/claims/${id}/fraud-analysis`),
 };
 
 // =====================
@@ -162,8 +140,6 @@ export const documentApi = {
       headers: { 'Content-Type': 'multipart/form-data' },
     }),
   list: (claimId: string) => apiClient.get(`/api/v1/documents/claim/${claimId}`),
-  get: (id: string) => apiClient.get(`/api/v1/documents/${id}`),
-  delete: (id: string) => apiClient.delete(`/api/v1/documents/${id}`),
 };
 
 // =====================
@@ -184,8 +160,6 @@ export const adminApi = {
   getAnalytics: (params?: any) => apiClient.get('/api/v1/admin/analytics/claims', { params }),
   listStaff: (params?: any) => apiClient.get('/api/v1/admin/staff', { params }),
   createStaff: (data: any) => apiClient.post('/api/v1/admin/staff', data),
-  updateStaff: (id: string, data: any) =>
-    apiClient.patch(`/api/v1/admin/staff/${id}`, data),
   toggleStaff: (id: string) =>
     apiClient.patch(`/api/v1/admin/staff/${id}/toggle-status`),
   getStaff: (id: string) => apiClient.get(`/api/v1/admin/staff/${id}`),
@@ -200,12 +174,6 @@ export const platformApi = {
   createTenant: (data: any) => apiClient.post('/api/v1/platform/tenants', data),
   updateTenant: (id: string, data: any) =>
     apiClient.patch(`/api/v1/platform/tenants/${id}`, data),
-  deleteTenant: (id: string) =>
-    apiClient.delete(`/api/v1/platform/tenants/${id}`),
-  suspendTenant: (id: string) =>
-    apiClient.patch(`/api/v1/platform/tenants/${id}/suspend`),
-  approveTenant: (id: string) =>
-    apiClient.patch(`/api/v1/platform/tenants/${id}/approve`),
   seedTenant: (id: string) =>
     apiClient.post(`/api/v1/platform/tenants/${id}/seed`),
 };
@@ -218,9 +186,6 @@ export const settingsApi = {
   updateSettings: (data: any) => apiClient.patch('/api/v1/settings', data),
   getFraudTier: () => apiClient.get('/api/v1/settings/fraud-tier'),
   updateFraudTier: (data: any) => apiClient.patch('/api/v1/settings/fraud-tier', data),
-  getPaymentGateway: () => apiClient.get('/api/v1/settings/payment-gateway'),
-  updatePaymentGateway: (data: any) =>
-    apiClient.patch('/api/v1/settings/payment-gateway', data),
 };
 
 // =====================
@@ -228,10 +193,7 @@ export const settingsApi = {
 // =====================
 export const tenantFieldApi = {
   list: () => apiClient.get('/api/v1/settings/fields'),
-  get: (id: string) => apiClient.get(`/api/v1/settings/fields/${id}`),
   create: (data: any) => apiClient.post('/api/v1/settings/fields', data),
-  update: (id: string, data: any) =>
-    apiClient.patch(`/api/v1/settings/fields/${id}`, data),
   delete: (id: string) => apiClient.delete(`/api/v1/settings/fields/${id}`),
 };
 
@@ -240,14 +202,10 @@ export const tenantFieldApi = {
 // =====================
 export const iamApi = {
   listRoles: () => apiClient.get('/api/v1/iam/roles'),
-  getRole: (id: string) => apiClient.get(`/api/v1/iam/roles/${id}`),
   createRole: (data: any) => apiClient.post('/api/v1/iam/roles', data),
   updateRole: (id: string, data: any) =>
     apiClient.patch(`/api/v1/iam/roles/${id}`, data),
   deleteRole: (id: string) => apiClient.delete(`/api/v1/iam/roles/${id}`),
-  assignRole: (data: any) => apiClient.post('/api/v1/iam/roles/assign', data),
-  getPermissions: () => apiClient.get('/api/v1/iam/permissions'),
-  getMyPermissions: () => apiClient.get('/api/v1/iam/permissions/mine'),
 };
 
 // =====================
@@ -257,36 +215,11 @@ export const billingApi = {
   subscribe: (tier: string) => apiClient.post('/api/v1/billing/subscribe', { tier }),
   cancel: () => apiClient.post('/api/v1/billing/cancel'),
   getStatus: () => apiClient.get('/api/v1/billing/status'),
-  getUsage: () => apiClient.get('/api/v1/billing/usage'),
   listInvoices: (params?: any) => apiClient.get('/api/v1/billing/invoices', { params }),
   getInvoice: (id: string) => apiClient.get(`/api/v1/billing/invoices/${id}`),
   payInvoice: (id: string) => apiClient.post(`/api/v1/billing/invoices/${id}/pay`),
-  generateInvoice: () => apiClient.post('/api/v1/billing/invoices/generate'),
 };
 
-// =====================
-// IMPORT API
-// =====================
-export const importApi = {
-  importPolicyPlans: (formData: FormData) =>
-    apiClient.post('/api/v1/import/policy-plans', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }),
-  importFarmersPolicies: (formData: FormData) =>
-    apiClient.post('/api/v1/import/farmers-policies', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }),
-  exportFarmers: (params?: any) =>
-    apiClient.get('/api/v1/import/export/farmers', { params }),
-  exportClaims: (params?: any) =>
-    apiClient.get('/api/v1/import/export/claims', { params }),
-};
 
-// =====================
-// HEALTH API
-// =====================
-export const healthApi = {
-  check: () => apiClient.get('/api/v1/health'),
-};
 
 export default apiClient;

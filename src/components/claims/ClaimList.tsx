@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useClaims, useAllClaims } from '@/hooks/useClaims';
+import { useClaims } from '@/hooks/useClaims';
 import { ClaimCard } from './ClaimCard';
 import { SearchBar } from '@/components/common/SearchBar';
 import { Pagination } from '@/components/common/Pagination';
@@ -32,10 +32,7 @@ export function ClaimList({ showActions = false, isAdmin = false }: ClaimListPro
   const params: any = { search, page, limit };
   if (status !== 'ALL') params.status = status;
 
-  const { data: farmerData, isLoading: farmerLoading } = useClaims(isAdmin ? undefined : params);
-  const { data: adminData, isLoading: adminLoading } = useAllClaims(isAdmin ? params : undefined);
-  const data = isAdmin ? adminData : farmerData;
-  const isLoading = isAdmin ? adminLoading : farmerLoading;
+  const { data, isLoading } = useClaims(isAdmin ? params : undefined);
   const claims = data?.data || [];
   const pagination = data?.pagination || { page: 1, totalPages: 1, total: 0 };
 

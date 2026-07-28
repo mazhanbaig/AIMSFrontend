@@ -15,16 +15,6 @@ export function useClaims(params?: any) {
   });
 }
 
-export function useAllClaims(params?: any) {
-  return useQuery({
-    queryKey: ['claims', 'all', params],
-    queryFn: async () => {
-      const response = await claimApi.listAll(params);
-      return response.data;
-    },
-  });
-}
-
 export function useClaim(id: string) {
   return useQuery({
     queryKey: ['claim', id],

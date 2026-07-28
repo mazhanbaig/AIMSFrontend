@@ -1,16 +1,13 @@
 'use client';
 
 import { useSession, signIn, signOut } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
 import { useCallback, useEffect } from 'react';
 import { useAuthStore } from '@/stores/authStore';
 import { LoginInput, RegisterInput } from '@/types';
-import { getDashboardRoute } from '@/lib/auth';
-import apiClient from '@/lib/api-client';
+import { authApi } from '@/lib/api-client';
 
 export function useAuth() {
   const { data: session, status, update } = useSession();
-  const router = useRouter();
   const { user, setUser, logout: storeLogout, isAuthenticated } = useAuthStore();
 
   // Sync session with auth store
@@ -39,7 +36,7 @@ export function useAuth() {
 
   const register = useCallback(
     async (data: RegisterInput & { userType: string }) => {
-      const response = await apiClient.post('/api/v1/auth/register', {
+      const response = await authApi.register({
         email: data.email,
         password: data.password,
         name: data.name,
@@ -66,7 +63,7 @@ export function useAuth() {
 
   const updateProfile = useCallback(
     async (data: any) => {
-      const response = await apiClient.patch('/api/v1/auth/profile', data);
+      const response = await authApi.updateProfile(data);
       setUser({ ...user, ...response.data.data } as any);
       return response.data;
     },
