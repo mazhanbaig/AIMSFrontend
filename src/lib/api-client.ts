@@ -92,7 +92,9 @@ export const farmerApi = {
 // =====================
 export const landParcelApi = {
   list: (params?: any) => apiClient.get('/api/v1/land-parcels', { params }),
+  get: (id: string) => apiClient.get(`/api/v1/land-parcels/${id}`),
   create: (data: any) => apiClient.post('/api/v1/land-parcels', data),
+  update: (id: string, data: any) => apiClient.patch(`/api/v1/land-parcels/${id}`, data),
   delete: (id: string) => apiClient.delete(`/api/v1/land-parcels/${id}`),
 };
 
@@ -147,7 +149,7 @@ export const documentApi = {
 // =====================
 export const notificationApi = {
   list: (params?: any) => apiClient.get('/api/v1/notifications', { params }),
-  markRead: (data: { ids: string[] }) => apiClient.patch('/api/v1/notifications/read', data),
+  markRead: (data: { notificationIds: string[] }) => apiClient.patch('/api/v1/notifications/read', data),
   markAllRead: () => apiClient.patch('/api/v1/notifications/read-all'),
   getUnreadCount: () => apiClient.get('/api/v1/notifications/unread-count'),
 };
@@ -193,7 +195,9 @@ export const settingsApi = {
 // =====================
 export const tenantFieldApi = {
   list: () => apiClient.get('/api/v1/settings/fields'),
+  get: (id: string) => apiClient.get(`/api/v1/settings/fields/${id}`),
   create: (data: any) => apiClient.post('/api/v1/settings/fields', data),
+  update: (id: string, data: any) => apiClient.patch(`/api/v1/settings/fields/${id}`, data),
   delete: (id: string) => apiClient.delete(`/api/v1/settings/fields/${id}`),
 };
 
@@ -202,10 +206,14 @@ export const tenantFieldApi = {
 // =====================
 export const iamApi = {
   listRoles: () => apiClient.get('/api/v1/iam/roles'),
+  getRole: (id: string) => apiClient.get(`/api/v1/iam/roles/${id}`),
   createRole: (data: any) => apiClient.post('/api/v1/iam/roles', data),
   updateRole: (id: string, data: any) =>
     apiClient.patch(`/api/v1/iam/roles/${id}`, data),
   deleteRole: (id: string) => apiClient.delete(`/api/v1/iam/roles/${id}`),
+  assignRole: (data: any) => apiClient.post('/api/v1/iam/roles/assign', data),
+  listPermissions: () => apiClient.get('/api/v1/iam/permissions'),
+  getMyPermissions: () => apiClient.get('/api/v1/iam/permissions/mine'),
 };
 
 // =====================

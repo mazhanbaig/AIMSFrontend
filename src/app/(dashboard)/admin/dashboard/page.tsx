@@ -8,12 +8,26 @@ import { RevenueChart } from '@/components/charts/RevenueChart';
 import { FraudScoreChart } from '@/components/charts/FraudScoreChart';
 
 export default function AdminDashboardPage() {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['admin-dashboard'],
-    queryFn: () => adminApi.getDashboard(),
+    queryFn: async () => {
+      const response = await adminApi.getDashboard();
+      return response.data;
+    },
   });
 
   const stats = data?.data || {};
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="text-center">
+          <p className="text-lg text-destructive">Failed to load dashboard</p>
+          <p className="text-sm text-muted-foreground mt-1">Please try again later</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">

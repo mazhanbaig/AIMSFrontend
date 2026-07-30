@@ -12,14 +12,14 @@ export function useNotifications(params?: any) {
     queryKey: ['notifications', params],
     queryFn: async () => {
       const response = await notificationApi.list(params);
-      const data = response.data.data || response.data;
-      return data;
+      const body = response.data;
+      return { data: body.items || body.data, pagination: body.pagination };
     },
   });
 
   useEffect(() => {
-    if (query.data) {
-      setNotifications(Array.isArray(query.data) ? query.data : []);
+    if (query.data?.data) {
+      setNotifications(query.data.data);
     }
   }, [query.data, setNotifications]);
 
@@ -43,7 +43,7 @@ export function useMarkNotificationRead() {
 
   return useMutation({
     mutationFn: async (ids: string[]) => {
-      const response = await notificationApi.markRead({ ids });
+      const response = await notificationApi.markRead({ notificationIds: ids });
       return response.data;
     },
     onSuccess: (_data, ids) => {

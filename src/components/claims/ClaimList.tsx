@@ -32,12 +32,21 @@ export function ClaimList({ showActions = false, isAdmin = false }: ClaimListPro
   const params: any = { search, page, limit };
   if (status !== 'ALL') params.status = status;
 
-  const { data, isLoading } = useClaims(isAdmin ? params : undefined);
+  const { data, isLoading, error } = useClaims(isAdmin ? params : undefined);
   const claims = data?.data || [];
   const pagination = data?.pagination || { page: 1, totalPages: 1, total: 0 };
 
   if (isLoading) {
     return <LoadingSpinner size="lg" text="Loading claims..." />;
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-lg text-destructive">Failed to load claims</p>
+        <p className="text-sm text-muted-foreground mt-1">Please try again later</p>
+      </div>
+    );
   }
 
   const getDetailPath = (claimId: string) =>

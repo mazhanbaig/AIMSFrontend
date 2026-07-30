@@ -2,16 +2,14 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useQuery } from '@tanstack/react-query';
-import { policyPlanApi } from '@/lib/api-client';
+import { usePolicyPlans } from '@/hooks/usePolicies';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { LoadingSpinner } from '@/components/common/LoadingSpinner';
 import { Pagination } from '@/components/common/Pagination';
 import { SearchBar } from '@/components/common/SearchBar';
 import { formatCurrency } from '@/lib/utils';
-import { FileText, Plus, Shield, Clock } from 'lucide-react';
+import { FileText, Shield, Clock } from 'lucide-react';
 import { withAuth } from '@/lib/auth';
 
 function AdminPoliciesPage() {
@@ -19,13 +17,10 @@ function AdminPoliciesPage() {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
 
-  const { data, isLoading } = useQuery({
-    queryKey: ['admin-policy-plans', search, page],
-    queryFn: () => policyPlanApi.list({ search, page, limit: 12 }),
-  });
+  const { data, isLoading, error } = usePolicyPlans({ search, page, limit: 12 });
 
-  const plans = data?.data?.data || data?.data || [];
-  const pagination = data?.data?.pagination || { page: 1, totalPages: 1, total: 0 };
+  const plans = data?.data || [];
+  const pagination = data?.pagination || { page: 1, totalPages: 1, total: 0 };
 
   if (isLoading) return <LoadingSpinner size="lg" text="Loading policies..." />;
 

@@ -16,7 +16,8 @@ export function useTenant() {
     try {
       // Fetch tenant details by slug
       const response = await platformApi.listTenants({ slug });
-      const tenants = response.data.data || response.data;
+      const body = response.data;
+      const tenants = body.items || body.data || [];
       if (Array.isArray(tenants) && tenants.length > 0) {
         setCurrentTenant(tenants[0]);
       }

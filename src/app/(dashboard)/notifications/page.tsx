@@ -29,18 +29,22 @@ export default function NotificationsPage() {
   const queryClient = useQueryClient();
   const { notifications, unreadCount, markRead, markAllRead } = useNotificationStore();
 
-  const { isLoading } = useQuery({
+  const { isLoading, error } = useQuery({
     queryKey: ['notifications'],
     queryFn: async () => {
       const response = await notificationApi.list();
-      return response.data;
+      const body = response.data;
+      return body.data || body.items || [];
     },
   });
 
   const markReadMutation = useMutation({
-    mutationFn: (ids: string[]) => notificationApi.markRead({ ids }),
+    mutationFn: (ids: string[]) => notificationApi.markRead({ notificationIds: ids }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notifications'] });
+    },
+    onError: (err: any) => {
+      toast.error(err.response?.data?.message || 'Failed to mark as read');
     },
   });
 
@@ -50,6 +54,9 @@ export default function NotificationsPage() {
       markAllRead();
       queryClient.invalidateQueries({ queryKey: ['notifications'] });
       toast.success('All notifications marked as read');
+    },
+    onError: (err: any) => {
+      toast.error(err.response?.data?.message || 'Failed to mark all as read');
     },
   });
 

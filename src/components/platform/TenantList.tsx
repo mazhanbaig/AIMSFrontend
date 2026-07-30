@@ -18,15 +18,28 @@ export function TenantList() {
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(1);
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['tenants', search, page],
-    queryFn: () => platformApi.listTenants({ search, page, limit: 10 }),
+    queryFn: async () => {
+      const response = await platformApi.listTenants({ search, page, limit: 10 });
+      const body = response.data;
+      return { data: body.items || body.data, pagination: body.pagination };
+    },
   });
 
-  const tenants = data?.data?.data || data?.data || [];
-  const pagination = data?.data?.pagination || { page: 1, totalPages: 1 };
+  const tenants = data?.data || [];
+  const pagination = data?.pagination || { page: 1, totalPages: 1 };
 
   if (isLoading) return <LoadingSpinner size="lg" text="Loading tenants..." />;
+
+  if (error) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-lg text-destructive">Failed to load tenants</p>
+        <p className="text-sm text-muted-foreground mt-1">Please try again later</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">

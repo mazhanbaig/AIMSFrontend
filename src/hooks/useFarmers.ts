@@ -10,7 +10,8 @@ export function useFarmers(params?: any) {
     queryKey: ['farmers', params],
     queryFn: async () => {
       const response = await farmerApi.list(params);
-      return response.data;
+      const body = response.data;
+      return { data: body.items || body.data, pagination: body.pagination };
     },
   });
 }
@@ -89,7 +90,8 @@ export function useLandParcels(params?: any) {
     queryKey: ['land-parcels', params],
     queryFn: async () => {
       const response = await landParcelApi.list(params);
-      return response.data;
+      const body = response.data;
+      return { data: body.items || body.data, pagination: body.pagination };
     },
   });
 }

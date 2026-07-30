@@ -30,9 +30,12 @@ function CustomFieldsPage() {
     required: false,
   });
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['tenant-fields'],
-    queryFn: () => tenantFieldApi.list(),
+    queryFn: async () => {
+      const response = await tenantFieldApi.list();
+      return response.data;
+    },
   });
 
   const deleteMutation = useMutation({
@@ -40,6 +43,9 @@ function CustomFieldsPage() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['tenant-fields'] });
       toast.success('Field deleted');
+    },
+    onError: (err: any) => {
+      toast.error(err.response?.data?.message || 'Failed to delete field');
     },
   });
 
@@ -50,11 +56,23 @@ function CustomFieldsPage() {
       setNewField({ fieldKey: '', label: '', fieldType: 'text', required: false });
       toast.success('Field created');
     },
+    onError: (err: any) => {
+      toast.error(err.response?.data?.message || 'Failed to create field');
+    },
   });
 
   const fields = data?.data || [];
 
   if (isLoading) return <LoadingSpinner size="lg" text="Loading fields..." />;
+
+  if (error) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-lg text-destructive">Failed to load fields</p>
+        <p className="text-sm text-muted-foreground mt-1">Please try again later</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">

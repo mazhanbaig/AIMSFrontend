@@ -10,31 +10,41 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { LoadingSpinner } from '@/components/common/LoadingSpinner';
 import { getInitials, formatDate } from '@/lib/utils';
+import { SessionUser } from '@/types';
 import { User, Edit3, Save, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export default function ProfilePage() {
-  const { data: session, update: updateSession } = useSession();
-  const user = session?.user;
+  const { data: session, status, update: updateSession } = useSession();
+  const user = session?.user as SessionUser | undefined;
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(user?.name || '');
-  const [phone, setPhone] = useState((user as any)?.phone || '');
+  const [phone, setPhone] = useState(user?.phone || '');
 
   const queryClient = useQueryClient();
 
   const updateProfile = useMutation({
-    mutationFn: (data: any) => authApi.updateProfile(data),
+    mutationFn: (data: { name: string; phone?: string }) => authApi.updateProfile(data),
     onSuccess: async () => {
       await updateSession();
       queryClient.invalidateQueries({ queryKey: ['farmer', 'profile'] });
       toast.success('Profile updated successfully');
       setEditing(false);
     },
-    onError: (error: any) => {
-      toast.error(error.response?.data?.message || 'Failed to update profile');
+    onError: (error: { response?: { data?: { message?: string } } }) => {
+      toast.error((error as any).response?.data?.message || 'Failed to update profile');
     },
   });
+
+  if (status === 'loading') {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <LoadingSpinner size="lg" />
+      </div>
+    );
+  }
 
   if (!user) return null;
 
@@ -52,7 +62,7 @@ export default function ProfilePage() {
           </Button>
         ) : (
           <div className="flex gap-2">
-            <Button variant="outline" onClick={() => { setEditing(false); setName(user?.name || ''); setPhone((user as any)?.phone || ''); }}>
+            <Button variant="outline" onClick={() => { setEditing(false); setName(user?.name || ''); setPhone(user?.phone || ''); }}>
               <X className="mr-2 h-4 w-4" />
               Cancel
             </Button>
@@ -68,7 +78,7 @@ export default function ProfilePage() {
         <CardHeader>
           <div className="flex items-center gap-4">
             <Avatar className="h-16 w-16">
-              <AvatarImage src={(user as any).avatar} />
+              <AvatarImage src={user.avatar} />
               <AvatarFallback className="bg-primary text-primary-foreground text-lg">
                 {getInitials(user.name || '')}
               </AvatarFallback>
@@ -77,7 +87,7 @@ export default function ProfilePage() {
               <CardTitle className="text-xl">{user.name}</CardTitle>
               <p className="text-sm text-muted-foreground">{user.email}</p>
               <Badge variant="secondary" className="mt-1">
-                {(user as any).role?.replace('_', ' ') || 'Unknown'}
+                {user.role?.replace('_', ' ') || 'Unknown'}
               </Badge>
             </div>
           </div>
@@ -102,15 +112,15 @@ export default function ProfilePage() {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Role</p>
-                <p className="font-medium">{(user as any).role?.replace('_', ' ')}</p>
+                <p className="font-medium">{user.role?.replace('_', ' ')}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Phone</p>
-                <p className="font-medium">{(user as any).phone || 'Not set'}</p>
+                <p className="font-medium">{user.phone || 'Not set'}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Tenant ID</p>
-                <p className="font-medium font-mono text-sm">{(user as any).tenantId}</p>
+                <p className="font-medium font-mono text-sm">{user.tenantId}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">User ID</p>

@@ -22,6 +22,7 @@ export interface SessionUser {
   tenantId: string;
   farmerId?: string;
   avatar?: string;
+  phone?: string;
   /** Indicates the user needs to complete OAuth setup (choose role/tenant) */
   needsSetup?: boolean;
 }

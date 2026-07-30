@@ -10,7 +10,8 @@ export function useClaims(params?: any) {
     queryKey: ['claims', params],
     queryFn: async () => {
       const response = await claimApi.list(params);
-      return response.data;
+      const body = response.data;
+      return { data: body.items || body.data, pagination: body.pagination };
     },
   });
 }
